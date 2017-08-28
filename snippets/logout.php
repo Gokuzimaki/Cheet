@@ -1,0 +1,19 @@
+<?php
+session_start();
+include('connection.php');
+if(isset($_GET['type'])){
+	$type=$_GET['type'];
+	if($type=="admin"){
+		$logpart=md5($host_addr);
+		$_SESSION['logcheck'.$logpart.'']="on";
+		unset($_SESSION['logcheck'.$logpart.'']);	
+		unset($_SESSION['rurladmin']);	
+		header('location:../admin/?l=true');
+		$type=="admin"?header('location:../admin/index.php'):header('location:../fjcadmin/index.php');
+	}
+	// session_unset();
+	session_destroy();
+}else{
+	header('location:../index.php');
+}
+?>

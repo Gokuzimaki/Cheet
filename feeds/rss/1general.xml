@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+		<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+		<channel>
+		<title>Dream Bench Blog</title>
+		<atom:link href="http://localhost/feeds/rss/1general.xml" rel="self" type="application/rss+xml"/>
+		<description>
+		Category General
+		</description>
+		<link>http://localhost/dreambench/category.php?cid=4</link>
+	<item>
+		<title>FUNNY BEHAVIORS IN NIGERIA</title>
+		<link>http://localhost/dreambench/blog/Dream-Bench-Blog/FUNNY-BEHAVIORS-IN-NIGERIA.php</link>
+		<pubDate>Wed, 07 Jun 2017 08:19:48 +0100</pubDate>
+		<guid isPermaLink="false">http://localhost/dreambench/blog/?p=9</guid>
+		<description>
+		<![CDATA[<p>Fellow Nigerians,</p>rn<p>Is this how arrests are done?&nbsp;Is there any guideline regarding the arrest of any citizen of this country?</p>rn<p>Why do we do things this way? Is this also traceable to bad governance or we just don''t care for one another?</p>rn<p>Please share your opinion.</p>rn<p>Thank you</p>]]>
+		</description>
+		</item>
+		</channel></rss>

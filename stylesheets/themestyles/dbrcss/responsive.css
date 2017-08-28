@@ -1,0 +1,301 @@
+/*!
+ * Reckless Template (http://themeforest.net/users/imangm)
+ * Copyright 2015 ImanGM
+ */
+ 
+@media (max-width: 1199px) { 
+	.portfolio-item {
+		margin: 2.5%;
+		width: 28%;
+	}
+	
+	.high-padding {
+		padding-left: 100px;
+		padding-right: 100px;
+		padding-bottom: 50px;
+	}
+}
+
+@media (max-width: 991px) {
+	.portfolio-item {
+		margin: 2.5%;
+		width: 45%;
+	}
+	
+	.page-with-right-sidebar .full-width-section,
+	.page-with-left-sidebar .full-width-section {
+		margin: 0 -15px;
+	}
+	
+	.high-padding {
+		padding-left: 50px;
+		padding-right: 50px;
+		padding-bottom: 50px;
+	}
+	
+	.tp-caption.reckless_icon {
+		background-size: cover;
+		width: 146px;
+		height: 184px;
+	}
+	
+	.tp-caption.reckless_icon i.fa {
+		font-size: 42px;
+		line-height: 105px;
+	}	
+}
+
+@media (max-width: 768px) { 
+	.portfolio-item {
+		margin: 2.5%;
+		width: 45%;
+	}
+	
+	.top-bar-menu {
+		display: none;
+	}
+	
+	.blog-post-2 .blog-container:before	{
+		top: -20px;
+		height: 57px;
+		-webkit-transform: skew(0deg, 4deg);
+		-moz-transform: skew(0deg, 4deg);
+		-ms-transform: skew(0deg, 4deg);
+		-o-transform: skew(0deg, 4deg);
+		transform: skew(0deg, 4deg);
+	}
+	
+	.owl-slider-container .owl-slider:after	{
+		width: 100%;
+	}
+	
+	.banner-content .banner-head {
+		top: 80px !important;
+		left: 50% !important;
+		right: auto !important;
+		font-size: 21px !important;
+		width: 70%;
+		text-align: center;
+		transform: translatex(-50%);
+	}  
+	
+	.banner-content .banner-text {
+		top: 120px !important;
+		left: 50% !important;
+		right: auto !important;
+		text-align: center;
+		width: 70%;
+		font-size: 21px !important;
+		-webkit-transform: translatex(-50%);
+		-moz-transform: translatex(-50%);
+		-ms-transform: translatex(-50%);
+		-o-transform: translatex(-50%);
+		transform: translatex(-50%);
+	}  
+	
+	.tp-caption.reckless_icon {
+		width: 120px;
+		height: 152px;
+	}
+	
+	.tp-caption.reckless_icon i.fa {
+		font-size: 36px;
+		line-height: 85px;
+	}
+
+	.gray-left-skew, 
+	.gray-right-skew,
+	.with-bg {
+		padding: 60px 20px 30px;
+	}	
+}
+
+@media (max-width: 640px) { 
+	.portfolio-item {
+		margin: 30px 0;
+		width: 100%;
+	}
+	
+	.portfolio-filter {
+		margin: 20px 0 30px;
+	}
+	
+	.gray-right-skew:after, 
+	.white-right-skew:after {
+		height: 50px;
+	}
+
+	.portfolio-item .zoom {
+		right: 0;
+	}
+	
+	.portfolio-item .portfolio-title {
+		left: 0;
+	}
+
+	.portfolio-navigation {
+		position: relative;
+		left: auto;
+		right: auto;
+		top: 30px;
+		margin: 0;
+		padding: 0;
+		width: 100%;
+		text-align: center;
+	}
+	
+	.default-text-banner .banner-text {
+		text-align: center;
+	}
+}
+
+@media (max-width: 581px) { 
+	.portfolio-item {
+		margin: 30px 0;
+		width: 100%;
+	}	
+	
+	.high-padding {
+		padding-left: 0;
+		padding-right: 0;
+		padding-bottom: 50px;
+	}
+	
+	.breadcrumb-bar {
+		opacity: 0;
+	}
+	
+	
+	.banner-content .banner-head {
+		top: 36px !important;
+		left: 50% !important;
+		font-size: 16px !important;
+		transform: translatex(-50%);
+	}  
+	
+	.banner-content .banner-text {
+		top: 80px !important;
+		left: 50% !important;
+		font-size: 16px !important;
+		transform: translatex(-50%);
+	}  	
+	
+	.tp-caption.reckless_big_accent_bg:after {
+		bottom: -5px;
+	}
+	
+	.tp-caption.reckless_small_black_bg:after {
+		top: -5px;
+	}
+	
+	.logo-container {
+		padding-right: 20px;
+		padding-left: 40px;
+	}
+	
+	img.logo {
+		max-width: 90%;
+		height: auto;
+		max-height: 56px;
+	}
+	
+	.banner-default {
+		min-height: 120px;
+	}
+	
+	.banner-default .banner-text {
+		top: 42px;
+	}
+	
+}
+
+@media (max-width: 480px) { 
+	.blog-post-2 .blog-container:before	{
+		-webkit-transform: skew(0deg, 5deg);
+		-moz-transform: skew(0deg, 5deg);
+		-ms-transform: skew(0deg, 5deg);
+		-o-transform: skew(0deg, 5deg);
+		transform: skew(0deg, 5deg);
+	}
+	
+	ol.comments ol.children {
+		margin-left: 0;
+	}
+	
+	.author-box img {
+		float: none;
+	}
+	
+	.author-box .author-content {
+		margin-left: 0;
+	}
+	
+	.blog-under {
+		display: none;
+	}
+	
+	.tp-caption.reckless_big_accent_bg:after {
+		bottom: -3px;
+	}
+	
+	.tp-caption.reckless_small_black_bg:after {
+		top: -3px;
+	}
+	
+	.tp-caption.reckless_icon {
+		background-size: cover;
+		width: 50px;
+		height: 62px;
+	}
+	
+	.tp-caption.reckless_icon i.fa {
+		font-size: 16px;
+		line-height: 35px;
+	}	
+
+	.tab-nav {
+		margin: 0;
+	}
+	
+	.tab-nav .tab-item {
+		width: 100%;
+		margin-left: 0;
+	}
+	
+	.tab-nav .tab-item a {
+		width: 100%;
+	}
+	
+	.tab-nav .tab-item.active:after {
+		display: none;
+	}
+	
+	footer .up-footer {
+		padding-right: 40px;
+		padding-left: 40px;
+	}
+}
+
+@media (max-width: 380px) { 
+	.staff .staff-social {
+		top: 0;
+	}
+	
+	.blog-post-2 .blog-info {
+		top: -100px;
+		right: 20px;
+		left: 20px;
+	}
+	
+	.icon-box-2 .icon-content {
+		margin-left: 50px;
+		padding: 10px;
+	}
+	
+	.icon-box-2 .icon-place {
+		width: 50px;
+		height: 60px;
+		font-size: 26px;
+		line-height: 60px;
+	}
+}

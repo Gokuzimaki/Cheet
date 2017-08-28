@@ -1,0 +1,38 @@
+<div class="box">
+              <div class="box-header with-border">
+                <h3 class="box-title">HomePage Banners</h3>
+                <div class="box-tools pull-right">
+                  <!-- <button class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse"><i class="fa fa-minus"></i></button> -->
+                  <!-- <button class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="Remove"><i class="fa fa-times"></i></button> -->
+                </div>
+              </div>
+              <div class="box-body">
+                <div class="box-group" id="generaldataaccordion">
+                  <div class="panel box overflowhidden box-primary">
+                        <div class="box-header with-border">
+                            <h4 class="box-title">
+                              <a data-toggle="collapse" data-parent="#generaldataaccordion" href="#NewPageManagerBlock">
+                                <i class="fa fa-sliders"></i> '.$mainmsgintroout.'
+                              </a>
+                            </h4>
+                        </div>
+                        <div id="NewPageManagerBlock" class="panel-collapse collapse in">
+                          
+                        </div>
+                  </div>
+                  <div class="panel box overflowhidden box-primary">
+                        <div class="box-header with-border">
+                          <h4 class="box-title">
+                            <a data-toggle="collapse" data-parent="#generaldataaccordion" href="#EditBlock">
+                              <i class="fa fa-gear"></i> '.$mainmsgcontentout.'
+                            </a>
+                          </h4>
+                        </div>
+                        <div id="EditBlock" class="panel-collapse collapse">
+                          <div class="box-body">
+
+                          </div>
+                        </div>
+                  </div>
+              </div>
+</div>

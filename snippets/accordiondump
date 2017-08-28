@@ -1,0 +1,1016 @@
+<div class="box">
+              <div class="box-header with-border">
+                <h3 class="box-title">HomePage Banners</h3>
+                <div class="box-tools pull-right">
+                  <!-- <button class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse"><i class="fa fa-minus"></i></button> -->
+                  <!-- <button class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="Remove"><i class="fa fa-times"></i></button> -->
+                </div>
+              </div>
+              <div class="box-body">
+                <div class="box-group" id="generaldataaccordion">
+                  <div class="panel box overflowhidden box-primary">
+                        <div class="box-header with-border">
+                            <h4 class="box-title">
+                              <a data-toggle="collapse" data-parent="#generaldataaccordion" href="#NewPageManagerBlock">
+                                <i class="fa fa-sliders"></i> '.$mainmsgintroout.'
+                              </a>
+                            </h4>
+                        </div>
+                        <div id="NewPageManagerBlock" class="panel-collapse collapse in">
+                          
+                        </div>
+                  </div>
+                  <div class="panel box overflowhidden box-primary">
+                        <div class="box-header with-border">
+                          <h4 class="box-title">
+                            <a data-toggle="collapse" data-parent="#generaldataaccordion" href="#EditBlock">
+                              <i class="fa fa-gear"></i> '.$mainmsgcontentout.'
+                            </a>
+                          </h4>
+                        </div>
+                        <div id="EditBlock" class="panel-collapse collapse">
+                          <div class="box-body">
+
+                          </div>
+                        </div>
+                  </div>
+              </div>
+</div>
+
+<div class="item active">
+                <!-- Set the first background image using inline CSS below. -->
+                <style type="text/css">
+                    .slide1{
+                        background-image: url('./img/homeBanner1.jpg');
+                        background-size: cover;
+                    }
+                </style>
+                <!-- <img src="./img/homeBanner1.jpg" class="forcewidth"/> -->
+                <div class="fill slide1"></div>
+                <div class="carousel-caption">
+                    <div>
+                        <h2 class="textWhite">HAPPY<br />
+                            WORKFORCE<br />
+                        </h2>
+                        <p class="textWhite">Creativity x 100% Efficiency</p>
+                        <br />
+                        <form action="about.php">
+                        <button type="submit" class="btn btn-danger">About Us</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <h2>Clients come first in everything we do</h2><br />
+
+                            <p>Goldlink Insurance Plc was incorporated on 15th April, 1992 as a Private Limited Liability Company and granted licence to operate as a full-fledged insurance company on 8th September, 1993. Goldlink was incorporated with an authorised share capital of N10million with fully paid-up capital of N10million. In readiness for listing on the Nigerian Stock Exchange (NSE), Goldlink converted to a Public Liability Company on 11th May, 2007 and was listed on the NSE by way of introduction on 12th February, 2008. It was incorporated with the share capital of N4.5bn.</p>
+
+                            <p>Goldlink has its head office at 6, Emmanuel Street, Maryland, Lagos State with 16 branches across the country. It is owned by Nigerians and is licensed to underwrite both Life and General Businesses which include Fire and Special Perils, Motor Insurance, Life & Pension, Oil & Gas, Travel Insurance and many others.</p>
+
+                            <p>Our company has been able to stand out in the industry as a result of its dogged commitment to prompt claims settlement. Also, we are at the fore front of launching innovative products into the market for the consumption of the insuring public. </p>
+
+                            <p>Goldlink has a strict compliance policy towards Corporate Governance. Our Board and management ensure the company upholds the rules and regulations of relevant authorities.</p>
+
+                            <p>Goldlink is driven by a passionate client-centered philosophy committed to building trust and confidence through delivery of first-class services and competence in our client partnership relationship. Since its founding in 1992, Goldlink has grown tremendously both in customer base as well as in its knowledge and skills on current trends and emerging innovations bringing it to a leadership position in the insurance industry.</p>
+
+
+
+                  <div class="col-md-3 col-sm-6">
+                            <div class="managementImg">
+                                <div class="managementCaption">
+                                    <h4>Adekunle Ajayi</h4>
+                                    <p>Group Head, Research &amp; Business Development</p>
+                                    <p>
+                                        <a href="team.php?page=1" class="label label-default" rel="tooltip" title="View More">More</a>
+                                    </p>
+                                </div>
+                                <img class="img-responsive" src="img/team/adekunleAjayi.jpg" />
+                            </div>
+                        </div>
+
+                        <div class="col-md-3 col-sm-6">
+                            <div class="managementImg">
+                                <div class="managementCaption">
+                                    <h4>Adeyinka Olutungase</h4>
+                                    <p>Chief Finance Officer</p>
+                                    <p>
+                                        <a href="team.php?page=2" class="label label-default" rel="tooltip" title="View More">More</a>
+                                    </p>
+                                </div>
+                                <img class="img-responsive" src="img/team/adeyinkaOlutungase.jpg" />
+                            </div>
+                        </div>
+
+                        <div class="col-md-3 col-sm-6">
+                            <div class="managementImg">
+                                <div class="managementCaption">
+                                    <h4>Dayo Coker</h4>
+                                    <p>Chief Accountant</p>
+                                    <p>
+                                        <a href="team.php?page=3" class="label label-default" rel="tooltip" title="View More">More</a>
+                                    </p>
+                                </div>
+                                <img class="img-responsive" src="img/team/dayoCoker.jpg" />
+                            </div>
+                        </div>
+
+                        <div class="col-md-3 col-sm-6">
+                            <div class="managementImg">
+                                <div class="managementCaption">
+                                    <h4>Funke Moore</h4>
+                                    <p>Executive Director</p>
+                                    <p>
+                                        <a href="team.php?page=4" class="label label-default" rel="tooltip" title="View More">More</a>
+                                    </p>
+                                </div>
+                                <img class="img-responsive" src="img/team/funkeMoore.jpg" />
+                            </div>
+                        </div>
+
+                        <div class="col-md-3 col-sm-6">
+                            <div class="managementImg">
+                                <div class="managementCaption">
+                                    <h4>Gbolahan Olutayo</h4>
+                                    <p>MD/CEO</p>
+                                    <p>
+                                        <a href="team.php?page=5" class="label label-default" rel="tooltip" title="View More">More</a>
+                                    </p>
+                                </div>
+                                <img class="img-responsive" src="img/team/gbolahanOlutayo.jpg" />
+                            </div>
+                        </div>
+
+                        <div class="col-md-3 col-sm-6">
+                            <div class="managementImg">
+                                <div class="managementCaption">
+                                    <h4>Kamoru Sule</h4>
+                                    <p>Group Head, Life</p>
+                                    <p>
+                                        <a href="team.php?page=6" class="label label-default" rel="tooltip" title="View More">More</a>
+                                    </p>
+                                </div>
+                                <img class="img-responsive" src="img/team/kamoruSule.jpg" />
+                            </div>
+                        </div>
+
+                        <div class="col-md-3 col-sm-6">
+                            <div class="managementImg">
+                                <div class="managementCaption">
+                                    <h4>Olawale Awosina</h4>
+                                    <p>Chief Compliance Officer</p>
+                                    <p>
+                                        <a href="team.php?page=7" class="label label-default" rel="tooltip" title="View More">More</a>
+                                    </p>
+                                </div>
+                                <img class="img-responsive" src="img/team/olawaleAwosina.jpg" />
+                            </div>
+                        </div>
+
+                        <div class="col-md-3 col-sm-6">
+                            <div class="managementImg">
+                                <div class="managementCaption">
+                                    <h4>Rasheed Ige</h4>
+                                    <p>Chief Internal Auditor</p>
+                                    <p>
+                                        <a href="team.php?page=8" class="label label-default" rel="tooltip" title="View More">More</a>
+                                    </p>
+                                </div>
+                                <img class="img-responsive" src="img/team/rasheedIge.jpg" />
+                            </div>
+                        </div>
+
+                        <div class="col-md-3 col-sm-6">
+                            <div class="managementImg">
+                                <div class="managementCaption">
+                                    <h4>Roland Awoyinfa</h4>
+                                    <p>Group Head, Technical</p>
+                                    <p>
+                                        <a href="team.php?page=9" class="label label-default" rel="tooltip" title="View More">More</a>
+                                    </p>
+                                </div>
+                                <img class="img-responsive" src="img/team/rolandAwoyinfa.jpg" />
+                            </div>
+                        </div>
+
+                        <div class="col-md-3 col-sm-6">
+                            <div class="managementImg">
+                                <div class="managementCaption">
+                                    <h4>Olawale Awosina</h4>
+                                    <p>Chief Compliance Officer</p>
+                                    <p>
+                                        <a href="team.php?page=7" class="label label-default" rel="tooltip" title="View More">More</a>
+                                    </p>
+                                </div>
+                                <img class="img-responsive" src="img/team/olawaleAwosina.jpg" />
+                            </div>
+                        </div>
+
+                        <div class="col-md-3 col-sm-6">
+                            <div class="managementImg">
+                                <div class="managementCaption">
+                                    <h4>Rasheed Ige</h4>
+                                    <p>Chief Internal Auditor</p>
+                                    <p>
+                                        <a href="team.php?page=8" class="label label-default" rel="tooltip" title="View More">More</a>
+                                    </p>
+                                </div>
+                                <img class="img-responsive" src="img/team/rasheedIge.jpg" />
+                            </div>
+                        </div>
+
+                        <div class="col-md-3 col-sm-6">
+                            <div class="managementImg">
+                                <div class="managementCaption">
+                                    <h4>Roland Awoyinfa</h4>
+                                    <p>Group Head, Technical</p>
+                                    <p>
+                                        <a href="team.php?page=9" class="label label-default" rel="tooltip" title="View More">More</a>
+                                    </p>
+                                </div>
+                                <img class="img-responsive" src="img/team/rolandAwoyinfa.jpg" />
+                            </div>
+                        </div>
+
+                        <tr>
+                                                <td>
+                                                    <a href="products.php#tab1"><img class="" src="img/icons/1.png"/>&nbsp; Compulsory Insurance</a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <a href="products.php#tab2"><img class="" src="img/icons/2.png"/>&nbsp; Engineering Policies</a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <a href="products.php#tab3"><img class="" src="img/icons/3.png"/>&nbsp; General Accident</a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <a href="products.php#tab4"><img class="" src="img/icons/4.png"/>&nbsp; Group Life Insurance</a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <a href="products.php#tab5"><img class="" src="img/icons/5.png"/>&nbsp; Individual Life Insurance</a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <a href="#products.php#tab6"><img class="" src="img/icons/6.png"/>&nbsp; Liability Policies</a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <a href="products.php#tab7"><img class="" src="img/icons/7.png"/>&nbsp; Marine &amp; Aviation</a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <a href="products.php#tab8"><img class="" src="img/icons/8.png"/>&nbsp; Motor Insurance</a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <a href="products.php#tab9"><img class="" src="img/icons/9.png"/>&nbsp; Oil &amp; Gas</a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <a href="products.php#tab10"><img class="" src="img/icons/10.png"/>&nbsp; Re-Insurance</a>
+                                                </td>
+                                            </tr>
+
+                                            <li>
+                                    <a href="products.php#tab1">Compulsory Insurance</a>
+                                </li>
+                                <li>
+                                    <a href="products.php#tab2">Engineering Policies</a>
+                                </li>
+                                <li>
+                                    <a href="products.php#tab3">General Accident</a>
+                                </li>
+                                <li>
+                                    <a href="products.php#tab4">Group Life Insurance</a>
+                                </li>
+                                <li>
+                                    <a href="products.php#tab5">Individual Life Insurance</a>
+                                </li>
+                                <li>
+                                    <a href="products.php#tab6">Liability Policies</a>
+                                </li>
+                                <li>
+                                    <a href="products.php#tab7">Marine &amp; Aviation</a>
+                                </li>
+                                <li>
+                                    <a href="products.php#tab8">Motor Insurance</a>
+                                </li>
+                                <li>
+                                    <a href="products.php#tab9">Oil &amp; Gas</a>
+                                </li>
+                                <li>
+                                    <a href="products.php#tab10">Re-Insurance</a>
+                                </li>
+
+                                <div class="tab-pane active" id="tab1">
+                <h2 class="textRed">COMPULSORY INSURANCE</h2>
+                <p>Under Compulsory Insurance, we offer the following policies:</p>
+                <ul>
+                    <li>Builder's Liability</li>
+                    <li>Occupier's Liability</li>
+                    <li>Healthcare Professional Indemnity</li>
+                </ul>
+            </div>
+            <div class="tab-pane" id="tab2">
+                <h2 class="textRed">ENGINEERING POLICIES</h2>
+                <h4>BONDS</h4>
+                <p>A bond is a guarantee provided by the insurer to anyone who has entered into a contract with another - called the employer - for the purpose of executing a job. The insurer by this attest to the fact that such a person will be faithful in executing the job spelt out in the contract agreement otherwise the insurer will be held responsible for any default.</p>
+                <p>The following are the different types of bonds:</p>
+                <ul>
+                    <li>
+                        <h4>BID BOND</h4>
+                        <p>This is issued in respect of tenders for contracts. The insurer guarantees that, in case the contractor fails to take up the contract after a successful tender, the insurer will pay whatever charges made against the contractor by the employer consequent upon the decline in taking up the contract.</p>
+                    </li>
+                    <li>
+                        <h4>ADVANCE PAYMENT BOND</h4>
+                        <p>This guarantees the faithful utilization of funds mobilised for contractors to commence a contract.</p>
+                    </li>
+                    <li>
+                        <h4>PERFORMANCE BOND</h4>
+                        <p>This is usually a guarantee for the total amount of the contract. The insurer is held liable to the employer up to the tune of the contractor's default.</p>
+                    </li>
+                    <li>
+                        <h4>CUSTOMS / EXCISE BOND</h4>
+                        <p>This guarantees that duties are paid on goods exported or imported before they are cleared by custom agents.</p>
+                    </li>
+                    <li>
+                        <h4>INDEMNITY OF SHARE CERTIFICATE</h4>
+                        <p>This guarantees the value of shares certificate lost in transit to the owner of the certificate.</p>
+                    </li>
+                    <li>
+                        <h4>COUNTER INDEMNITY</h4>
+                        <p>This guarantees the surety upon which a contractor is guaranteed to execute a contract.</p>
+                    </li>
+                </ul>
+                <br />
+                <h4>CONTRACTORS ALL - RISK</h4>
+                <p>This indemnifies the insured against unforeseen physical loss or damage to the property insured consequent upon any cause except those specifically excluded from the policy, up to the sum insured, upon the payment of the agreed premium.</p>
+                <p>Cover can be extended to include third party liabilities incurred from the contractor's operations.</p>
+                <br />
+                <h4>PLANT ALL - RISK</h4>
+                <p>This provides cover against accidental loss or damage from any cause whatsoever to the insured property with the exceptions of those causes specifically excluded from the policy subject to the payment of the required premium.</p>
+                <br />
+                <h4>ERECTION ALL - RISK</h4>
+                <p>This policy is required by engineers who engage themselves in the installation of equipment and machinery or other constructions requiring professional knowledge.</p>
+                <p>Under this policy, the insurer indemnifies the insured against any unforeseen physical loss, damage or destruction of the property in the process of erection with the exception of the perils specifically excluded by the policy subject to the payment of the required premium.</p>
+                <p>This policy can be extended to include the insured legal liability to third parties arising from the job.</p>
+                <br />
+                <h4>MACHINERY BREAKDOWN</h4>
+                <p>This provides cover against loss or damage resulting from unforeseen and sudden damage to any machinery insured from any cause not excluded from the policy:</p>
+                <ul>
+                    <li>Whilst the machinery is at rest or at work.</li>
+                    <li>While being dismantled for the purpose of cleaning, inspection and overhauling or removal to another position or in the course of these operations or subsequent re-erection within the premises specified in the schedule of the machinery.</li>
+                    <li>Liability to third parties as determined by the insured.</li>
+                </ul>
+                <p>The cover is subject to the payment of the prerequisite premium.</p>
+                <h5>MACHINERY CONSEQUENTIAL LOSS</h5>
+                <p>This provides cover to the insured subject to the payment of the required premium in respect of losses suffered as a result of accidental interruption or interference of the operation of the machinery covered under the following policy titles:</p>
+                <ul>
+                    <li>On gross profit
+                    </li>
+                    <li>Salaries and wages</li>
+                    <li>On rent</li>
+                    <li>On auditors fees</li>
+                </ul>
+                <br />
+                <h4>BOILER / PRESSURE VESSELS</h4>
+                <p>This Policy covers the insured if the boiler / plant insured is used in the performance of its proper function at the location specified in the schedule of the policy suffer any damage directly consequent upon and solely due to explosion or collapse.</p>
+                <p>Indemnity is provided on the following basis:</p>
+                <ul>
+                    <li>Damage to the boiler / plant.</li>
+                    <li>Liability for damage to property of third parties / death and bodily injury to third parties.</li>
+                </ul>
+                <p>The cover is subject to the payment of the appropriate premium.</p>
+                <br />
+                <h4>COMPUTER ALL RISK</h4>
+                <ul>
+                    <li>
+                        <h5>MATERIAL DAMAGE
+                        </h5>
+                        <p>This policy provides cover against any unforeseen or accidental damage or loss from any cause other than those specifically excluded necessitating repair or replacement in addition to the cost of clearance of debris from and cleaning of the insured property damaged by any insured peril as detailed below:</p>
+                        <ul>
+                            <li>Incorrect operation, negligent or malicious acts of employees or third parties.</li>
+                            <li>Burglary, theft, robbery and the events related to them.</li>
+                            <li>Fault design and material.</li>
+                            <li>Short circuit, excessive voltage, induction.</li>
+                            <li>Fire, lightning and explosion of all kinds (including the damage caused by fire-fighting and rescue operations)</li>
+                            <li>Scorching and charring, smoke, soot.</li>
+                            <li>Forces of nature such as storm, flood, hail, landslide except seismic perils.</li>
+                            <li>Any influence of water and moisture and corrosion resulting from them.</li>
+                            <li>Any other accident not hereinafter excluded.</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <h5>LOSS OF DATA</h5>
+                        <p>The policy indemnifies the insured in respect of cost of regeneration of data consequent upon the damage to the data.</p>
+                    </li>
+                    <li>
+                        <h5>INCREASED COST OF WORKING</h5>
+                        <p>The policy indemnifies the insured in respect of all additional cost incurred to ensure continued data processing on substitute equipment consequent upon the damage to the data.</p>
+                    </li>
+                </ul>
+                <br />
+                <h4>ELECTRONIC EQUIPMENT</h4>
+                <p>This provides cover against any unforeseen and sudden physical loss or damage from any cause other than those specifically excluded in a manner necessitating repair or replacement.</p>
+            </div>
+            <div class="tab-pane" id="tab3">
+                <h2 class="textRed">MONEY INSURANCE POLICY</h2>
+                <h4>MONEY INSURANCE POLICY</h4>
+                <p>Money Insurance Policy compensates the Insured against loss of money, cheques, money orders or postage and revenue stamps resulting from any cause whilst:</p>
+                <ul>
+                    <li>In transit to and from any of the insured's Bank
+                    </li>
+                    <li>In Safe, Strong Room and /or premises</li>
+                    <li>In Personal Custody (of Key Employees/Management Staff)</li>
+                </ul>
+                <br />
+                <h4 class="">GOODS-IN-TRANSIT INSURANCE POLICY</h4>
+                <p>Goods-In-Transit Policy provides cover for loss of or damage to the property insured caused by fire, theft and accidental damage directly resulting from collision or overturning of the conveying vehicle whilst in transit during the period of insurance. It also covers loading, off-loading and whilst the Goods are temporarily garaged in the course of Transit.</p>
+                <br />
+                <h4>PERSONAL ACCIDENT INSURANCE POLICY</h4>
+                <p>
+                    Personal Accident Insurance Policy covers the insured and any member of his household for accidental injury causing death, permanent or temporary disability. 
+                    The nominated beneficiaries are covered anywhere in the world and there is no excess payable for any claims.
+                </p>
+                <br />
+                <h4>GROUP PERSONAL ACCIDENT INSURANCE POLICY</h4>
+                <p>Group Personal Accident Insurance Policy is a 24-hour cover developed for employers, associations and clubs to ensure that financial compensation is made available to any employee or member of the insured group in the event of an accident resulting in death, permanent disability, temporary disability and medical expenses incurred. Cover is available to members between the ages of 18 and 65 years.</p>
+                <br />
+                <h4>FIDELITY GURANTEE INSURANCE POLICY</h4>
+                <p>This cover is for act of fraud, dishonesty, defalcation of money, stock, committed by any employee described in the schedule whilst employed in the capacity set against his name during the period of insurance.</p>
+                <br />
+                <h4>PRODUCT LIABILITY INSURANCE POLICY</h4>
+                <p>
+                    It indemnifies the Insured against all sums which the Insured shall become legally liable to pay as damage in respect of the following:
+                </p>
+                <ul>
+                    <li>Accidental bodily injury, illness or death of any person</li>
+                    <li>Accidental loss of or damage to property.</li>
+                </ul>
+                <p>
+                    These must have occurred during the period of insurance and must be as a result of defects in any goods sold, supplied, repaired, altered, treated, printed, minted and other related services carried on or processed by or on behalf of the insured or arising through defects in the packaging of the goods within the geographical limit herein stated in the schedule of this policy. 
+                </p>
+                <br />
+                <h4>WORKMEN'S COMPENSATION/EMPLOYER'S LIABILITY INSURANCE POLICY</h4>
+                <p>The Workmen's Compensation Policy relieves the employer of his responsibility to employees by indemnifying him (the employer) in respect of his legal liabilities under the law. The cover guarantees payment of financial compensation for death, injury, permanent or temporary disability of the employees and medical expenses incurred while carrying out the employer's business.</p>
+                <br />
+                <h4>FIRE &amp; SPECIAL PERILS INSURANCE COVER</h4>
+                <p>The policy shall provide indemnity in respect of loss or damage to the property insured resulting from fire, lightning, and explosion. This policy would be extended to include the Risk of malicious damage, riot, strikes & lock-out, aircraft, earthquake or volcanic eruption, storm, tempest & flood, bush fire, escape of water from any tank, apparatus or burst pipes, impact by any vehicle on the road or animal.</p>
+                <br />
+                <h4>BURGLARY/ HOUSEBREAKING INSURANCE COVER</h4>
+                <p>This provides indemnity in respect of any loss or damage to contents resulting from theft which is accompanied by forcible and violent means of entry into or exit from the premises or any attempt threat.</p>
+                <br />
+                <h4>HOUSEHOLDERS' COMPREHENSIVE INSURANCE</h4>
+                <p>This policy could be taken up by the owner of a building or tenant(s) therein. This is designed to cover both building & the contents of private dwellings against risk of fire & special perils, burglary & housebreaking or attempt threat, public liability & personal accident.</p>
+                <h5>For Homeowner</h5>
+                <p>The insurance cover is designed to cover both building &amp; the contents of private dwellings.</p>
+                <h5>For Tenants(s)</h5>
+                <p>
+                    This insurance cover is designed to cover only the contents of private dwellings.
+                Contents may include: furniture, household utensils, kitchen electrical goods, personal effects and valuables.
+                </p>
+                <p>Risk insured against include:</p>
+                <ul>
+                    <li>Fire & Special Perils (earthquake, storm (other than gates and fences), subsidence, burst pipes,   Impact from vehicles, falling trees, animals, aircraft, aerials and masts, earthquake, smoke, oil or water leakage)</li>
+                    <li>Theft, buglary &amp; housebreaking or attempt threat</li>
+                    <li>Public Liability</li>
+                    <li>Personal Accident</li>
+                    <li>Vandalism / Malicious damage</li>
+                    <li>Lighting</li>
+                </ul>
+                <p>An accurate inventory of contents of private dwellings with proof of ownership should be made at inception of the Policy so that at the time of a loss claim settlement will be easier and faster.</p>
+                <br />
+                <h4>ALL RISK INSURANCE</h4>
+                <p>This policy is only recommended for moveable and personal effects or valuable company artifacts. Items to be insured should be specifically mentioned while the scope of cover is worldwide.</p>
+            </div>
+            <div class="tab-pane" id="tab4">
+                <h2 class="textRed">GROUP LIFE ASSURANCE</h2>
+                <h4>GROUP LIFE ASSURANCE SCHEME</h4>
+                <p>Group Life Assurance Policy Scheme provides benefits for dependents of deceased employees who die while in services of their employers. The Sum Assured is usually arranged as a multiple of the employees' Total Emolument. The Total Emolument entails the following Basic Salary, Housing Allowance and Transport Allowance. The Pension Reform Act of 2004 stipulates minimum of multiple of 3 Total Emolument as minimum cover. Cover continues as long as the employee continues to work for the employer. The premium is paid by the employer.</p>
+                <h5>BENEFITS:</h5>
+                <ul>
+                    <li>The cover provides a cash sum on the death of the life Assured to stated beneficiary/ beneficiaries.</li>
+                    <li>The policy covers Death either Natural or Accidental.</li>
+                    <li>It may be extended to cover Personal Accident (Permanent Disability, Temporary Total Disablement & Medical Expenses).</li>
+                    <li>It may be extended to cover Funeral/Burial Expenses.</li>
+                    <li>It may be extended to cover named Critical Illness.</li>
+                    <li>It may be extended to cover Clubs, Society and/or Group of Society.</li>
+                </ul>
+                <br />
+                <h4>DEPOSIT ADMINISTRATION</h4>
+                <p>Contributions are made for each employee as a percentage of salary. Interest is credited to the members account to provide end-of-service benefits for employees when they leave service either at retirement or resignation of appointment.</p>
+
+            </div>
+            <div class="tab-pane" id="tab5">
+                <h2 class="redText">INDIVIDUAL LIFE ASSURANCE</h2>
+                <h4>GOLDLINK FAMILY INCOME BENEFITS</h4>
+                <p>It is an inexpensive plan. A large sum assured can be secured in return for relatively small premium. It provides a fixed large sum to be paid only if the life assured dies within a stated period. If the life assured survives the chosen period no benefit will be paid. Minimum premium is N5, 000.00 per month and the income is tax fee.</p>
+                <br />
+                <h4>ANTICIPATED ENDOWMENT ASSURANCE</h4>
+                <p>In case of death, the sum assured less any partial maturity sum already paid becomes payable to the beneficiary. All bonuses on the policy are payable at maturity. Minimum premium is N5, 000.00 per month.his is another ideal plan for saving and building up a risk free capital for the future. Provision is made for the benefit of the policy to be taken in phases of three equal term or period. One-third of the sum assured is cashed at the end of the first term; another one-third is cashed at the end of the second term while the last part is cashed at maturity inclusive of interest.</p>
+                <br />
+                <h4>ENDOWMENT ASSURANCE</h4>
+                <p>It is an ideal vehicle for providing risk free capital for important events at a specified future date. The stated sum assured plus bonus is payable if the life assured survives the specified period. It provides excellent life cover by paying the sum assured if death occurs any time before the period. It also serves as a form of investment and can be used as a collateral security to raise loan from a financial institution. Minimum premium is N5, 000.00. The policyholder can take a loan on the policy subject to 90% of investment balance. It offers tax rebate.</p>
+                <br />
+                <h4>MORTGAGE PROTECTION ASSURANCE</h4>
+                <p>Mortgage Protection Assurance Policy guarantees loans obtained for specific purpose such as housing, business etc. It guarantees that the balance outstanding in respect of a mortgage loan which is repayable by level installments of capital and interest will be paid by Goldlink.</p>
+                <p>This is payable if the life assured should die before the loan is fully repaid provided of course the repayments under the loan are not in arrears and the basis on which the loan was taken has not changed.</p>
+                <p>Premium ceases on death of the life assured. No payment is made if the life assured survives the term selected.</p>
+                <br />
+                <h4>GOLDLINK UNI-DOWMENT</h4>
+                <p>
+                    This product provides cover for financial protection needs and future personal pension planning. It guarantees maximized investment yield by holding premium in high yielding units of equal value. It is designed to last a working life time maturing at age 55 or 60. It affords the policy holder to be paid a lump sum of total contribution plus interest at maturity. It also offers death benefit for the dependents of the policyholder, provided the policy is in force. Minimum premium is N5, 000.00 and policyholder is entitled to 80% policy loan on the surrender value. The policy can be used as collateral for loan applications with financial institutions. There is also free additional benefit of N50, 000.00 if there is sudden death of the life assured as a result of accident. It offers tax rebate and there is Retirement Annuity Benefit Option after maturity.
+                </p>
+                <br />
+                <h4>GOLDLINK FLEXI-DOWMENT</h4>
+                <p>
+                    This product is an open-ended policy which can be cashed without the normal surrender penalty at any time after five years consecutive premiums have been paid. It guarantees maximized investment yield by holding premiums in high yielding units of equal value. It can be taken for a minimum period of five (5) years and multiple of five years i.e. 5,10,15,20 etc. Minimum premium is N5, 000.00 per month. It provides death benefit of the sum assured in the event of death of the policyholder to the named beneficiaries, provided the policy is in force. Flexi-dowment can be used as collateral to secure loan from financial institution. The Policy holder is entitled to 80% policy loan on the surrender value. There is also free additional benefit of N50, 000.00 if there is sudden death of the life assured as a result of accident before maturity. Flexi-dowment has annuity benefit after the maturity of the policy. It offers tax rebate.
+                </p>
+                <br />
+                <h4>WHOLE LIFE ASSURANCE</h4>
+                <p>This cover provides a capital sum payable at death. It is one of the cheapest forms of life assurance. It is appropriate for providing a capital sum required anytime death occurs. The premium is arranged to cease about the time the policy holder's income can be expected to diminish instead of continuing throughout life. It alleviates financial burden that may befall the dependent of the assured. It enables policy holder to enjoy tax rebate. Minimum premium is N5, 000.00 per month.</p>
+                <br />
+                <h4>CHILDREN EDUCATION ENDOWMENT</h4>
+                <p>Education Endowment helps the policy holder to plan for school fees and other incidentals of a named child. This cover is designed such that its benefits are used for the education of a named child. It can be issued on the life of the father or the mother. There are two covers, the <b>Secondary Education Cover</b> and the <b>University Education Cover.</b></p>
+                <p>
+                    The Secondary Education Cover starts paying increasing annual or terminal benefits from the <b>11th to the 16th birthdays</b> of the child while the University Education Cover pays increasing annual or semester benefits from the <b>17th to the 20th birthdays</b> of the child.
+                </p>
+                <p>Minimum premium is N5, 000.00. The sudden death of the policy holder prior to maturity will not affect payment of the sum agreed provided policy holder paid premium up to the time of death. In the event of death of the named child (beneficiary), there is provision for policy holder to substitute with another child without altering the terms of the policy. Alternatively, the policy holder can apply for refund of premium paid to date. Premium paid so far can be used to purchase another policy. Other benefits include tax rebate and it can also be used as collateral for loan.</p>
+                <br />
+                <h4>GICO Savings</h4>
+                <ul>
+                    <li>
+                        This is a basic savings account that encourages policy holder to save for a specific purpose.
+                    </li>
+                    <li>
+                        Minimum duration of the policy is 2 years.
+                    </li>
+                    <li>Minimum premium is &#8358;5,000.00 per month.</li>
+                    <li>Guaranteed minimum interest rate of 4% per annum subject to previling interest rate in the market.</li>
+                    <li>Policy holders are entitled to 50% part withdrawal after one year and once in a year subject to tenure of the policy.</li>
+                    <li>GICO Savings enables policy holder to enjoy tax relief on his or her personal income.</li>
+                </ul>
+                <br />
+                <h4>GOLDLINK TERM ASSURANCE</h4>
+                <ul>
+                    <li>It is the cheapest and simplest form of Life Assurance.</li>
+                    <li>It gives a lump sum if death occurs within the duration of the policy.</li>
+                    <li>Minimum premium is &#8358;5,000.00 per month.</li>
+                    <li>You can commence the policy with relatively small premium for a large sum assured at death.</li>
+                    <li>It can be used as collateral security for a loan.</li>
+                    <li>Income tax rebate from tax office is guaranteed.</li>
+                </ul>
+                <br />
+                <h4>GOLDLINK ANNUITY PLAN (GAP)</h4>
+                <ul>
+                    <li>It provides regular income to annuitant until death.</li>
+                    <li>A guaranteed regula income after retirement.</li>
+                    <li>It has flexible plans ranging from immediate to deferred annuity plans.</li>
+                    <li>Tax relief on contribution.</li>
+                    <li>It is designed to help individuals plan and enjoy their retirement benefits.</li>
+                    <li>It offers single life immediate annuity with a 10 year guaranteed period.</li>
+                    <li>It protects the annuitant against the risk of outliving assets (programmed withdrawal).</li>                    
+                </ul>
+            </div>
+            <div class="tab-pane" id="tab6">
+                <h2>LIABILITY POLICIES</h2>
+                <h4>PERSONAL LIABILITY</h4>
+                <br />
+                <h4>PUBLIC LIABILITY INSURANCE</h4>
+                <p>Public Liability Policy covers indemnity to the insured against all legal liability to third parties for accidental death or bodily injury or loss or damage to property of third party which occurs during the period of insurance and in connection with the business carried on at the insured's premises.</p>
+                <p>This also covers:</p>
+                <ul>
+                    <li>Legal defense costs.</li>
+                    <li>Damages resulting from wrongful arrest, associated assault and defamation.</li>
+                    <li>Damages caused by pollution and contamination</li>
+                </ul>
+                <br />
+                <h4>EMPLOYER'S LIABILITY</h4>
+                <br />
+                <h4>DIRECTORS' AND OFFICERS' LIABILITY
+                </h4>
+                <br />
+                <h4>PROFESSIONAL INDEMNITY POLICY</h4>
+                <p>This indemnifies the insured in respect of his legal liability to his clients due to his professional negligence.</p>
+            </div>
+            <div class="tab-pane" id="tab7">
+                <h2>MARINE &amp; AVIATION</h2>
+                <br />
+                <h4>MARINE INSURANCE POLICIES</h4>
+                <p>Our Marine Insurance policies are divided into various classes such as:</p>
+                <h5>INSURANCE OF CARGO</h5>
+                <p>This policy covers for losses or damages occurring as a result of maritime perils to cargo which include raw material, finished products, household goods and personal effects whether imports or exports either by air or sea.</p>
+                <h5>INSURANCE OF HULL AND MACHINERY</h5>
+                <p>It provides insurance coverage to any physical loss or damage to a vessel and her passengers resulting from marine adventure.</p>
+                <h5>INSURANCE OF LIABILITY</h5>
+                <p>This policy offers a comprehensive coverage for other third party liabilities incurred in the course of carrying out operational activities within the port such as port operators, ship repairers/builders and stevedores.</p>
+                <br />
+                <h4>AVIATION INSURANCE</h4>
+                <p>The policy offers wide coverage for the passengers, the aircrafts and all the operational activities concerning the aviation industry whether by private individuals or corporate bodies.</p>
+            </div>
+            <div class="tab-pane" id="tab8">
+                <h2>MOTOR INSURANCE</h2>
+                <p>
+                    Goldlink Motor Insurance policy is a compulsory insurance by law according to Road Traffic Act 1950, which protects you from any financial burdens of replacing or repairing of your vehicle and also paying for third party bodily injury, death and property damage arising out of the use of the insured vehicle.
+                </p><br />
+                <h4>BASIC COVER UNDER MOTOR INSURANCE</h4>
+                <h5>COMPREHENSIVE</h5>
+                <p>This policy provides cover against loss or damage to the insured vehicle as a result of fire, theft, vandalism, accidental damage or collusion. The policy also covers any liability for death, bodily injury or damage to the property of the third party arising out of the use of the insured vehicle including legal liability.</p>
+                <br />
+                <h5>THIRD PARTY FIRE AND THEFT</h5>
+                <p>This Policy provides cover against death, accidental bodily injury and damage to the property of the third party including fire damage and theft to the insured vehicle.</p>
+                <h5>THIRD PARTY ONLY</h5>
+                <p>This Policy provides cover against death, accidental bodily injury and damage to the property of third party vehicle(s) but does not cover any liability incurred against damage to the insured vehicle.</p>
+                <br />
+                <h4>CLASSES OF MOTOR INSURANCE</h4>
+                <ul>
+                    <li>Private Vehicle</li>
+                    <li>Commercial Vehicle
+                    <p>Commercial Vehicle has four types:</p>
+                    <ul>
+                        <li>Own goods</li>
+                        <li>General cartage</li>
+                        <li>Special types</li>
+                        <li>Motor trade</li>
+                    </ul>
+                        </li>
+                    <li>Motorcycle</li>
+                </ul>
+                <p>We also offer ECOWAS Brown Card for West African Countries.</p>
+            </div>
+            <div class="tab-pane" id="tab9">
+                <h2>OIL &amp; GAS INSURANCE</h2>
+                <h4>OIL &amp; gas</h4>
+                <p>Oil and Energy Policies offer a comprehensive coverage for both oil and gas constructions and operational activities relevant to the oil and gas industry. Our policies offer full protection against loss or damage to operational assets, third party liability, operators extra expenses, control of wells, and legal liabilities occurring within the course of the Insured operational activities.</p>
+            </div>
+            <div class="tab-pane" id="tab10">
+                <h2>RE-INSURANCE</h2>
+                <p>Goldlink is adequately reinsured for all classes of insurance from both local and International reinsurers. These are:</p>
+                <h4>FOREIGN TREATY</h4>
+                <table>                    
+                    <tbody>
+                        <tr>
+                            <td>Munich Re</td>
+                            <td>40%</td>
+                        </tr>
+                         <tr>
+                            <td>African Re</td>
+                            <td>25%</td>
+                        </tr>
+                         <tr>
+                            <td>Continental Re</td>
+                            <td>25%</td>
+                        </tr>
+                         <tr>
+                            <td>Waica Re</td>
+                            <td>10%</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <h4>LOCAL TREATY</h4>
+                <table>                    
+                    <tbody>
+                        <tr>
+                            <td>Continental Re</td>
+                            <td>40%</td>
+                        </tr>
+                         <tr>
+                            <td>African Re</td>
+                            <td>35%</td>
+                        </tr>
+                         <tr>
+                            <td>Waica Re</td>
+                            <td>20%</td>
+                        </tr>
+                         <tr>
+                            <td>Nigerian Re</td>
+                            <td>5%</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+                        <li class="active"><a href="#tab1" data-toggle="tab">Compulsory Insurance</a></li>
+            <li><a href="#tab2" data-toggle="tab">Engineering Policies</a></li>
+            <li><a href="#tab3" data-toggle="tab">General Accident</a></li>
+            <li><a href="#tab4" data-toggle="tab">Group Life Insurance</a></li>
+            <li><a href="#tab5" data-toggle="tab">Individual Life Insurance</a></li>
+            <li><a href="#tab6" data-toggle="tab">Liability Policies</a></li>
+            <li><a href="#tab7" data-toggle="tab">Marine &amp; Aviation</a></li>
+            <li><a href="#tab8" data-toggle="tab">Motor Insurance</a></li>
+            <li><a href="#tab9" data-toggle="tab">Oil &amp; Gas</a></li>
+            <li><a href="#tab10" data-toggle="tab">Re-Insurance</a></li>
+
+<div class="col-md-12">
+                            <img class="img-responsive newsBanner" src="img/media/fam.jpg" />
+                            <h2 class="newsTitle">Tinkering with Strategy Can Derail Midsize Companies <i class="fa fa-chevron-right"></i><i class="fa fa-chevron-right"></i></h2>
+                            <p>
+                                Many leaders of midsize companies - especially if they're the founders - are constitutionally inclined to see new opportunities around every corner. And they love to pursue them
+                                    deadline commitments or old strategies be damned. They forget that the strategy which took them from small to midsize has already proven itself a winner. But a new vision is always more
+                                    exciting to them than the present one. So they begin tinkering with thier core strategy, burning up resources while their companies wander off their tried-and-true grow path.
+                            </p>
+                            <p>The tales of two companies, cell phone accessories retailer Cellaris adn skin care products maker Rodan + Fields, illustrate the dangers of top-level strategic tinkering.... <span class="textRed">More</span></p>
+                        </div>
+
+<article class="archives">
+                            <h4 class="">ARCHIVES
+                            </h4>
+                            <ul>
+                                <li>
+                                    <span>June 2015</span> <span class="floatRight textRed">17</span>
+                                </li>
+                                <li>May 2015 <span class="floatRight textRed">17</span>
+                                </li>
+                                <li>April 2015 <span class="floatRight textRed">28</span>
+                                </li>
+                                <li>March 2015 <span class="floatRight textRed">22</span>
+                                </li>
+                                <li>February 2015 <span class="floatRight textRed">19</span>
+                                </li>
+                                <li>January 2015 <span class="floatRight textRed">55</span>
+                                </li>
+                                <li>December 2014 <span class="floatRight textRed">14</span>
+                                </li>
+                            </ul>
+                        </article>
+
+ <div class="col-md-3 col-sm-6">
+                        <div class="managementImg">
+                            <div class="managementCaption">
+                                <a href="img/gallery/1.jpg" data-lightbox="roadtrip">
+                                    <h4>Awards</h4>
+                                    <p>Goldlink Wins Award</p>
+                                </a>
+                            </div>
+                            <img class="img-responsive" src="img/gallery/1.jpg" />
+                        </div>
+                    </div>
+
+                    <div class="col-md-3 col-sm-6">
+                        <div class="managementImg">
+                            <div class="managementCaption">
+                                <a href="img/gallery/2.jpg" data-lightbox="roadtrip">
+                                    <h4>Awards</h4>
+                                    <p>Goldlink Wins Award</p>
+                                </a>
+                            </div>
+                            <img class="img-responsive" src="img/gallery/2.jpg" />
+                        </div>
+                    </div>
+
+                    <div class="col-md-3 col-sm-6">
+                        <div class="managementImg">
+                            <div class="managementCaption">
+                                <a href="img/gallery/1.jpg" data-lightbox="roadtrip">
+                                    <h4>Awards</h4>
+                                    <p>Goldlink Wins Award</p>
+                                </a>
+                            </div>
+                            <img class="img-responsive" src="img/gallery/1.jpg" />
+                        </div>
+                    </div>
+
+                    <div class="col-md-3 col-sm-6">
+                        <div class="managementImg">
+                            <div class="managementCaption">
+                                <a href="img/gallery/2.jpg" data-lightbox="roadtrip">
+                                    <h4>Awards</h4>
+                                    <p>Goldlink Wins Award</p>
+                                </a>
+                            </div>
+                            <img class="img-responsive" src="img/gallery/2.jpg" />
+                        </div>
+                    </div>
+
+                    <div class="col-md-3 col-sm-6">
+                        <div class="managementImg">
+                            <div class="managementCaption">
+                                <a href="img/gallery/1.jpg" data-lightbox="roadtrip">
+                                    <h4>Awards</h4>
+                                    <p>Goldlink Wins Award</p>
+                                </a>
+                            </div>
+                            <img class="img-responsive" src="img/gallery/1.jpg" />
+                        </div>
+                    </div>
+
+                    <div class="col-md-3 col-sm-6">
+                        <div class="managementImg">
+                            <div class="managementCaption">
+                                <a href="img/gallery/2.jpg" data-lightbox="roadtrip">
+                                    <h4>Awards</h4>
+                                    <p>Goldlink Wins Award</p>
+                                </a>
+                            </div>
+                            <img class="img-responsive" src="img/gallery/2.jpg" />
+                        </div>
+                    </div>
+
+                    <div class="col-md-3 col-sm-6">
+                        <div class="managementImg">
+                            <div class="managementCaption">
+                                <a href="img/gallery/1.jpg" data-lightbox="roadtrip">
+                                    <h4>Awards</h4>
+                                    <p>Goldlink Wins Award</p>
+                                </a>
+                            </div>
+                            <img class="img-responsive" src="img/gallery/1.jpg" />
+                        </div>
+                    </div>
+
+                    <div class="col-md-3 col-sm-6">
+                        <div class="managementImg">
+                            <div class="managementCaption">
+                                <a href="img/gallery/2.jpg" data-lightbox="roadtrip">
+                                    <h4>Awards</h4>
+                                    <p>Goldlink Wins Award</p>
+                                </a>
+                            </div>
+                            <img class="img-responsive" src="img/gallery/2.jpg" />
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-6">
+                        <div class="managementImg">
+                            <div class="managementCaption">
+                                <a href="img/gallery/1.jpg" data-lightbox="roadtrip">
+                                    <h4>Awards</h4>
+                                    <p>Goldlink Wins Award</p>
+                                </a>
+                            </div>
+                            <img class="img-responsive" src="img/gallery/1.jpg" />
+                        </div>
+                    </div>
+
+                    <div class="col-md-3 col-sm-6">
+                        <div class="managementImg">
+                            <div class="managementCaption">
+                                <a href="img/gallery/2.jpg" data-lightbox="roadtrip">
+                                    <h4>Awards</h4>
+                                    <p>Goldlink Wins Award</p>
+                                </a>
+                            </div>
+                            <img class="img-responsive" src="img/gallery/2.jpg" />
+                        </div>
+                    </div>
+
+                    <div class="col-md-3 col-sm-6">
+                        <div class="managementImg">
+                            <div class="managementCaption">
+                                <a href="img/gallery/1.jpg" data-lightbox="roadtrip">
+                                    <h4>Awards</h4>
+                                    <p>Goldlink Wins Award</p>
+                                </a>
+                            </div>
+                            <img class="img-responsive" src="img/gallery/1.jpg" />
+                        </div>
+                    </div>
+
+                    <div class="col-md-3 col-sm-6">
+                        <div class="managementImg">
+                            <div class="managementCaption">
+                                <a href="img/gallery/2.jpg" data-lightbox="roadtrip">
+                                    <h4>Awards</h4>
+                                    <p>Goldlink Wins Award</p>
+                                </a>
+                            </div>
+                            <img class="img-responsive" src="img/gallery/2.jpg" />
+                        </div>
+                    </div>
+
+                    <!-- for admin section -->
+                    <li class="treeview" >
+                      <a href="#" appdata-otype="mainlink" appdata-type="">
+                      <i class="fa fa-user"></i> <span>Users</span> <i class="fa fa-angle-left pull-right"></i>
+                      </a>
+                      <ul class="treeview-menu">
+                        <li><a href="#New" appdata-otype="sublink" appdata-type="menulinkitem" appdata-name="newuser" appdata-crumb='New User' appdata-fa='<i class="fa fa-user"></i>' appdata-pcrumb="User"><i class="fa fa-plus"></i> New</a></li>
+                        <li><a href="#Edit" appdata-otype="sublink" appdata-type="menulinkitem" appdata-name="edituser" appdata-crumb='Edit User' appdata-fa='<i class="fa fa-user"></i>' appdata-pcrumb="User"><i class="fa fa-gear"></i> Edit</a></li>
+                      </ul>
+                    </li>
+                    <li class="treeview">
+                      <a href="#" appdata-otype="mainlink" appdata-type="menulinkitem" appdata-name="homebanners" appdata-fa='<i class="fa fa-home"></i>' appdata-pcrumb="Home">
+                        <i class="fa fa-file-image-o"></i> <span>Home Banner</span>
+                      </a>
+                    </li>
+                    <li class="treeview">
+                      <a href="#" appdata-otype="mainlink">
+                        <i class="fa fa-tasks"></i> <span>About</span> <i class="fa fa-angle-left pull-right"></i>
+                      </a>
+                      <ul class="treeview-menu">
+                        <li><a href="#History" appdata-otype="sublink" appdata-type="menulinkitem" appdata-name="history" appdata-crumb="History" appdata-fa='<i class="fa fa-info"></i>' appdata-pcrumb="About"><i class="fa fa-calendar-o"></i> History</a></li>
+                        <li><a href="#HistoryTab" appdata-otype="sublink" appdata-type="menulinkitem" appdata-name="historytab" appdata-crumb="History" appdata-fa='<i class="fa fa-info"></i>' appdata-pcrumb="About"><i class="fa fa-gear"></i> History Tab</a></li>
+                        <li><a href="#Mission" appdata-otype="sublink" appdata-type="menulinkitem" appdata-name="mission" appdata-crumb="Mission" appdata-fa='<i class="fa fa-info"></i>' appdata-pcrumb="About"><i class="fa fa-rocket"></i> Mission</a></li>
+                        <li><a href="#MissionTab" appdata-otype="sublink" appdata-type="menulinkitem" appdata-name="missiontab" appdata-crumb="Mission Tab" appdata-fa='<i class="fa fa-info"></i>' appdata-pcrumb="About"><i class="fa fa-rocket"></i> Mission Tab</a></li>
+                      </ul>
+                    </li>
+                    <li class="treeview">
+                      <a href="#" appdata-otype="mainlink" appdata-type="">
+                        <i class="fa fa-group"></i> <span>Management Team</span> <i class="fa fa-angle-left pull-right"></i>
+                      </a>
+                      <ul class="treeview-menu">
+                        <li><a href="#New/Edit" appdata-otype="sublink" appdata-type="menulinkitem" appdata-name="newteam" appdata-crumb="Create/Edit Team Member" appdata-fa='<i class="fa fa-gift"></i>' appdata-pcrumb="Management Team"><i class="fa fa-plus"></i> New/Edit</a></li>
+                        <!-- <li><a href="#Edit" appdata-otype="sublink" appdata-type="menulinkitem" appdata-name="editedit" appdata-crumb="Edit Team Member" appdata-fa='<i class="fa fa-gear fa-spin"></i>' appdata-pcrumb="Management Team"><i class="fa fa-gear"></i> Edit</a></li> -->
+                      </ul>
+                    </li>
+                    <li class="treeview">
+                      <a href="#" appdata-otype="mainlink" appdata-type="">
+                        <i class="fa fa-gears"></i> <span>Products & Services</span> <i class="fa fa-angle-left pull-right"></i>
+                      </a>
+                      <ul class="treeview-menu">
+                        <li><a href="#New" appdata-otype="sublink" appdata-type="menulinkitem" appdata-name="productservices" appdata-crumb="Create Product/Service" appdata-fa='<i class="fa fa-gift"></i>' appdata-pcrumb="Products And Services"><i class="fa fa-plus"></i> New</a></li>
+                        <!-- <li><a href="#Edit" appdata-otype="sublink" appdata-type="menulinkitem" appdata-name="productservices" appdata-crumb="Edit Product/Service" appdata-fa='<i class="fa fa-gear fa-spin"></i>' appdata-pcrumb="Products And Services"><i class="fa fa-gear"></i> Edit</a></li> -->
+                      </ul>
+                    </li>
+                    <li class="treeview">
+                      <a href="#" appdata-otype="mainlink" appdata-type="">
+                        <i class="fa fa-gift"></i> <span>Investor Relations</span> <i class="fa fa-angle-left pull-right"></i>
+                      </a>
+                      <ul class="treeview-menu">
+                        <li><a href="#Financial Highlights" appdata-otype="sublink" appdata-type="menulinkitem" appdata-name="financialhighlights" appdata-crumb="Financial Highlights" appdata-fa='<i class="fa fa-gift"></i>' appdata-pcrumb="Investor Relations"><i class="fa fa-street-view"></i> Financial Highlights</a></li>
+                        <li><a href="#Financial Highlights" appdata-otype="sublink" appdata-type="menulinkitem" appdata-name="financialhighlightstab" appdata-crumb="Financial Highlights" appdata-fa='<i class="fa fa-gift"></i>' appdata-pcrumb="Investor Relations"><i class="fa fa-street-view"></i> Financial Highlights Tab</a></li>
+                        <li><a href="#Annual Report" appdata-otype="sublink" appdata-type="menulinkitem" appdata-name="annualreport" appdata-crumb="Annual Repoty" appdata-fa='<i class="fa fa-gear fa-spin"></i>' appdata-pcrumb="Investor Relations"><i class="fa fa-plus"></i> Annual reports</a></li>
+                        <li><a href="#Annual Report" appdata-otype="sublink" appdata-type="menulinkitem" appdata-name="annualreporttab" appdata-crumb="Annual Repoty" appdata-fa='<i class="fa fa-gear fa-spin"></i>' appdata-pcrumb="Investor Relations"><i class="fa fa-plus"></i> Annual reports Tab</a></li>
+                        <li><a href="#Balance Sheet" appdata-otype="sublink" appdata-type="menulinkitem" appdata-name="balancesheet" appdata-crumb="Balance Sheet" appdata-fa='<i class="fa fa-gear fa-spin"></i>' appdata-pcrumb="Investor Relations"><i class="fa fa-gear"></i> Balance Sheet </a></li>
+                        <li><a href="#Balance Sheet" appdata-otype="sublink" appdata-type="menulinkitem" appdata-name="balancesheettab" appdata-crumb="Balance Sheet" appdata-fa='<i class="fa fa-gear fa-spin"></i>' appdata-pcrumb="Investor Relations"><i class="fa fa-gear"></i> Balance Sheet Tab</a></li>
+                        <li><a href="#Profit and Loss" appdata-otype="sublink" appdata-type="menulinkitem" appdata-name="profitandloss" appdata-crumb="Profit & Loss" appdata-fa='<i class="fa fa-gear fa-spin"></i>' appdata-pcrumb="Investor Relations"><i class="fa fa-gear"></i> Profit and Loss</a></li>
+                        <li><a href="#MissionTab" appdata-otype="sublink" appdata-type="menulinkitem" appdata-name="profitandlosstab" appdata-crumb="Mission Tab" appdata-fa='<i class="fa fa-info"></i>' appdata-pcrumb="About"><i class="fa fa-rocket"></i> Profit & Loss Tab</a></li>
+                      </ul>
+                    </li>
+                    <li class="treeview">
+                      <a href="#" appdata-otype="mainlink" appdata-type="">
+                        <i class="fa fa-file-image-o"></i> <span>Photo Gallery</span> <i class="fa fa-angle-left pull-right"></i>
+                      </a>
+                      <ul class="treeview-menu">
+                        <li><a href="#Add/Edit Gallery" appdata-otype="sublink" appdata-type="menulinkitem" appdata-name="photogallery" appdata-crumb="New Gallery Entry" appdata-fa='<i class="fa fa-plus"></i>' appdata-pcrumb="Photo Gallery"><i class="fa fa-street-view"></i> Photo Galleries</a></li>
+
+                      </ul>
+                    </li>
+                    <li class="treeview">
+                      <a href="#" appdata-otype="mainlink" appdata-type="">
+                        <i class="fa fa-trophy"></i> <span>Awards</span> <i class="fa fa-angle-left pull-right"></i>
+                      </a>
+                      <ul class="treeview-menu">
+                        <li><a href="#Award" appdata-otype="sublink" appdata-type="menulinkitem" appdata-name="awards" appdata-crumb="Create/Edit Awards" appdata-fa='<i class="fa fa-trophy"></i>' appdata-pcrumb="Awards"><i class="fa fa-plus"></i> Awards</a></li>
+
+                      </ul>
+                    </li>
+                    <li class="treeview">
+                      <a href="#" appdata-otype="mainlink">
+                        <i class="fa fa-question"></i> <span>FAQ</span> <i class="fa fa-angle-left pull-right"></i>
+                      </a>
+                      <ul class="treeview-menu">
+                        <li><a href="#New" appdata-otype="sublink" appdata-type="menulinkitem" appdata-name="newfaq" appdata-crumb="New FAQ" appdata-fa='<i class="fa fa-question"></i>' appdata-pcrumb="Frequently Asked Questions"><i class="fa fa-plus"></i> New FAQ</a></li>
+                        <li><a href="#Edit" appdata-otype="sublink" appdata-type="menulinkitem" appdata-name="editfaq" appdata-crumb="Edit FAQ" appdata-fa='<i class="fa fa-question"></i>' appdata-pcrumb="Frequently Asked Questions"><i class="fa fa-gear"></i> Edit FAQ</a></li>
+                      </ul>
+                    </li>
+                    <li class="treeview">
+                      <a href="#" appdata-otype="mainlink" >
+                        <i class="fa fa-sliders"></i> <span>Blog Type</span> <i class="fa fa-angle-left pull-right"></i>
+                      </a>
+                      <ul class="treeview-menu">
+                        <li><a href="#New" appdata-otype="sublink" appdata-type="menulinkitem" appdata-name="newblogtype" appdata-fa='<i class="fa fa-sliders"></i>' appdata-pcrumb="Blog Type"><i class="fa fa-plus"></i> New</a></li>
+                        <li><a href="#Edit" appdata-otype="sublink" appdata-type="menulinkitem" appdata-name="editblogtype" appdata-fa='<i class="fa fa-sliders"></i>' appdata-pcrumb="Blog Type"><i class="fa fa-gear"></i> Edit</a></li>
+                      </ul>
+                    </li>
+                    <li class="treeview">
+                      <a href="#" appdata-otype="mainlink" >
+                        <i class="fa fa-sitemap"></i> <span>Blog Category</span> <i class="fa fa-angle-left pull-right"></i>
+                      </a>
+                      <ul class="treeview-menu">
+                        <li><a href="#New" appdata-otype="sublink" appdata-type="menulinkitem" appdata-name="newblogcategory" appdata-fa='<i class="fa fa-sitemap"></i>' appdata-pcrumb="Blog Category"><i class="fa fa-plus"></i> New</a></li>
+                        <li><a href="#Edit" appdata-otype="sublink" appdata-type="menulinkitem" appdata-name="editblogcategory" appdata-fa='<i class="fa fa-sitemap"></i>' appdata-pcrumb="Blog Category"><i class="fa fa-gear"></i> Edit</a></li>
+                      </ul>
+                    </li>
+                    <li class="treeview">
+                      <a href="#" appdata-otype="mainlink" >
+                        <i class="fa fa-newspaper-o"></i> <span>Blog Post</span> <i class="fa fa-angle-left pull-right"></i>
+                      </a>
+                      <ul class="treeview-menu">
+                        <li><a href="#New" appdata-otype="sublink" appdata-type="menulinkitem" appdata-name="newblogpost" appdata-fa='<i class="fa fa-text"></i>' appdata-pcrumb="Blog Post"><i class="fa fa-plus"></i> New</a></li>
+                        <li><a href="#Edit" appdata-otype="sublink" appdata-type="menulinkitem" appdata-name="editblogposts" appdata-fa='<i class="fa fa-text"></i>' appdata-pcrumb="Blog Post"><i class="fa fa-gear"></i> Edit</a></li>
+                      </ul>
+                    </li>
+                    <li class="treeview">
+                      <a href="#" appdata-otype="mainlink" >
+                        <i class="fa fa-comment-o"></i> <span>Comments</span> 
+                        <?php echo $fullcomout;?>
+                        <i class="fa fa-angle-left pull-right"></i>
+                      </a>
+                      <ul class="treeview-menu">
+                        <li><a href="#AllComments" appdata-otype="sublink" appdata-type="menulinkitem" appdata-name="allcomments" appdata-fa='<i class="fa fa-comments-o"></i>' appdata-pcrumb="Comments"><i class="fa fa-cubes"></i> All</a></li>
+                        <li><a href="#ActiveComments" appdata-otype="sublink" appdata-type="menulinkitem" appdata-name="activecomments" appdata-fa='<i class="fa fa-comments-o"></i>' appdata-pcrumb="Comments"><i class="fa fa-asterisk"></i> Active</a></li>
+                        <li><a href="#PendingComments" appdata-otype="sublink" appdata-type="menulinkitem" appdata-name="inactivecomments" appdata-fa='<i class="fa fa-comments-o"></i>' appdata-pcrumb="Comments"><i class="fa fa-clock-o"></i> Pending</a></li>
+                        <li><a href="#EDisabledcomments" appdata-otype="sublink" appdata-type="menulinkitem" appdata-name="disabledcomments" appdata-fa='<i class="fa fa-comments-o"></i>' appdata-pcrumb="Comments"><i class="fa fa-ban"></i> Disabled</a></li>
+                      </ul>
+                    </li>
