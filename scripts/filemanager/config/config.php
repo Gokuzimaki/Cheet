@@ -26,11 +26,18 @@ mb_internal_encoding('UTF-8');
 //    |   |   |   |- responsivefilemanager
 //    |   |   |   |   |- plugin.min.js
 
-$base_url="http://".$_SERVER['HTTP_HOST'];  // DON'T TOUCH (base url (only domain) of site (without final /)).
-$upload_dir = "$host_relative_upload_dir"; // path from base_url to base of upload folder (with start and final /)
-$current_path = "$host_current_path"; // relative path from filemanager folder to upload folder (with final /)
+// DON'T TOUCH (base url (only domain) of site (without final /)).
+$base_url=substr($host_addr, 0,strlen($host_addr)-2);  
+// echo $base_url;
+// path from base_url to base of upload folder (with start and final /)
+$upload_dir = "$host_relative_upload_dir"; 
+
+// relative path from filemanager folder to upload folder (with final /)
+$current_path = "$host_current_path"; 
+
 //thumbs folder can't put inside upload folder
-$thumbs_base_path = "$host_thumbs_base_path"; // relative path from filemanager folder to thumbs folder (with final /)
+// relative path from filemanager folder to thumbs folder (with final /)
+$thumbs_base_path = "$host_thumbs_base_path"; 
 
 //--------------------------------------------------------------------------------------------------------
 // YOU CAN COPY AND CHANGE THESE VARIABLES INTO FOLDERS config.php FILES TO CUSTOMIZE EACH FOLDER OPTIONS

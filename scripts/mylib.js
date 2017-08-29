@@ -2727,7 +2727,7 @@ function callTinyMCEInit(selector, data=[]) {
     filemanagertitle = data['filemanagertitle'] !== "" && typeof data['filemanagertitle'] !== "undefined" ? data['filemanagertitle'] : "Content Filemanager";
 
     toolbar1 == "" ? toolbar1 = "undo redo | bold italic underline | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | styleselect" : toolbar1 = toolbar1;
-    toolbar2 == "" ? toolbar2 = "| link unlink anchor | emoticons" : toolbar2 = toolbar2;
+    toolbar2 == "" ? toolbar2 = "| link unlink anchor | emoticons " : toolbar2 = toolbar2;
 
     // if you want to add content to the toolbar instead of replacing entirely
     toolbar1+=toolbar1addon;
@@ -2736,8 +2736,8 @@ function callTinyMCEInit(selector, data=[]) {
     // console.log("selector - ",selector," theme - ",theme," toolbar1 - ",toolbar1," toolbar2 - ",toolbar2," width - ",width," height - ",height," filemanagertitle - ",filemanagertitle);
     var extpath="" + host_addr + "scripts/filemanager/";
     var extplugin="filemanager";
-    var extpath="" + host_addr + "scripts/filemanager/plugin.min.js";
-    var extdata={extplugin:extpath};
+    var extpathplugin="" + host_addr + "scripts/filemanager/plugin.min.js";
+    var extdata={extplugin:extpathplugin};
     if(rfmanager==""){
         extplugins="filemanager";
         extpath="";
@@ -4902,11 +4902,11 @@ function isPrev(el){
     var nextel=$this.next();
     if(nextel.is('div.input-group-addon')){
         
-        nextel.addClass("nopadding _isprev hidden");
+        nextel.addClass("nopadding _isprev hidden").attr("data-hdeftype","hidden");
     }else{
 
         // create and insert the display data
-        $('<div class="input-group-addon nopadding _isprev hidden"></div>').insertAfter($this);
+        $('<div class="input-group-addon nopadding _isprev hidden" data-hdeftype="hidden"></div>').insertAfter($this);
         nextel=dparent.find('._isprev');
     }
     console.log("Next el:",nextel);
@@ -4928,7 +4928,7 @@ function isPrev(el){
                 data-lightbox="`+tgal+`imgprev" 
                 class="_isprevlink bs-igicon bg-darkgreen-gradient
                     bg-green-gradienthover color-white color-whitehover"
-                    title="View image" data-hdeftype="hidden">
+                    title="View image" >
                     <i class="fa fa-eye"></i>
                 </a>`;
                 nextel.removeClass('hidden').html(lb);

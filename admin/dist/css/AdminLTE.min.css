@@ -145,10 +145,34 @@ span.fa_classet {
     height: 125px;
     width: 100%;
 }
+._qdsection > div[class*="col-"]{
+    
+}
+
+._qdsection div[class*="col-"]._second {
+    border-left: 1px solid rgb(204, 204, 204);
+}
+._qdsection{border-top: 1px solid #ccc;border-left: 1px solid #ccc;border-right: 1px solid #ccc;}
+._qdsection div[class*="col-"]._first{border-right: 1px solid rgba(204, 204, 204, 0.22);}
+._qdsection > div[class*="col-"]:hover,
+._qdsection > div[class*="col-"]:focus
+{
+    
+}
+
 ._qoption .fileinput-button{display: block;/* background: green; *//* color: #fefefe; */}
 .float-none{
     float:none!important;
     
+}
+
+.qmobjoptions-field-hold {
+    max-height: 410px;
+    overflow: hidden;
+}
+
+.qmobjoptions-field-hold:hover {
+    overflow: auto;
 }
 
 ._qoptions {

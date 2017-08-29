@@ -717,7 +717,7 @@
 			                            	</div>
 										</div>
 										<!-- Question Data Type -->
-										<div class="col-md-6">
+										<div class="col-md-4">
 			                            	<div class="form-group">
 												<label>Question Entry type</label>
 												<div class="input-group">
@@ -754,41 +754,64 @@
 												</div>
 			                            	</div>
 										</div>
-
+										<!-- Question Update Status -->
+										<div class="col-md-4">
+			                            	<div class="form-group">
+												<label>Upload Status 
+													<small>Publish this or save for later</small>
+												</label>
+												<div class="input-group">
+													<div class="input-group-addon">
+														<i class="fa fa-code-fork"></i>
+													</div>
+													<select name="status" 
+													class="form-control">
+														<option value="active"
+														>Publish</option>
+														<option value="saved"
+														>Save for later</option>
+													</select>
+												</div>
+			                            	</div>
+										</div>
 
 										<!-- Questions data Section -->
 										
 										<!-- Question media entry-->
-										<div class="col-md-12 qmediadata _qdsection">
+										<div class="col-md-12 qmediadata _qdsection hidden">
 
 											<!-- Questions image upload-->
-											<div class="col-md-7">
-												<h4>Upload Question Images</h4>
+											<div class="col-md-7 _first">
+												<h4 class="text-center">Upload Question Images</h4>
+												<!-- Questions image counter -->
 												<div class="col-sm-6 clearboth marginauto">
 													<div class="form-group">
-										                <label>Select Number of images to be uploaded</label>
+										                <label>Select Number of images to be uploaded <small>Max of 10</small></label>
 										      			<div class="input-group">
 												            <div class="input-group-addon">
 												                <i class="fa fa-book"></i>
 												            </div>
 												            <input class="form-control" name="qmediacount" 
-												            type="number" value="1" min="1" max="" 
+												            type="number" value="1" min="1" max="10" 
 												            data-valset="1" data-valcount="1" data-counter="true"/>
 												          	<div class="input-group-addon nopadding">
 												      														
 											      				<a href="##" data-type="" 
 										                		data-name="qmediacount_addlink" 
 										                		data-i-type="" 
-										                		data-limit=""
-											      				onclick="multipleElGenerator('form[name=<?php echo $formtruetype;?>] a[data-name=qmediacount_addlink]','','form[name=<?php echo $formtruetype;?>] div.qmedia-field-hold',$('form[name=<?php echo $formtruetype;?>] div.qmedia-field-hold .multi_content_hold').length,$('form[name=<?php echo $formtruetype;?>] input[name=qmediacount]').val(),'form[name=<?php echo $formtruetype;?>] input[name=qmediacount]')" class="bs-igicon blockdisplay bg-gradient-darkgreen background-color-darkgreen background-color-orangehover bg-orange-gradienthover color-white color-darkredhover">
+										                		data-limit="10"
+											      				onclick="multipleElGenerator('form[name=<?php echo $formtruetype;?>] a[data-name=qmediacount_addlink]','','form[name=<?php echo $formtruetype;?>] div.qmedia-field-hold',$('form[name=<?php echo $formtruetype;?>] div.qmedia-field-hold .multi_content_hold').length,$('form[name=<?php echo $formtruetype;?>] input[name=qmediacount]').val(),'form[name=<?php echo $formtruetype;?>] input[name=qmediacount]')" 
+											      				class="bs-igicon blockdisplay bg-gradient-darkgreen background-color-darkgreen background-color-orangehover bg-orange-gradienthover color-white color-darkgreyfocus color-darkgreyhover">
 											                    	<i class="fa fa-arrow-right"></i>
 											      				</a>
 												            </div>
 												        </div>
 										  			</div>
 										  		</div>
+
+										  		<!-- Questions image entries section -->
 												<div class="col-md-12 qmedia-field-hold float-none">
-													<div class="col-sm-6 multi_content_hold" data-type="triggerprogenitor" data-cid="1" data-name="qmedia">
+													<div class="col-sm-6 _xs-margin multi_content_hold" data-type="triggerprogenitor" data-cid="1" data-name="qmedia">
 														<div class="form-group">
 															<label class="multi_content_countlabels"
 																>Question Image <small>Entry 1</small>
@@ -812,12 +835,69 @@
 											</div>
 											
 											<!-- Questions Onjective answer Section -->
-											<div class="col-md-5">
+											<div class="col-md-5 _second">
+												<h4 class="text-center">Objective Answer Sheet</h4>
+												<!-- Question media objective counter -->
+												<div class="col-sm-12 clearboth marginauto">
+													<div class="form-group">
+										                <label>Number Of Obj Entries <small>Max of 150</small></label>
+										      			<div class="input-group">
+												            <div class="input-group-addon">
+												                <i class="fa fa-check"></i>
+												            </div>
+												            <input class="form-control" name="qmobjoptionscount" 
+												            type="number" value="1" min="1" max="150" 
+												            data-valset="1" data-valcount="1" data-counter="true"/>
+												          	<div class="input-group-addon nopadding">
+												      														
+											      				<a href="##" data-type="" 
+										                		data-name="qmobjoptionscount_addlink" 
+										                		data-i-type="" 
+										                		data-limit="150"
+											      				onclick="multipleElGenerator('form[name=<?php echo $formtruetype;?>] a[data-name=qmobjoptionscount_addlink]','','form[name=<?php echo $formtruetype;?>] div.qmobjoptions-field-hold',$('form[name=<?php echo $formtruetype;?>] div.qmobjoptions-field-hold .multi_content_hold').length,$('form[name=<?php echo $formtruetype;?>] input[name=qmobjoptionscount]').val(),'form[name=<?php echo $formtruetype;?>] input[name=qmobjoptionscount]')" 
+											      				class="bs-igicon blockdisplay bg-gradient-darkgreen background-color-darkgreen background-color-orangehover bg-orange-gradienthover color-white color-darkgreyfocus color-darkgreyhover">
+											                    	<i class="fa fa-arrow-right"></i>
+											      				</a>
+												            </div>
+												        </div>
+										  			</div>
+										  		</div>
+										  		<!-- Question Media Objective answers section -->
+												<div class="col-md-12 qmobjoptions-field-hold float-none">
+													<div class="col-sm-6 _no-margin multi_content_hold" data-type="triggerprogenitor" data-cid="1" data-name="qmobjoptions">
+														<div class="form-group">
+															<label class="multi_content_countlabels"
+																>Obj Options <small>Entry 1</small>
+															</label>
+															<div class="input-group">
+																<div class="input-group-addon">
+																	<i class="fa fa-file-image-o"></i>
+																</div>
+
+																<select name="qmediaobjans1" data-crt="true"
+																class="form-control">
+																	<option value=""
+																	>--Choose--</option>
+																	<option value="1">Option A</option>
+																	<option value="2">Option B</option>
+																	<option value="3">Option C</option>
+																	<option value="4">Option D</option>
+																	<option value="5">Option E</option>
+																	<option value="6">Option F</option>
+																</select>
+															</div>
+														</div>
+													</div>
+													<div name="qmobjoptionsentrypoint" data-marker="true"></div>
+						                        	<input name="qmobjoptionsdatamap" 
+						                        	type="hidden" data-map="true" 
+						                        	value="qmediaobjans-:-input">
+												</div>
 											</div>
 										</div><!-- /.col -->
 
 										<!-- Plain data entry -->
-										<div class="col-md-12 qplaindata _qdsection hidden">
+										<div class="col-md-12 qplaindata _qdsection">
 							              	<!-- Custom Tabs (Pulled to the right) -->
 							              	<div class="nav-tabs-custom _fcustomized">
 								                <ul class="nav nav-tabs pull-right">
@@ -840,32 +920,21 @@
 									                        	<!-- <h3>Maximum of 10 images at a time</h3> -->
 									                        	<div class="col-md-12 multi_content_hold" data-type="triggerprogenitor" data-cid="1" data-name="objentry">
 								                        			<!-- main question section -->
-								                        			<div class="col-sm-7">
+								                        			<div class="col-sm-7 _first">
 								                        				<div class="col-xs-12">
 								                        					<h4 class="multi_content_countlabels pull-left"
 								                        						>(Entry 1)
 								                        					</h4>
-								                        					<div class="_qoptions pull-right">
-								                        						
-								                        						<div class="_qoption _wide">
-								                        							<span class="fileinput-button btn btn-primary ">
-								                        								<i class="fa fa-plus qofdata"></i>
-								                        								<span>Attach Image</span>
-								                        								<input type="file" name="fattach1" 
-								                        								title="Attach Image"
-								                        								data-tip="Attach Image"/>
-								                        								<!-- fileviewer -->
-								                        								<a href="##" data-src="" class="qoptimgprev"
-								                        								data-lightbox="img2{gc_x}">
-								                        									<i class="fa fa-plus qofdata _view hidden"></i>
-								                        								</a>
-								                        							</span>
-								                        						</div>
-								                        					</div>
+								                        					
 								                        				</div>
 								                        				<div class="col-xs-12 _objquestionsection">
 								                        					<div class="form-group">
-				                              									<textarea class="form-control" rows="5" name="question1" placeholder="Optional Description"></textarea>
+				                              									<textarea class="form-control" rows="10" 
+				                              									name="question1" 
+				                              									placeholder="Optional Description"
+				                              									data-mce="true"
+				                              									id="postersmalltwo{gc_x}"
+				                              									></textarea>
 
 								                        					</div>
 								                        				</div>
@@ -873,7 +942,7 @@
 								                        				</div>
 								                        			</div>
 								                        			<!-- Question options -->
-								                        			<div class="col-sm-5">
+								                        			<div class="col-sm-5 _second">
 
 								                        			</div>
 									                        		
@@ -952,14 +1021,15 @@
 									var curmcethreeposter=[];
 									curmcethreeposter['width']="100%";
 
-									curmcethreeposter['height']="300px";
+									curmcethreeposter['height']="200px";
 									curmcethreeposter['toolbar2addon']=" | preview code ";
 									callTinyMCEInit("textarea[id*=postersmallthree]",curmcethreeposter);
 									var curmcethreeposter=[];
 									curmcethreeposter['width']="100%";
 
-									curmcethreeposter['height']="300px";
-									curmcethreeposter['toolbar2addon']=" | preview code ";
+									curmcethreeposter['height']="200px";
+									curmcethreeposter['toolbar1']="undo redo | bold italic underline | aligncenter alignjustify | bullist numlist outdent indent | responsivefilemanager code";
+									curmcethreeposter['toolbar2']=" ";
 									callTinyMCEInit("textarea[id*=postersmalltwo]",curmcethreeposter);
 									// init inputmask
 									if($.fn.inputmask){
