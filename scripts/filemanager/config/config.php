@@ -4,7 +4,7 @@ if(session_id() == ''){
 	session_start();
 	if(!function_exists('getSingleMediaData')){
 		include('../../../snippets/connection.php');
-		// echo "teep2";
+		echo "teep2";
 	}
 }
 mb_internal_encoding('UTF-8');
@@ -27,7 +27,7 @@ mb_internal_encoding('UTF-8');
 //    |   |   |   |   |- plugin.min.js
 
 // DON'T TOUCH (base url (only domain) of site (without final /)).
-$base_url=substr($host_addr, 0,strlen($host_addr)-2);  
+$base_url=substr($host_target_addr, 0,strlen($host_target_addr)-1);  
 // echo $base_url;
 // path from base_url to base of upload folder (with start and final /)
 $upload_dir = "$host_relative_upload_dir"; 

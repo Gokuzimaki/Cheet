@@ -1598,6 +1598,21 @@ $(document).on("click", "div#slidepointleft[data-state=idle],div#slidepointright
     }
 });
 //end
+
+// for handling tooltip display
+$(document).on("mouseenter","[data-tip],[data-tooltip]",function(){
+    // get and sort options
+    var opts=$(this).attr("data-tooltip-option");
+    if (opts === null || opts === undefined || opts === NaN) {
+        opts = {};
+    }else{
+        // parse opts to json
+    }
+
+    $(this).tooltip(opts);
+})
+
+
 // instantiate multiple jplayer elements
 function js_audioPlayer(file, location) {
     $(document).ready(function() {
@@ -2737,35 +2752,46 @@ function callTinyMCEInit(selector, data=[]) {
     var extpath="" + host_addr + "scripts/filemanager/";
     var extplugin="filemanager";
     var extpathplugin="" + host_addr + "scripts/filemanager/plugin.min.js";
-    var extdata={extplugin:extpathplugin};
+    var extdata={"filemanager":extpathplugin};
     if(rfmanager==""){
         extplugins="filemanager";
         extpath="";
         
         extdata="";
-    }   
-    tinyMCE.init({
-        theme: theme,
-        selector: selector,
-        menubar: false,
-        statusbar: false,
-        plugins: [
-            "advlist autolink link image lists charmap print preview hr anchor pagebreak spellchecker", 
-            "searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking", 
-            "save table contextmenu directionality emoticons template paste textcolor "+rfmanager+""
-        ],
-        width: width,
-        height: height,
-        toolbar1: toolbar1,
-        toolbar2: toolbar2,
-        image_advtab: true,
-        editor_css: "" + host_addr + "stylesheets/mce.css?" + new Date().getTime(),
-        content_css: "" + host_addr + "stylesheets/mce.css?" + new Date().getTime(),
-        external_filemanager_path: extpath,
-        filemanager_title: filemanagertitle,
-        external_plugins: extdata
-        
-    });
+    }       
+    var toolin2="";
+    if(toolbar2.replace(" ","")!==""){
+        toolin2="toolbar2: toolbar2,";
+    }
+    var optsdata=`
+        var opts={
+            theme: theme,
+            selector: selector,
+            menubar: false,
+            statusbar: false,
+            plugins: [
+                "advlist autolink link image lists charmap print preview hr anchor pagebreak spellchecker", 
+                "searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking", 
+                "save table contextmenu directionality emoticons template paste textcolor "+rfmanager+""
+            ],
+            width: width,
+            height: height,
+            toolbar1: toolbar1,
+            `+toolin2+`
+            image_advtab: true,
+            editor_css: "" + host_addr + "stylesheets/mce.css?" + new Date().getTime(),
+            content_css: "" + host_addr + "stylesheets/mce.css?" + new Date().getTime(),
+            external_filemanager_path: extpath,
+            filemanager_title: filemanagertitle,
+            external_plugins: extdata
+            
+        }
+        // console.log("Line",opts);
+    `;
+    eval(optsdata);
+    tinyMCE.init(opts);
+    
+
 }
 
 
@@ -4433,7 +4459,7 @@ $(document).on('click','._float .close',function(){
 *
 *   @author Olagoke Okebukola
 *
-*   @description this function negates unwanted default values from a field, is  
+*   @description this function negates unwanted default values from a field, it is  
 *   especially useful when called on blur for the form element
 *
 *   @param object el is the current element the function is bound to
@@ -4875,11 +4901,14 @@ function contentImageSelect(input) {
     *
     *   @param selector or Jquery ELement object 'el' is the selector for the current
     *   
+    *   @param selector or Jquery Element Object/String 'nextel' refers to the target element
+    *   for inserting the lightbox markup to show the current selected image element
+    *   or choosen file object, it can also just be any text.
     *   
     *   @return null
     *   
 */
-function isPrev(el){
+function isPrev(el,nextel=""){
     
     // check the type of 'el' and ensure that its value is turned into a JQuery object
     // as needed
@@ -4899,17 +4928,30 @@ function isPrev(el){
     // check the next element to the file selection field since bootstrap is the 
     // defacto, we are simply looking to ensure the div with class 'input-group-addon' 
     // beside the current input element is available 
-    var nextel=$this.next();
-    if(nextel.is('div.input-group-addon')){
-        
-        nextel.addClass("nopadding _isprev hidden").attr("data-hdeftype","hidden");
+    if(nextel==""){
+
+        nextel=$this.next();
+        if(nextel.is('div.input-group-addon')){
+            
+            nextel.addClass("nopadding _isprev hidden").attr("data-hdeftype","hidden");
+        }else{
+
+            // create and insert the display data
+            $('<div class="input-group-addon nopadding _isprev hidden" data-hdeftype="hidden"></div>').insertAfter($this);
+            nextel=dparent.find('._isprev');
+        }
+
+        console.log("Next el:",nextel);
     }else{
 
-        // create and insert the display data
-        $('<div class="input-group-addon nopadding _isprev hidden" data-hdeftype="hidden"></div>').insertAfter($this);
+        dparent=$('[data-isprev-parent='+el.attr('data-isprev-id')+']');
         nextel=dparent.find('._isprev');
+        if(nextel.length==0){
+            // create and insert the display data
+            $('<div class="input-group-addon nopadding _isprev hidden" data-hdeftype="hidden"></div>').insertAfter(dparent.find('div:last'));
+            nextel=dparent.find('._isprev');   
+        }
     }
-    console.log("Next el:",nextel);
 
     // make sure the element has file data in it
     if (el[0].files[0]) {
@@ -4932,11 +4974,15 @@ function isPrev(el){
                     <i class="fa fa-eye"></i>
                 </a>`;
                 nextel.removeClass('hidden').html(lb);
+            }else{
+                nextel.addClass('hidden');
             }
 
         }
 
         reader.readAsDataURL(el[0].files[0]);
+    }else{
+        nextel.addClass('hidden');
     }
 
 }
@@ -5226,7 +5272,8 @@ function multipleElGenerator(element, entryel="", groupparent="", curcountel=0, 
                         // convert to multidimensional array
                         mceoptions[i] = [];
                         var curparent = "";
-                        curparent = elgroup.find('[data-type=tinymcefield]').parent()[i];
+                        curparent = mceelements[""+i+""].parentElement;
+                        
 
                         // console.log("Cur match set - ",elgroup.find('[data-type=tinymcefield]').parent().find('input[type=hidden][name=width][data-type=tinymce]'),"Element Parent - ", curparent," Element Parent with JQ - ",$(curparent));
                         var curelem = mceelements[i];
@@ -5406,6 +5453,7 @@ function multipleElGenerator(element, entryel="", groupparent="", curcountel=0, 
 
                     // check for tinymce elements in the elgroup and proceed to augment them as appropriate
                     var mceelements = elgroup.find('[data-type=tinymcefield]');
+                    console.log("mce elements: ",mceelements);
 
                     // runa for loop on the mce elements to process them for the new content
                     // this array holds the new set of ids for tinymce initialization
@@ -5424,7 +5472,8 @@ function multipleElGenerator(element, entryel="", groupparent="", curcountel=0, 
                             // convert to multidimensional array
                             mceoptions[i] = [];
                             var curparent = "";
-                            curparent = elgroup.find('[data-type=tinymcefield]').parent()[i];
+                            curparent = mceelements[""+i+""].parentElement;
+                            // console.log("current parent: ",curparent," Mce EL:",mceelements[i]);
 
                             // console.log("Cur match set - ",elgroup.find('[data-type=tinymcefield]').parent().find('input[type=hidden][name=width][data-type=tinymce]'),"Element Parent - ", curparent," Element Parent with JQ - ",$(curparent));
                             var curelem = mceelements[i];
@@ -5694,7 +5743,8 @@ $(document).on("click", "a[data-type=triggerformaddlib]", function() {
             // convert to multidimensional array
             mceoptions[i] = [];
             var curparent = "";
-            curparent = elgroup.find('[data-type=tinymcefield]').parent()[i];
+            curparent = mceelements[""+i+""].parentElement;
+            
 
             // console.log("Cur match set - ",elgroup.find('[data-type=tinymcefield]').parent().find('input[type=hidden][name=width][data-type=tinymce]'),"Element Parent - ", curparent," Element Parent with JQ - ",$(curparent));
             var curelem = mceelements[i];

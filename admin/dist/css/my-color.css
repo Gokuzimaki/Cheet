@@ -1776,6 +1776,31 @@ filter:alpha(opacity=100)}body[data-name="admin"] a {    display: inline;
 .bs-igicon{
     padding: 9px 12px;
 }
+
+.bs-igicon._stacked {
+    padding: 6px 12px;
+    position: relative;
+    clear: both;
+    display: block;
+    text-align: center;
+    min-height: 40px;
+    border-color: transparent;
+}
+
+.bs-igicon._stacked input {
+    float: left;
+    clear: both;
+}
+
+.bs-igicon._stacked i.fa {
+    float: left;
+    margin-top: 0px;
+    margin-left: 1px;
+}
+
+.bs-igicon._stacked i._fl {
+    float: left;
+}
 .blockdisplay{
     width:100%;
     height:100%;

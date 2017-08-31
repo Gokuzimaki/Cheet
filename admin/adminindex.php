@@ -724,7 +724,7 @@
 													<div class="input-group-addon">
 														<i class="fa fa-code-fork"></i>
 													</div>
-													<select name="qdatatype" 
+													<select name="qentrytype" 
 													class="form-control">
 														<option value="mixed"
 														>Mixed(Obj&Theory)</option>
@@ -915,25 +915,61 @@
 								                	<!-- Objective Section -->
 									                <div class="tab-pane active" id="tab_1-1">
 									                	<!-- Start sub-questiongroup entry section accordion -->
-								                        	<div class="col-md-12 objentry-field-hold float-none">
-								                            	<input type="hidden" name="objentrycount" class="form-control" value="1" data-counter="true"/>
-									                        	<!-- <h3>Maximum of 10 images at a time</h3> -->
-									                        	<div class="col-md-12 multi_content_hold" data-type="triggerprogenitor" data-cid="1" data-name="objentry">
+								                        	<div class="col-md-12 objdata-field-hold float-none">
+								                            	<!-- Objective Questions counter -->
+																<div class="col-sm-6 clearboth marginauto">
+																	<div class="form-group">
+														                <label>Select Number of images to be uploaded <small>Max of 10</small></label>
+														      			<div class="input-group">
+																            <div class="input-group-addon">
+																                <i class="fa fa-book"></i>
+																            </div>
+																            <input class="form-control" name="objdatacount" 
+																            type="number" value="1" min="1" max="10" 
+																            data-valset="1" data-valcount="1" data-counter="true"/>
+																          	<div class="input-group-addon nopadding">
+																      														
+															      				<a href="##" data-type="" 
+														                		data-name="objdatacount_addlink" 
+														                		data-i-type="" 
+														                		data-limit="10"
+															      				onclick="multipleElGenerator('form[name=<?php echo $formtruetype;?>] a[data-name=objdatacount_addlink]','','form[name=<?php echo $formtruetype;?>] div.objdata-field-hold',$('form[name=<?php echo $formtruetype;?>] div.objdata-field-hold .multi_content_hold').length,$('form[name=<?php echo $formtruetype;?>] input[name=objdatacount]').val(),'form[name=<?php echo $formtruetype;?>] input[name=objdatacount]')" 
+															      				class="bs-igicon blockdisplay bg-gradient-darkgreen background-color-darkgreen background-color-orangehover bg-orange-gradienthover color-white color-darkgreyfocus color-darkgreyhover">
+															                    	<i class="fa fa-arrow-right"></i>
+															      				</a>
+																            </div>
+																        </div>
+														  			</div>
+														  		</div>
+									                        	<div class="col-md-12 multi_content_hold" data-type="triggerprogenitor" data-cid="1" data-name="objdata">
 								                        			<!-- main question section -->
-								                        			<div class="col-sm-7 _first">
+								                        			<div class="col-sm-6 _first">
 								                        				<div class="col-xs-12">
 								                        					<h4 class="multi_content_countlabels pull-left"
-								                        						>(Entry 1)
+								                        						>Question Entry 1
 								                        					</h4>
 								                        					
 								                        				</div>
 								                        				<div class="col-xs-12 _objquestionsection">
 								                        					<div class="form-group">
+								                        						<input type="hidden" name="toolbar1"
+				                              									data-type="tinymce"
+								                        						value="undo redo | bold italic underline | aligncenter alignjustify | bullist numlist outdent indent | image code">
+								                        						<input type="hidden" name="toolbar2"
+				                              									data-type="tinymce"
+								                        						value=" ">
+								                        						<input type="hidden" name="width"
+				                              									data-type="tinymce"
+								                        						value="100%">
+								                        						<input type="hidden" name="height"
+				                              									data-type="tinymce"
+								                        						value="250px">
 				                              									<textarea class="form-control" rows="10" 
 				                              									name="question1" 
 				                              									placeholder="Optional Description"
 				                              									data-mce="true"
-				                              									id="postersmalltwo{gc_x}"
+				                              									data-type="tinymcefield"
+				                              									id="questionentry"
 				                              									></textarea>
 
 								                        					</div>
@@ -942,23 +978,93 @@
 								                        				</div>
 								                        			</div>
 								                        			<!-- Question options -->
-								                        			<div class="col-sm-5 _second">
-
+								                        			<div class="col-sm-6 _second">
+								                        				<?php
+								                        					for($i=1;$i<=6;$i++){
+								                        						// this represents the value of the current question being managed
+								                        						$v=1;
+								                        				?>
+								                        				<!-- OPTION -->
+								                        				<div class="form-control overflowhidden clearboth _optionview">
+								                        					<div class="input-group" data-isprev-parent="<?php echo "$i$v";?>">
+								                        						<input type="text" name="option<?php echo "$i$v";?>"
+								                        						class="form-control" placeholder="Option Entry <?php echo "$i";?>"/>
+								                        						<!-- Attachment section -->
+								                        						<div class="input-group-addon nopadding rel">
+								                        							<span class="fileinput-button btn btn-primary _optionattach">
+																						<i class="fa fa-plus qofdata"></i>
+																						<input type="file" 
+																						data-isprev-id="<?php echo "$i$v";?>"
+																						name="qoptimg<?php echo "$i$v";?>" 
+																						title="Attach Image"
+																						data-toggle="tooltip"
+																						data-tip="Attach Image"
+																						onchange="isPrev($(this),'true')"/>
+																					</span>
+								                        						</div>
+																				<!-- fileviewer -->
+								                        						<div class="input-group-addon nopadding _isprev hidden">
+																					<a href="##" data-src="" class="_isprevlink bs-igicon bg-darkgreen-gradient bg-green-gradienthover color-white color-whitehover"
+																					data-lightbox="qoptimg<?php echo "$i$v";?>"
+																	                    title="View image" >
+																	                    <i class="fa fa-eye"></i>
+																	                </a>
+								                        						</div>
+								                        						<!-- Delete file section -->
+								                        						<div class="input-group-addon nopadding hidden">
+																					<a href="##" data-src="" class="bs-igicon _stacked bg-red-gradient 
+																					 color-white color-whitehover color-whitefocus"
+																	                    title="Delete Attached Image" >
+																	                    <i class="fa fa-trash"></i>
+																	                    <input type="checkbox" 
+																						data-isprev-id="<?php echo "$i$v";?>"
+																						name="qoptimg<?php echo "$i$v";?>" 
+																						title="Mark to Delete Attached Image"
+																						data-tip="Mark to Delete Attached Image"/>
+																	                </a>
+																	                <input type="hidden" 
+																						data-isprev-id="<?php echo "$i$v";?>"
+																						name="qoptimgdelete<?php echo "$i$v";?>" 
+																						data-tip="Delete Attached Media"/>
+																					
+								                        						</div>
+								                        					</div>
+								                        				</div>
+								                        				<?php
+								                        					}
+								                        				?>
+								                        				<!-- OPTION Answer-->
+								                        				<div class="form-control overflowhidden clearboth _optionview">
+								                        					<div class="input-group">
+								                        						<div class="input-group-addon">
+								                        							<i class="fa fa-check"></i>
+								                        						</div>
+									                        					<select name="answer1" class="form-control">
+									                        						<option value="">--Select Options Answer--</option>
+									                        						<?php
+											                        					for($i=1;$i<=6;$i++){
+											                        				?>
+									                        						<option value="<?php echo $i;?>">Option Entry <?php echo $i;?></option>
+									                        						<?php
+											                        					}
+											                        				?>
+									                        					</select>
+								                        					</div>
+								                        				</div>
 								                        			</div>
 									                        		
-									                        		
 									                        	</div>
-									                        	<div name="objentryentrypoint" data-marker="true"></div>
-									                        	<input name="objentrydatamap" 
+									                        	<div name="objdataentrypoint" data-marker="true"></div>
+									                        	<input name="objdatadatamap" 
 									                        	type="hidden" data-map="true" 
-									                        	value="title-:-input<|>acronymini-:-input<|>description-:-textarea">
-									                        	<a href="##" class="generic_addcontent_trigger" 
-									                        		data-type="triggerformaddlib" 
-									                        		data-name="objentrycount_addlink" 
-									                        		data-i-type="" 
-									                        		data-limit="100"> 
-									                        		<i class="fa fa-plus"></i>Add More?
-									                        	</a>
+									                        	value="question-:-textarea<|>
+									                        	option1-:-input<|>qoptimg1-:-input<|>
+									                        	option2-:-input<|>qoptimg2-:-input<|>
+									                        	option3-:-input<|>qoptimg3-:-input<|>
+									                        	option4-:-input<|>qoptimg4-:-input<|>
+									                        	option5-:-input<|>qoptimg5-:-input<|>
+									                        	option6-:-input<|>qoptimg6-:-input<|>
+									                        	answer-:-select" />
 								                            </div>
 								                        <!-- end edit section accordion -->
 									                </div><!-- /.tab-pane -->
@@ -1011,26 +1117,34 @@
 						    </div>
 						    <script data-type="multiscript">
 						    	$(document).ready(function(){
-									var curmceadminposter=[];
+									var curmcethreeposter=[];
+									curmcethreeposter['width']="100%";
+									curmcethreeposter['height']="250px";
+									curmcethreeposter['toolbar1']="undo redo | bold italic underline | aligncenter alignjustify | bullist numlist outdent indent | image code";
+									curmcethreeposter['toolbar2']=" ";
+									callTinyMCEInit("textarea[id*=questionentry]",curmcethreeposter);
+
+									/*var curmceadminposter=[];
 									curmceadminposter['width']="100%";
 									curmceadminposter['height']="650px";
 									curmceadminposter['toolbar1']="undo redo | bold italic underline | fontselect fontsizeselect | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | styleselect";
 									curmceadminposter['toolbar2']="| responsivefilemanager | link unlink anchor | image media | forecolor backcolor  | print preview code ";
-									callTinyMCEInit("textarea#adminposter",curmceadminposter);
+									callTinyMCEInit("textarea#adminposter",curmceadminposter);*/
 									
-									var curmcethreeposter=[];
+									/*var curmcethreeposter=[];
 									curmcethreeposter['width']="100%";
-
 									curmcethreeposter['height']="200px";
 									curmcethreeposter['toolbar2addon']=" | preview code ";
-									callTinyMCEInit("textarea[id*=postersmallthree]",curmcethreeposter);
-									var curmcethreeposter=[];
-									curmcethreeposter['width']="100%";
+									callTinyMCEInit("textarea[id*=postersmallthree]",curmcethreeposter);*/
 
+									/*var curmcethreeposter=[];
+									curmcethreeposter['width']="100%";
 									curmcethreeposter['height']="200px";
-									curmcethreeposter['toolbar1']="undo redo | bold italic underline | aligncenter alignjustify | bullist numlist outdent indent | responsivefilemanager code";
-									curmcethreeposter['toolbar2']=" ";
-									callTinyMCEInit("textarea[id*=postersmalltwo]",curmcethreeposter);
+									curmcethreeposter['toolbar1']="undo redo | bold italic underline | aligncenter alignjustify | bullist numlist outdent indent | image code";
+									curmcethreeposter['toolbar2']="";
+									callTinyMCEInit("textarea[id*=postersmalltwo]",curmcethreeposter);*/
+
+
 									// init inputmask
 									if($.fn.inputmask){
         								$(".timemask,[data-timemask]").inputmask("hh:mm", {"placeholder": "hh:mm"});
