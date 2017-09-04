@@ -2925,9 +2925,19 @@ function submitCustom(formname, stype="") {
                     if (ccelem !== "" && isNumber($('form[name=' + formname + '] input[name=' + ccelem + ']').val())) {
                         ccount = $('form[name=' + formname + '] input[name=' + ccelem + ']').val();
                         valset = $('form[name=' + formname + '] input[name=' + ccelem + ']').attr("data-valset");
+                        valseterror = $('form[name=' + formname + '] input[name=' + ccelem + ']').attr("data-valset-error");
+                        valsetfocus = $('form[name=' + formname + '] input[name=' + ccelem + ']').attr("data-valset-focus");
                         valcount = $('form[name=' + formname + '] input[name=' + ccelem + ']').attr("data-valcount");
                         if (valset === null || valset === undefined || valset === NaN) {
                             valset = "";
+                        }
+
+                        if (valseterror === null || valseterror === undefined || valseterror === NaN) {
+                            valseterror = "";
+                        }
+
+                        if (valsetfocus === null || valsetfocus === undefined || valsetfocus === NaN) {
+                            valsetfocus = "";
                         }
 
                         if (valcount === null || valcount === undefined || valcount === NaN) {
@@ -3061,7 +3071,7 @@ function submitCustom(formname, stype="") {
                         finalgroup[x]['errtestdata'] = "";
                         // console.log(" fieldentrytype group: ",fieldentrytype, " fieldname group: ",fieldname);
                         if (fieldentrytype !== "") {
-                            // check to see if the entrype is a file
+                            // check to see if the entrytype is a file
                             vcinit_main += 'var ' + fieldname + '_edittype=$(' + fieldname + ').attr("data-edittype");\r\n' + 'if(' + fieldname + '_edittype===null||' + fieldname + '_edittype===undefined||' + fieldname + '_edittype===NaN){\r\n' + ' ' + fieldname + '_edittype="";\r\n' + '}';
                             // console.log(" vcinit_main: ",vcinit_main);
                             finalgroup[x]['errtestdata'] = '&&' + fieldname + '_edittype==""';
@@ -3171,59 +3181,60 @@ function submitCustom(formname, stype="") {
                                     } else if (type == "group") {
                                         for (var l2 = 0; l2 < subfielddata.length; l2 += 3) {
                                             // console.log(" singlefield data: ",subfielddata," type: ", type);              
-                                            var telemname = subfielddata[l2];
+                                            var tgelemname = subfielddata[l2];
                                             var elt = "";
-                                            if (telemname.indexOf('*n*') > -1) {
-                                                telemname = telemname;
-                                                //.replace(/\*n\*/g,x);
+                                            if (tgelemname.indexOf('*n*') > -1) {
+                                                tgelemname = tgelemname;
+                                                
                                                 elt = "groupel";
                                             }
-                                            var telemtype = subfielddata[l2 + 1];
-                                            var telemvalue = subfielddata[l2 + 2];
-                                            if (telemvalue.indexOf("_") > -1) {
-                                                telemvalue = telemvalue.replace(/_{1,}/g, " ");
+                                            var tgelemtype = subfielddata[l2 + 1];
+                                            var tgelemvalue = subfielddata[l2 + 2];
+                                            if (tgelemvalue.indexOf("_") > -1) {
+                                                tgelemvalue = tgelemvalue.replace(/_{1,}/g, " ");
 
                                             }
 
-                                            // console.log("telemvalue: ",telemvalue,"telemtype: ",telemtype," telemname: ",telemname, " cur x: ",x)
-                                            var telemarr = [];
-                                            var mtelemv = "";
+                                            // console.log("tgelemvalue: ",tgelemvalue,"tgelemtype: ",tgelemtype," tgelemname: ",tgelemname, " cur x: ",x)
+                                            var tgelemarr = [];
+                                            var mtgelemv = "";
                                             // check for multiple values that validate
-                                            if (telemvalue.indexOf(':*:') > -1) {
-                                                telemarr = telemvalue.split(":*:");
-                                                mtelemv = "domulti";
+                                            if (tgelemvalue.indexOf(':*:') > -1) {
+                                                tgelemarr = tgelemvalue.split(":*:");
+                                                mtgelemv = "domulti";
                                             }
 
                                             var tarelemname = "";
                                             var curcondition = "";
-                                            // vcinit_main += ' /*a test mark*/var ' + telemname + '=$("form[name=' + formname + '] ' + telemtype + '[name=' + telemname + ']");';
-                                            if (mtelemv == "") {
-                                                var c_all = telemvalue == "" || telemvalue.indexOf('*any*') > -1 ? "!" : "";
-                                                // makes sure that the telemvalue field equates empty on
+                                            // vcinit_main += ' /*a test mark*/var ' + tgelemname + '=$("form[name=' + formname + '] ' + tgelemtype + '[name=' + tgelemname + ']");';
+                                            if (mtgelemv == "") {
+                                                var c_all = tgelemvalue == "" || tgelemvalue.indexOf('*any*') > -1 ? "!" : "";
+                                                // makes sure that the tgelemvalue field equates empty on
                                                 // encountering *null* keyword as its value
-                                                telemvalue == "" || telemvalue.indexOf('*any*') > -1 ? telemvalue = "" : telemvalue = telemvalue;
-                                                telemvalue == "*null*" ? telemvalue = "" : telemvalue = telemvalue;
-                                                vcblock_main += "&&" + telemname + ".val()" + c_all + "==\"" + telemvalue + "\"";
+                                                tgelemvalue == "" || tgelemvalue.indexOf('*any*') > -1 ? tgelemvalue = "" : tgelemvalue = tgelemvalue;
+                                                tgelemvalue == "*null*" ? tgelemvalue = "" : tgelemvalue = tgelemvalue;
+                                                vcblock_main += "&&" + tgelemname + ".val()" + c_all + "==\"" + tgelemvalue + "\"";
                                                 // console.log(vcblock_main);
-                                            } else if (mtelemv == "domulti") {
+                                            } else if (mtgelemv == "domulti") {
                                                 var finout = "";
-                                                // console.log("telemvalue: ",telemvalue,"telemtype: ",telemtype," telemname: ",telemname, " cur x: ",x)
-                                                for (var mu = 0; mu < telemarr.length; mu++) {
+                                                // console.log("tgelemvalue: ",tgelemvalue,"tgelemtype: ",tgelemtype," tgelemname: ",tgelemname, " cur x: ",x)
+                                                for (var mu = 0; mu < tgelemarr.length; mu++) {
                                                     var ccond = mu == 0 ? "(" : "||";
-                                                    var ccend = mu == telemarr.length - 1 ? ")" : "";
-                                                    telemvalue = telemarr[mu];
-                                                    var c_all = telemvalue == "" || telemvalue.indexOf('*any*') > -1 ? "!" : "";
-                                                    // makes sure that the telemvalue field equates empty on
+                                                    var ccend = mu == tgelemarr.length - 1 ? ")" : "";
+                                                    tgelemvalue = tgelemarr[mu];
+                                                    var c_all = tgelemvalue == "" || tgelemvalue.indexOf('*any*') > -1 ? "!" : "";
+                                                    // makes sure that the tgelemvalue field equates empty on
                                                     // encountering *null* keyword as its value
-                                                    telemvalue == "" || telemvalue.indexOf('*any*') > -1 ? telemvalue = "" : telemvalue = telemvalue;
-                                                    telemvalue == "*null*" ? telemvalue = "" : telemvalue = telemvalue;
-                                                    finout += ccond + "" + telemname + ".val()" + c_all + "==\"" + telemvalue + "\"" + ccend;
+                                                    tgelemvalue == "" || tgelemvalue.indexOf('*any*') > -1 ? tgelemvalue = "" : tgelemvalue = tgelemvalue;
+                                                    tgelemvalue == "*null*" ? tgelemvalue = "" : tgelemvalue = tgelemvalue;
+                                                    finout += ccond + "" + tgelemname + ".val()" + c_all + "==\"" + tgelemvalue + "\"" + ccend;
                                                 }
                                                 vcblock_main += "&&" + finout;
                                             }
                                             
 
                                         }
+                                        // var tgelemname="";
                                         // console.log(vcblock_main);
                                     }
                                 }
@@ -3236,6 +3247,8 @@ function submitCustom(formname, stype="") {
                         finalgroup[x]['vcblock'] = vcblock_main;
                         // console.log(finalgroup[x]['vcblock']);
                         finalgroup[x]['vcinit'] = vcinit_main;
+                        // console.log("final vcinit: ",finalgroup[x]['vcinit']);
+
 
                     }
 
@@ -3247,7 +3260,7 @@ function submitCustom(formname, stype="") {
                         var valcontent = valset.split(",");
                         var fc = 1;
                         var cvaltotalset = '';
-                        cvaltotalset += 'var compulsorymsgout="Please, there is a group set of data with expected number of entries \\"' + valcount + '\\" that has not been completed.' + '<br> After you close this error field the group would be focused on. The group is group : <b>'+groupcounter+'</b>.Please make sure you fill in data in the group-set accordingly.<br>' + 'For example, if the expected number of entries is \'2\', this means that you must provide at least 2 entries for the set, and they must be provided ' + 'in direct order in the form, so skipping say set 2 to fill set 3 will create an error ' + 'even though 2 entries (Set 1 and Set 3) have been provided.<br> Hope this helps, if you do not understand, contact the developer of this application for ' + 'clarification";' + 'var cparelemcount=$("form[name=' + formname + '] input[name=' + ccelem + ']").val();';
+                        cvaltotalset += 'var compulsorymsgout= "Please, there is a group set of data with expected number of entries \\"' + valcount + '\\" that has not been completed.' + '<br> After you close this error field the group would be focused on. The group is group : <b>'+groupcounter+'</b>.Please make sure you fill in data in the group-set accordingly.<br>' + 'For example, if the expected number of entries is \'2\', this means that you must provide at least 2 entries for the set, and they must be provided ' + 'in direct order in the form, so skipping say set 2 to fill set 3 will create an error ' + 'even though 2 entries (Set 1 and Set 3) have been provided.<br> Hope this helps, if you do not understand, contact the developer of this application for ' + 'clarification";' + 'var cparelemcount=$("form[name=' + formname + '] input[name=' + ccelem + ']").val();';
                         valsetinit += 'var compulsorymsgout="Please, there is a group set of data with expected number of entries \\"' + valcount + '\\" that has not been completed.' + '<br> After you close this error field the group would be focused on. The group is group : <b>'+groupcounter+'</b>.Please make sure you fill in data in the group-set accordingly.<br>' + 'For example, if the expected number of entries is \'2\', this means that you must provide at least 2 entries for the set, and they must be provided ' + 'in direct order in the form, so skipping say set 2 to fill set 3 will create an error ' + 'even though 2 entries (Set 1 and Set 3) have been provided.<br> Hope this helps, if you do not understand, contact the developer of this application for ' + 'clarification";' + 'var cparelemcount=$("form[name=' + formname + '] input[name=' + ccelem + ']").val();';
                         // obtain the current groups set data element parent and see if
                         var cvalinitset = '';
@@ -3267,7 +3280,9 @@ function submitCustom(formname, stype="") {
                                         // set the focus group element counter
                                         fc = tv;
                                     }
-                                    cvalinitset += '  var cvalinitset' + tv + '' + pt + '=$("form[name=' + formname + '] ' + finalgroup[cgd]['fieldtype'] + '[name=' + finalgroup[cgd]['fieldname'] + '' + pt + ']");var cvalinitsetcval' + tv + '' + pt + '="";if(cvalinitset' + tv + '' + pt + '===null||cvalinitset' + tv + '' + pt + '===undefined||cvalinitset' + tv + '' + pt + '=="undefined"||typeof cvalinitset' + tv + '' + pt + '=="undefined"||cvalinitset' + tv + '' + pt + '===NaN){ cvalinitsetcval' + tv + '' + pt + '="";}else{ cvalinitsetcval' + tv + '' + pt + '=cvalinitset' + tv + '' + pt + '.val();}/*console.log("cvalinitsetcval: ",cvalinitsetcval' + tv + '' + pt + ');*/';
+                                    cvalinitset += '  var cvalinitset' + tv + '' + pt + '=$("form[name=' + formname + '] ' + finalgroup[cgd]['fieldtype'] + '[name=' + finalgroup[cgd]['fieldname'] + '' + pt + ']");'+
+                                    'var cvalinitsetcval' + tv + '' + pt + '="";'+
+                                    'if(cvalinitset' + tv + '' + pt + '===null||cvalinitset' + tv + '' + pt + '===undefined||cvalinitset' + tv + '' + pt + '=="undefined"||typeof cvalinitset' + tv + '' + pt + '=="undefined"||cvalinitset' + tv + '' + pt + '===NaN){ cvalinitsetcval' + tv + '' + pt + '="";}else{ cvalinitsetcval' + tv + '' + pt + '=cvalinitset' + tv + '' + pt + '.val();}/*console.log("cvalinitsetcval: ",cvalinitsetcval' + tv + '' + pt + ');*/';
                                     cvalcoset += vi == 0 ? 'cvalinitsetcval' + tv + '' + pt + '==""' : '&&cvalinitsetcval' + tv + '' + pt + '==""';
 
                                 }
@@ -3335,7 +3350,11 @@ function submitCustom(formname, stype="") {
                                 if (type == "" || type.toLowerCase() == "all") {
                                     for (var m = 0; m < finalgroup.length; m++) {
                                         if (mtelemv == "") {
-                                            finalgroup[m]['vcinit'] += 'var ' + telemname + '=$("form[name=' + formname + '] ' + telemtype + '[name=' + telemname + ']");';
+                                            var cvarblock='var ' + telemname + '=$("form[name=' + formname + '] ' + telemtype + '[name=' + telemname + ']");';
+                                            if(finalgroup[m]['vcinit'].indexOf(cvarblock)<0){
+                                                finalgroup[m]['vcinit'] += cvarblock;
+
+                                            }
                                             var c_all = telemvalue == "" || telemvalue.indexOf('*any*') > -1 ? "!" : "";
                                             // makes sure that the telemvalue field equates empty on
                                             // encountering *null* keyword as its value
@@ -3406,11 +3425,20 @@ function submitCustom(formname, stype="") {
                                     }
                                 }
                             } else if (type == "group") {
-                                for (var l2 = 3; l2 < subfielddata.length; l2 += 3) {
+                                var tarelemname = "";
+                                tarelemname=subfielddata[subfielddata.length-1];
+                                var ckey = "";
+                                ckey = finalgroup['' + tarelemname + ''];
+                                if (finalgroup[ckey]&&finalgroup[ckey]['vcinit'].indexOf('var ' + telemname + '')<0) {
+                                    finalgroup[ckey]['vcinit'] += 'var ' + telemname + '=$("form[name=' + formname + '] ' + telemtype + '[name=' + telemname + ']");';
+                                }
+                                for (var l2 = 0; l2 < subfielddata.length-2; l2 += 3) {
                                     var telemname = subfielddata[l2];
                                     var telemtype = subfielddata[l2 + 1];
                                     var telemvalue = subfielddata[l2 + 2];
-                                    if (telemvalue.indexOf("_") > -1) {
+                                    // console.log("Telem value",telemvalue," telemtype: ",telemname," Telemname: ",telemtype);
+                                    
+                                    if (telemvalue!=="" && telemvalue.indexOf("_") > -1) {
                                         telemvalue = telemvalue.replace(/_{1,}/g, " ");
 
                                     }
@@ -3423,10 +3451,10 @@ function submitCustom(formname, stype="") {
                                         mtelemv = "domulti";
                                     }
                                     var tlal=telemarr.length;
-                                    var tarelemname = "";
                                     var curcondition = "";
 
                                     for (var m = 0; m < fgl; m++) {
+
                                         if (mtelemv == "") {
                                             finalgroup[m]['vcinit'] += 'var ' + telemname + '=$("form[name=' + formname + '] ' + telemtype + '[name=' + telemname + ']");';
                                             var c_all = telemvalue == "" || telemvalue.indexOf('*any*') > -1 ? "!" : "";
@@ -3435,6 +3463,7 @@ function submitCustom(formname, stype="") {
                                             telemvalue == "" || telemvalue.indexOf('*any*') > -1 ? telemvalue = "" : telemvalue = telemvalue;
                                             telemvalue == "*null*" ? telemvalue = "" : telemvalue = telemvalue;
                                             finalgroup[m]['vcblock'] += "&&" + telemname + ".val()" + c_all + "==\"" + telemvalue + "\"";
+
                                         } else if (mtelemv == "domulti") {
                                             var finout = "";
                                             for (var mu = 0; mu < tlal; mu++) {
@@ -3450,8 +3479,9 @@ function submitCustom(formname, stype="") {
                                             }
                                             finalgroup[m]['vcblock'] += "&&" + finout;
                                         }
+                                        // console.log("finalgoup vcinit ",finalgroup[m]['vcinit'])
                                     }
-                                    ;
+                                    
                                 }
                             }
                         }
@@ -3519,7 +3549,7 @@ function submitCustom(formname, stype="") {
                                     preinitout += finalgroup[id]['fieldcextra'];
                                     preinit = finalgroup[id]['fieldcextra'];
 
-                                    // console.log("curvblock valpoint- ",finalgroup[0]['vcblock'],"curvcinit valpoint - ",finalgroup[0]['vcinit']);
+                                    // console.log("curvblock valpoint- ",finalgroup[0]['vcblock']," curvcinit valpoint - ",finalgroup[0]['vcinit']);
                                     // console.log("Current id: ",id)," Current ct: ",curreq[ct];
 
                                     if (ct == 0) {
@@ -3576,17 +3606,19 @@ function submitCustom(formname, stype="") {
                                 }
                             }
                         }
+
                         // attatch the total current vcinit value
                         errcontentout=vcinit+errcontentout;
                         if(valset!==""){
                             errcontentout=valsetinit+errcontentout+valsetcond;
                         }
+
                         // attach the preinit data
                         if(preinitout!==""){
                             errcontentout+=preinitout;
 
                         }
-                        // create the formelment variable definitions
+                        // create the form element variable definitions
                         for (var cx = 0; cx < ccount; cx++) {
                             evalvardefns = "";
                             var cto = cx + 1;
@@ -3739,7 +3771,7 @@ function submitCustom(formname, stype="") {
 
                                     var telemarr = [];
                                     var mtelemv = "";
-                                    // check for multiple values that valikdate
+                                    // check for multiple values that validate
                                     if (telemvalue.indexOf(':*:') > -1) {
                                         // console.log("splitting the atom");
                                         telemarr = telemvalue.split(":*:");
@@ -3872,11 +3904,11 @@ function submitCustom(formname, stype="") {
                         // and make sure the field is not chosen if the NA
                         // errmsg is present meaning that the field is not required
                         // console.log("Error msag out - ",errmsgout);
-                        if (errmsgout.toLowerCase() !== "na" || errmsgout !== "NA" || errmsgout !== " NA" || errmsgout !== " NA " || errmsgout !== "NA ") {
+                        if (errmsgout.toLowerCase().replace(/\s*/g,"") !== "na"||errmsgout.toLowerCase().replace(/\s*/g,"") !== "na_b") {
                             evalvardefns += " var " + fieldname + "=" + "$('form[name=" + formname + "] " + fieldtype + "[name=" + fieldname + "]'); /*console.log(\" Current Value - \"," + fieldname + ".val());*/";
                             conditionblock = '' + fieldname + '.val()==""&&formstatus==true&&pointmonitor==false' + vcblock + '';
                             conderrorblock = 'var edittype=' + fieldname + '.attr("data-form-edit");if(edittype===null||edittype===undefined||edittype===NaN){var edittype=""};' + '/*console.log("Element - ",$(fieldname));*//*console.log("Edittype3 - ",edittype);*/var errtestmsg="' + errmsgout + '";if(errtestmsg!=="NA"&&edittype!=="true"' + errtestdata + '){formstatus=false; pointmonitor=true; if(boolmodal==false){raiseMainModal(\'Form error!!\', \'' + errmsgout + '\', \'fail\');' + '$("#mainPageModal").on("hidden.bs.modal", function () {' + '   var mcetester=$(' + fieldname + ').attr("data-mce");' + '   if(mcetester===null||mcetester===undefined||mcetester===NaN){ mcetester="";}' + '    if(mcetester=="true"){' + '     var mcid=$(' + fieldname + ').attr("id");/*console.log("tmcid - ",tinyMCE.get(mcid),"mcid - ",mcid);*/' + '     tinyMCE.get(mcid).focus();/*tinymce.execCommand(\'mceFocus\',false,mcid);*/' + '     /*tinyMCE.getInstanceById(mcid).focus();*/' + '   }else{' + '     $(' + fieldname + ').addClass(\'error-class\').focus();' + '   } ' + '});}/*console.log("fieldname: "," '+fieldname+' "," formstatus: ",formstatus);*/}';
-                        } else {
+                        }else {
                             evalvardefns += "var " + fieldname + "=" + "$('form[name=" + formname + "] " + fieldtype + "[name=" + fieldname + "]');";
                         }
 
@@ -5346,13 +5378,13 @@ function multipleElGenerator(element, entryel="", groupparent="", curcountel=0, 
                 elgroup.attr("data-type", "triggerprogeny");
 
                 // look for the {gc_x} element and replace it with the nextcount value
-                elgroup.replace(/\{gc_x\}/g, nextcount);
+                elgroup.replace(/\{gc_x\}/g, nextcount).replace(/gd_countx/g,nextcount);
 
                 // get the entry title element markup, this element is usually located
                 //at the top of duplicate entries 
                 var hlabeltext = elgroup.find('.multi_content_countlabels').html();
 
-                console.log(hlabeltext);
+                // console.log(hlabeltext);
                 // console.log("Real group - ", elgroup," ",elgroup.find('.multi_content_countlabels'));
 
                 // change the h4 label content if necessary to reflect new content present
@@ -5380,7 +5412,8 @@ function multipleElGenerator(element, entryel="", groupparent="", curcountel=0, 
                         }
                     }
                 }
-                ;// console.log("elgroup modified: ",elgroup);
+                
+                // console.log("elgroup modified: ",elgroup);
                 if (isNumber(branchlimit) && branchlimit > 0) {
                     if (nextcounttrue <= Math.floor(branchlimit)) {
                         doentry = "true";
@@ -5394,6 +5427,8 @@ function multipleElGenerator(element, entryel="", groupparent="", curcountel=0, 
                         window.alert("Maximum allowed entries reached");
                     }
                 }
+
+                // insert new element into entry marker section
                 if (doentry == "true") {
                     if (insertiontype == "default" || insertiontype == "before") {
                         $(elgroup).insertBefore(entrypoint);
@@ -5411,10 +5446,16 @@ function multipleElGenerator(element, entryel="", groupparent="", curcountel=0, 
                         ;
                     }
                 }
+
                 // var nextcountout=nextcount-3;
                 // var nextcountmain=nextcount-1;
             } else if (podtype == "increment") {
                 var cid = groupparent !== "" ? $('' + groupparent + '').find('div[data-type=triggerprogenitor]').attr("data-cid") : $('' + element + '').parent().find('div[data-type=triggerprogenitor]').attr("data-cid");
+                var totalelgroup="";
+                var totalmcecount=0;
+                var totalstrinnerset=[];
+                var totalmceoptions=[];
+
                 for (var ti = curcountel + 1; ti <= curnextcount; ti++) {
                     // console.log("Curcount", ti);
                     var nextcounttrue = 0;
@@ -5437,8 +5478,8 @@ function multipleElGenerator(element, entryel="", groupparent="", curcountel=0, 
                     // get the base element and clone it
                     // console.log(elgroup);
                     var subg=elgroup.html();
-                    if(subg.indexOf("{gc_x}")>-1){
-                        subg=subg.replace(/\{gc_x\}*/g,ti);
+                    if(subg.indexOf("{gc_x}")>-1||subg.indexOf("gd_countx")>-1){
+                        subg=subg.replace(/\{gc_x\}*/g,ti).replace(/gd_countx*/g,ti);
                         // var fsub=$('<div class="dummy_funny"></div>').html(subg);
                         // console.log("sub g: ",subg);
                         elgroup.html(subg);
@@ -5453,7 +5494,7 @@ function multipleElGenerator(element, entryel="", groupparent="", curcountel=0, 
 
                     // check for tinymce elements in the elgroup and proceed to augment them as appropriate
                     var mceelements = elgroup.find('[data-type=tinymcefield]');
-                    console.log("mce elements: ",mceelements);
+                    // console.log("mce elements: ",mceelements);
 
                     // runa for loop on the mce elements to process them for the new content
                     // this array holds the new set of ids for tinymce initialization
@@ -5466,6 +5507,7 @@ function multipleElGenerator(element, entryel="", groupparent="", curcountel=0, 
 
                         domce = "true";
                         cmcecount = mceelements.length;
+                        totalmcecount+=cmcecount;
                         // remove all tiny mce cloned content
                         elgroup.find('div.mce-container').remove();
                         for (var i = 0; i < cmcecount; i++) {
@@ -5488,6 +5530,7 @@ function multipleElGenerator(element, entryel="", groupparent="", curcountel=0, 
 
                             var nxtstrfunc = 'textarea#' + curid + '' + nextcount + '';
                             strinnerset[i] = nxtstrfunc;
+                            totalstrinnerset[totalstrinnerset.length] = nxtstrfunc;
 
                             // get the tinymce options if they exist, they are in hidden elements
                             // with the data-type attribute of tinymce and name associated with their
@@ -5534,8 +5577,10 @@ function multipleElGenerator(element, entryel="", groupparent="", curcountel=0, 
                             }
                             mceoptions[i]['filemanagertitle'] = fmt !== "" && typeof fmt !== "undefined" ? fmt.value : "";
 
+                            totalmceoptions[totalmceoptions.length]=mceoptions[i];
+
                         }
-                        ;
+                        
                     }
                     // console.log("script elements - ", scriptelements);
                     // console.log("Real group first- ", elgroup," Parent element", $(''+element+'').parent()," corename - ",corename);        
@@ -5585,24 +5630,45 @@ function multipleElGenerator(element, entryel="", groupparent="", curcountel=0, 
                         }
                     }
                     if (doentry == "true") {
-                        if (insertiontype == "default" || insertiontype == "before") {
+                        totalelgroup+=elgroup["0"].outerHTML;
+                        // console.log(totalelgroup);
+                        /*if (insertiontype == "default" || insertiontype == "before") {
                             $(elgroup).insertBefore(entrypoint);
                         } else if (insertiontype == "after") {
                             $(elgroup).insertAfter(entrypoint);
 
-                        }
+                        }*/
                         //selection.appendTo(outs);
-                        mainparent.find('input[name=' + countername + ']').val('' + nextcount + '');
-                        // for tinymce init
+                        // mainparent.find('input[name=' + countername + ']').val('' + nextcount + '');
+                        /*// for tinymce init
                         if (domce == "true") {
                             for (var i = 0; i < cmcecount; i++) {
                                 callTinyMCEInit(strinnerset[i], mceoptions[i]);
                             }
                             ;
-                        }
+                        }*/
                     }
                 }
                 // reset the content of the output variable
+            }
+
+
+            if (doentry == "true") {
+                if (insertiontype == "default" || insertiontype == "before") {
+                    $(totalelgroup).insertBefore(entrypoint);
+                } else if (insertiontype == "after") {
+                    $(totalelgroup).insertAfter(entrypoint);
+
+                }
+                //selection.appendTo(outs);
+                mainparent.find('input[name=' + countername + ']').val('' + nextcount + '');
+                // for tinymce init
+                if (domce == "true") {
+                    for (var i = 0; i < totalmcecount; i++) {
+                        callTinyMCEInit(totalstrinnerset[i], totalmceoptions[i]);
+                    }
+                    ;
+                }
             }
             // console.log(eltotalgroup);
 

@@ -1,0 +1,182 @@
+state
+gender
+day (regdate)
+businessnature
+
+
+if($type=="state"){
+			$queryextra=$typeval==""?"ORDER BY state,id DESC":"WHERE state='$typeval' ORDER BY id DESC";
+		}else if($type=="gender"){
+			$queryextra="WHERE gender='$typeval' ";
+		}else if($type=="day"){
+			$ordercontent="ORDER BY id DESC";
+			$qout.=" $qcat regdate='$typeval' ";
+
+		}else if($type=="businessnature"){
+			$ordercontent="ORDER BY businessname";
+			$qout.=" $qcat businessnature='$typeval' AND activationstatus='active'";
+
+		}else if($type=="activationstatus"){
+			$ordercontent="ORDER BY id DESC";
+			$qout.=" $qcat activationstatus='$typeval'";
+
+		}else if($type=="daterange"){
+			$cqvd=explode("-*-", $typeval);
+			$d1=$cqvd[0];
+			$d2=$cqvd[1];
+			if($d1>$d2){
+				$dd=$d2;
+				$d2=$d1;
+				$d1=$dd;
+			}
+			$qout.=" $qcat regdate>=$d1 AND regdate<=$d2";
+			$ordercontent="ORDER BY id DESC";
+		}else if($type=="combo"){
+			// break the typeval variable into properties and values set
+			// delimiter between properties and values are :
+			// delimiter between each property set **
+			$propvaldata=explode(":", $typeval);
+			$propdata=explode("**", $propvaldata[0]);
+			$valdata=explode("**", $propvaldata[1]);
+			$ordercontent="";
+			// $queryextra="";
+			// $qcat="AND";
+			for($i=0;$i<count($propdata);$i++){
+				// current querytype and queryvalue
+				$cqtype=$propdata[$i];
+				$cqval=$valdata[$i];
+				if($qout!==""){
+					$qcat="AND";
+				}
+				if($cqtype=="state"&&$cqval!==""){
+					$ordercontent="ORDER BY state,id";
+					$qout.=" $qcat state='$cqval' ";
+				}
+				if($cqtype=="activationstatus"&&$cqval!==""){
+					$ordercontent="ORDER BY state,id";
+					$qout.=" $qcat usertype='serviceprovider' AND activationstatus='active' ";
+				}
+				if($cqtype=="gender"&&$cqval!==""){
+					// $ordercontent="ORDER BY id DESC";
+					$qout.=" $qcat gender='$cqval'";
+				}
+				// regdate
+				if($cqtype=="day"&&$cqval!==""){
+					// $ordercontent="ORDER BY id DESC";
+					$qout.=" $qcat regdate='$cqval' ";
+
+				}
+				// businessnature
+				if($cqtype=="businessnature"&&$cqval!==""){
+					$ordercontent="ORDER BY businessname";
+					$qout.=" $qcat businessnature='$cqval' AND activationstatus='active'";
+
+				}
+				// daterange
+				if($cqtype=="daterange"&&$cqval!==""){
+					$cqvd=explode("-*-", $cqval);
+					$d1=$cqvd[0];
+					$d2=$cqvd[1];
+					$td1=new DateTime($d1);
+					$td2=new DateTime($d2);
+					if($td1>$td2){
+						$dd=$d2;
+						$d2=$d1;
+						$d1=$dd;
+					}
+					$qout.=" $qcat regdate>=$d1 AND regdate<=$d2";
+					$ordercontent="ORDER BY id DESC";
+				}
+			}
+		}
+
+userentries search parameter element names
+fullname
+state
+address
+status
+email
+phonenumber
+age
+entryrange(start/stop)
+
+
+basic user content for user module table data output
+fullname 
+gneder
+age
+email
+phonenumber
+regdata
+status
+view/edit
+
+
+basic client organisation
+organisation name
+profile
+cac
+business nature
+secondary services
+contact phone
+activation status
+status 
+view/edit
+
+
+
+basic single service provider account
+fullname
+account type(usersubtype)
+contactemail
+contact phonenumber
+reg date
+activation status
+status 
+view/edit
+
+
+qgroup
+ ||
+ VV
+coverphoto
+title
+acronym
+subgroupcount
+coursecount
+status
+
+
+
+
+qgroupset select
+course select
+qdatatype select -plain/media
+qentrytype select -mixed/obj/theory
+qdate input
+status select - saved /active
+--media quesitons--
+qmediacount input
+qimage input
+-- media objective entries--
+qmobjoptionscount input
+qmediaobjans select
+
+--plain question entries --
+--obj--
+objdatacount input
+question textarea
+option1 input
+option2 input
+option3 input
+option4 input
+option5 input
+option6 input
+answer select
+
+--theory--
+theorydatacount input
+theoryquestion textarea
+
+
+

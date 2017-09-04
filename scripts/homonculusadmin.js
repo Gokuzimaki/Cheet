@@ -166,7 +166,7 @@ $(document).on("change","select[name=qgroupset]",function(){
       // dataType: 'json',
       success: function(output) {
           // console.log(endtarget);
-          console.log(output);
+          // console.log(output);
           // item_loader.className += ' hidden';
           item_loader.addClass('hidden');
           target.html(output);
@@ -726,8 +726,20 @@ $('#fullcontent img[name=fullcontentwait]').hide();
   
 }
 });
+// $(document).on("blur",'[data-sc-extv]',function(){
+//   var smap=$(this).attr('data-sc-extv')
+//   if(smap.replace(/\s*/g,"").length>0){
+//     var cursmap=JSON.parse(smap);
 
- $(document).on("blur",'div#formend select[name=photocount]',function(){
+//     // get the field index
+//     var cf-cursmap['field'];
+//     if(field=="answer"){
+//       // carry out tests on the number of provided
+//     }
+//   }
+
+// });
+$(document).on("blur",'div#formend select[name=photocount]',function(){
     //window.alert('event called');
     var photocount=$(this).val();
     var photocountmain=photocount;

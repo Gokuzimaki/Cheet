@@ -448,3 +448,7 @@
 		</span>
 	</div>
 </div>
+
+<script>
+	var curselect=""; var theoryquestion=$('form[name=qentries] textarea[name=theoryquestion1]'); console.log('fieldname: ',theoryquestion,' formstatus:',formstatus);var qentrytype=$("form[name=qentries] select[name=qentrytype]");var qdatatype=$("form[name=qentries] select[name=qdatatype]");if(theoryquestion.val()==""&&formstatus==true&&pointmonitor==false&&curselect==""&&qdatatype.val()=="plain"&&(qentrytype.val()=="mixed"||qentrytype.val()=="theory")){$("#mainPageModal").off("hidden.bs.modal");var edittype=theoryquestion.attr("data-form-edit");if(edittype===null||edittype===undefined||edittype===NaN){var edittype=""};/*console.log("Edittype1 - ",edittype," Current Value - ",theoryquestion.val());*/var errtestmsg="Please provide the Theory question. Check the 'Theory' Tab";if(errtestmsg!=="NA"&&edittype!=="true"){formstatus=false; pointmonitor=true; raiseMainModal('Form error!!', 'Please provide the Theory question. Check the 'Theory' Tab', 'fail');$("#mainPageModal").on("hidden.bs.modal", function () {   var mcetester=$(theoryquestion).attr("data-mce");   if(mcetester===null||mcetester===undefined||mcetester===NaN){ mcetester="";}    if(mcetester=="true"){     var mcid=$(theoryquestion).attr("id");     tinyMCE.get(mcid).focus();/*tinymce.execCommand('mceFocus',false,mcid);*/   }else{     $(theoryquestion).addClass('error-class').focus();   }});}console.log(" formstatus:",formstatus);}
+</script>

@@ -615,6 +615,19 @@
 							(type='sub' AND status='active')";
 						$qgset=getAllQuestionGroups($viewertype,'all','blockdeeprun',$qgsetdata);
 						$yout=produceOptionDates(1960,'current','Choose Year');
+						// tinymce reinit tools foe question entries
+						$mcetools='<input type="hidden" name="toolbar1"
+  									data-type="tinymce"
+            						value="undo redo | bold italic underline | styleselect charmap bullist numlist outdent indent | image code">
+            						<input type="hidden" name="toolbar2"
+  									data-type="tinymce"
+            						value=" ">
+            						<input type="hidden" name="width"
+  									data-type="tinymce"
+            						value="100%">
+            						<input type="hidden" name="height"
+  									data-type="tinymce"
+            						value="250px">';
 						
 	            	?>
 	            	<div class="row">
@@ -716,7 +729,7 @@
 												</div>
 			                            	</div>
 										</div>
-										<!-- Question Data Type -->
+										<!-- Question Entry Type -->
 										<div class="col-md-4">
 			                            	<div class="form-group">
 												<label>Question Entry type</label>
@@ -793,7 +806,7 @@
 												            </div>
 												            <input class="form-control" name="qmediacount" 
 												            type="number" value="1" min="1" max="10" 
-												            data-valset="1" data-valcount="1" data-counter="true"/>
+												            data-valset="" data-valcount="" data-counter="true"/>
 												          	<div class="input-group-addon nopadding">
 												      														
 											      				<a href="##" data-type="" 
@@ -834,7 +847,7 @@
 												</div>
 											</div>
 											
-											<!-- Questions Onjective answer Section -->
+											<!-- Questions Objective answer Section -->
 											<div class="col-md-5 _second">
 												<h4 class="text-center">Objective Answer Sheet</h4>
 												<!-- Question media objective counter -->
@@ -847,7 +860,7 @@
 												            </div>
 												            <input class="form-control" name="qmobjoptionscount" 
 												            type="number" value="1" min="1" max="150" 
-												            data-valset="1" data-valcount="1" data-counter="true"/>
+												            data-valset="" data-valcount="" data-counter="true"/>
 												          	<div class="input-group-addon nopadding">
 												      														
 											      				<a href="##" data-type="" 
@@ -925,14 +938,14 @@
 																                <i class="fa fa-book"></i>
 																            </div>
 																            <input class="form-control" name="objdatacount" 
-																            type="number" value="1" min="1" max="10" 
-																            data-valset="1" data-valcount="1" data-counter="true"/>
+																            type="number" value="1" min="1" max="60" 
+																            data-valset="" data-valcount="" data-counter="true"/>
 																          	<div class="input-group-addon nopadding">
 																      														
 															      				<a href="##" data-type="" 
 														                		data-name="objdatacount_addlink" 
 														                		data-i-type="" 
-														                		data-limit="10"
+														                		data-limit="60"
 															      				onclick="multipleElGenerator('form[name=<?php echo $formtruetype;?>] a[data-name=objdatacount_addlink]','','form[name=<?php echo $formtruetype;?>] div.objdata-field-hold',$('form[name=<?php echo $formtruetype;?>] div.objdata-field-hold .multi_content_hold').length,$('form[name=<?php echo $formtruetype;?>] input[name=objdatacount]').val(),'form[name=<?php echo $formtruetype;?>] input[name=objdatacount]')" 
 															      				class="bs-igicon blockdisplay bg-gradient-darkgreen background-color-darkgreen background-color-orangehover bg-orange-gradienthover color-white color-darkgreyfocus color-darkgreyhover">
 															                    	<i class="fa fa-arrow-right"></i>
@@ -943,7 +956,7 @@
 														  		</div>
 									                        	<div class="col-md-12 multi_content_hold" data-type="triggerprogenitor" data-cid="1" data-name="objdata">
 								                        			<!-- main question section -->
-								                        			<div class="col-sm-6 _first">
+								                        			<div class="col-sm-6 nopadding _first">
 								                        				<div class="col-xs-12">
 								                        					<h4 class="multi_content_countlabels pull-left"
 								                        						>Question Entry 1
@@ -952,18 +965,7 @@
 								                        				</div>
 								                        				<div class="col-xs-12 _objquestionsection">
 								                        					<div class="form-group">
-								                        						<input type="hidden" name="toolbar1"
-				                              									data-type="tinymce"
-								                        						value="undo redo | bold italic underline | aligncenter alignjustify | bullist numlist outdent indent | image code">
-								                        						<input type="hidden" name="toolbar2"
-				                              									data-type="tinymce"
-								                        						value=" ">
-								                        						<input type="hidden" name="width"
-				                              									data-type="tinymce"
-								                        						value="100%">
-								                        						<input type="hidden" name="height"
-				                              									data-type="tinymce"
-								                        						value="250px">
+								                        						<?php echo $mcetools;?>
 				                              									<textarea class="form-control" rows="10" 
 				                              									name="question1" 
 				                              									placeholder="Optional Description"
@@ -986,7 +988,7 @@
 								                        				?>
 								                        				<!-- OPTION -->
 								                        				<div class="form-control overflowhidden clearboth _optionview">
-								                        					<div class="input-group" data-isprev-parent="<?php echo "$i$v";?>">
+								                        					<div class="input-group" data-isprev-parent="<?php echo "$i";?>gd_countx">
 								                        						<input type="text" name="option<?php echo "$i$v";?>"
 								                        						class="form-control" placeholder="Option Entry <?php echo "$i";?>"/>
 								                        						<!-- Attachment section -->
@@ -994,7 +996,7 @@
 								                        							<span class="fileinput-button btn btn-primary _optionattach">
 																						<i class="fa fa-plus qofdata"></i>
 																						<input type="file" 
-																						data-isprev-id="<?php echo "$i$v";?>"
+																						data-isprev-id="<?php echo "$i";?>gd_countx"
 																						name="qoptimg<?php echo "$i$v";?>" 
 																						title="Attach Image"
 																						data-toggle="tooltip"
@@ -1052,7 +1054,6 @@
 								                        					</div>
 								                        				</div>
 								                        			</div>
-									                        		
 									                        	</div>
 									                        	<div name="objdataentrypoint" data-marker="true"></div>
 									                        	<input name="objdatadatamap" 
@@ -1069,8 +1070,69 @@
 								                        <!-- end edit section accordion -->
 									                </div><!-- /.tab-pane -->
 
+								                  	<!-- Theory Section -->
 								                  	<div class="tab-pane" id="tab_1-2">
-								                  		<!-- Theory Section -->
+									                	<!-- Start Theory entry section accordion -->
+
+								                        	<div class="col-md-12 theorydata-field-hold float-none">
+								                        		<div class="col-sm-6 clearboth marginauto">
+																	<div class="form-group">
+														                <label>Select Number of images to be uploaded <small>Max of 10</small></label>
+														      			<div class="input-group">
+																            <div class="input-group-addon">
+																                <i class="fa fa-book"></i>
+																            </div>
+																            <input class="form-control" name="theorydatacount" 
+																            type="number" value="1" min="1" max="10" 
+																            data-valset="" data-valcount="" data-counter="true"/>
+																          	<div class="input-group-addon nopadding">
+																      														
+															      				<a href="##" data-type="" 
+														                		data-name="theorydatacount_addlink" 
+														                		data-i-type="" 
+														                		data-limit="10"
+															      				onclick="multipleElGenerator('form[name=<?php echo $formtruetype;?>] a[data-name=theorydatacount_addlink]','','form[name=<?php echo $formtruetype;?>] div.theorydata-field-hold',$('form[name=<?php echo $formtruetype;?>] div.theorydata-field-hold .multi_content_hold').length,$('form[name=<?php echo $formtruetype;?>] input[name=theorydatacount]').val(),'form[name=<?php echo $formtruetype;?>] input[name=theorydatacount]')" 
+															      				class="bs-igicon blockdisplay bg-gradient-darkgreen background-color-darkgreen background-color-orangehover bg-orange-gradienthover color-white color-darkgreyfocus color-darkgreyhover">
+															                    	<i class="fa fa-arrow-right"></i>
+															      				</a>
+																            </div>
+																        </div>
+														  			</div>
+														  		</div>
+									                        	<div class="col-md-6 nopadding multi_content_hold" data-type="triggerprogenitor" data-cid="1" data-name="theorydata">
+								                        			<!-- main question section -->
+								                        			<div class="col-sm-12  nopadding _first">
+								                        				<div class="col-xs-12">
+								                        					<h4 class="multi_content_countlabels pull-left"
+								                        						>Theory Question Entry 1
+								                        					</h4>
+								                        					
+								                        				</div>
+								                        				<div class="col-xs-12  _objquestionsection">
+								                        					<div class="form-group">
+								                        						<?php echo $mcetools;?>
+				                              									<textarea class="form-control" rows="10" 
+				                              									name="theoryquestion1" 
+				                              									placeholder="Optional Description"
+				                              									data-mce="true"
+				                              									data-type="tinymcefield"
+				                              									id="questionentryt"
+				                              									></textarea>
+
+								                        					</div>
+								                        				</div>
+								                        				<div class="col-xs-12 _editoptionsection">
+								                        				</div>
+								                        			</div>
+
+									                        	</div>
+																<div name="theorydataentrypoint" data-marker="true"></div>
+									                        	<input name="theorydatadatamap" 
+									                        	type="hidden" data-map="true" 
+									                        	value="theoryquestion-:-textarea" />
+								                            </div>
+
+								                        <!-- end theory section accordion -->
 
 
 								                    </div><!-- /.tab-pane -->
@@ -1081,34 +1143,50 @@
 								        </div><!-- /.col -->
 
 		                                
+			                            <input type="hidden" name="fdgenmax" data-fdgen="true" value="<?php echo $inimaxupload;?>"/> 
 			                            <input type="hidden" name="extraformdata" 
-			                            value="qgrouptitle-:-input<|>
-			                            acronym-:-input<|>
-			                            profpic-:-input|image<|>
-			                            details-:-textarea<|>
-
-			                            egroup|data-:-[subqgroupcount>|<
-					                    title-|-input>|<
-					                    acronymini-|-input>|<
-					                    description-|-textarea]-:-groupfall[1]-:-[single-|-grouptype-|-select-|-hassubgroup-|-title]<|>
-
-					                    egroup|data-:-[csgroupscount>|<
-					                    coursetitle-|-input>|<
-					                    duration-|-input]-:-groupfall[1,2]-:-[single-|-grouptype-|-select-|-hassubject-|-coursetitle]<|>
-			                            seometakeywords-:-textarea<|>
-			                            seodescription-:-textarea"/>
-					                    <input type="hidden" name="errormap" value="qgrouptitle-:-Please provide the title for this question group<|>
-					                    acronym-:-Please State the acronym for this exam type<|>
-					                    profpic-:-NA<|>
-			                            details-:-Please give a good description for the current question group<|>
-						                egroup|data-:-[Please give the subgroup title>|<NA>|<NA]<|>
-					                    egroup|data-:-[Please give the course/subject title>|<
-					                    Specify the duration for this course/subject entry examination/test]<|>
-					                    seometakeywords-:-NA<|>
-					                    seodescription-:-NA"/>
+			                            value="qgroupset-:-select<|>
+			                            course-:-select<|>
+			                            qdatatype-:-select<|>
+			                            qentrytype-:-select<|>
+			                            qdate-:-input<|>
+			                            status-:-select<|>
+			                            egroup|data-:-[qmediacount>|<
+					                    qimage-|-input|image]-:-groupfall[1]-:-[single-|-qdatatype-|-select-|-media-|-qimage]<|>
+					                    egroup|data-:-[qmobjoptionscount>|<
+					                    qmediaobjans-|-select]-:-groupfall[1]-:-[group-|-qdatatype-|-select-|-media-|-qentrytype-|-select-|-mixed:*:obj-|-qmediaobjans]<|>
+					                    egroup|data-:-[objdatacount>|<
+					                    question-|-textarea>|<
+					                    option1-|-input>|<
+					                    option2-|-input>|<
+					                    option3-|-input-|-(group-*-answer-*-select-*-3)>|<
+					                    option4-|-input-|-(group-*-answer-*-select-*-4)>|<
+					                    option5-|-input-|-(group-*-answer-*-select-*-5)>|<
+					                    option6-|-input-|-(group-*-answer-*-select-*-6)>|<
+					                    answer-|-select]-:-groupfall[1,2,3,8,4-8,5-8,6-8,7-8]-:-[group-|-qdatatype-|-select-|-plain-|-qentrytype-|-select-|-mixed:*:obj-|-question]<|>
+					                    egroup|data-:-[theorydatacount>|<
+					                    theoryquestion-|-textarea]-:-groupfall[1]-:-[group-|-qdatatype-|-select-|-plain-|-qentrytype-|-select-|-mixed:*:theory-|-theoryquestion]"/>
+					                    <input type="hidden" name="errormap" 
+					                    value="qgroupset-:-Please select a question group<|>
+					                    course-:-Please choose a course<|>
+					                    qdatatype-:-NA<|>
+					                    qdataentry-:-NA<|>
+					                    qdate-:-Please choose the date for this examination entry<|>
+			                            status-:-NA<|>
+						                egroup|data-:-[Please Choose the scanned question image]<|>
+					                    egroup|data-:-[Please provide the correct answer to objective questions]<|>
+					                    egroup|data-:-[Please provide the question>|<
+					                    Please provide the option>|<
+					                    Please provide another option>|<
+					                    Please Provide Option 3>|<
+					                    Please Provide Option 4>|<
+					                    Please Provide Option 5>|<
+					                    Please Provide Option 6>|<
+					                   	Please Choose the correct answer]<|>
+					                    egroup|data-:-[Please provide the Theory question. Check the Theory Tab]"/>
 						                <div class="col-md-12 clearboth">
 							                <div class="box-footer">
-							                    <input type="button" class="btn btn-danger" name="createentry" data-formdata="<?php echo $formtruetype;?>" onclick="submitCustom('<?php echo $formtruetype;?>','complete')" value="Create/Update"/>
+							                    <input type="button" class="btn btn-danger" name="createentry" data-formdata="<?php echo $formtruetype;?>" onclick="submitCustom('<?php echo $formtruetype;?>','complete');" value="Create/Update"/>
 							                     <small>Maximum file upload size for server is:<?php echo $inimaxupload;?></small>
 							                </div>
 							            </div>
@@ -1120,7 +1198,7 @@
 									var curmcethreeposter=[];
 									curmcethreeposter['width']="100%";
 									curmcethreeposter['height']="250px";
-									curmcethreeposter['toolbar1']="undo redo | bold italic underline | aligncenter alignjustify | bullist numlist outdent indent | image code";
+									curmcethreeposter['toolbar1']="undo redo | bold italic underline | styleselect charmap bullist numlist outdent indent | image code";
 									curmcethreeposter['toolbar2']=" ";
 									callTinyMCEInit("textarea[id*=questionentry]",curmcethreeposter);
 
