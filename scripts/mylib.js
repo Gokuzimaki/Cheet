@@ -5627,6 +5627,7 @@ function multipleElGenerator(element, entryel="", groupparent="", curcountel=0, 
                         } else {
                             doentry = "false";
                             window.alert("Maximum allowed entries reached");
+                            break;
                         }
                     }
                     if (doentry == "true") {

@@ -54,13 +54,13 @@
                   </li>
                 </ul>
               </li>
-              <li class="dropdown <?php echo $activepage4;?>"><a href="<?php echo $host_addr;?>news.php" class="dropdown-toggle">News <i class="icon icon-angle-down"></i> </a>
+              <!-- <li class="dropdown <?php echo $activepage4;?>"><a href="<?php echo $host_addr;?>news.php" class="dropdown-toggle">News <i class="icon icon-angle-down"></i> </a>
                 <ul class="dropdown-menu">
                   <li><a href="<?php echo $host_addr;?>news.php?t=school">In Schools</a></li>
                   <li><a href="<?php echo $host_addr;?>news.php?t=public">Public</a></li>
                   <li><a href="<?php echo $host_addr;?>news.php?t=admin">From Cheet</a></li>
                 </ul>
-              </li>
+              </li> -->
               <li class="dropdown <?php echo $activepage3;?>"> <a href="<?php echo $host_addr;?>resources.php" class="dropdown-toggle"> Resources <i class="icon icon-angle-down"></i> </a>
                 <ul class="dropdown-menu">
                   <li><a href="bookstores.php">Book Stores</a></li>
@@ -97,12 +97,12 @@
                               <div class="col-md-12 _service-providers hidden">
                                 <select class="form-control" name="usersubtype">
                                   <option value="">Select Account Type</option>
-                                  <option value="member">Member</option>
+                                  <option value="User">User</option>
                                   <option value="instructor">Instructor</option>
-                                  <option value="school">School</option>
-                                  <option value="lecturer">Lecturer</option>
-                                  <option value="bookstore">Bookstore</option>
-                                  <option value="projmerc">Project Mercenary</option>
+                                  <!-- <option value="school">School</option> -->
+                                  <!-- <option value="lecturer">Lecturer</option> -->
+                                  <!-- <option value="bookstore">Bookstore</option> -->
+                                  <!-- <option value="projmerc">Project Mercenary</option> -->
                                 </select>
                                 <!-- <input type="hidden" name="logtype" value="recruit"/> -->
                               </div>

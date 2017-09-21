@@ -437,7 +437,7 @@ display: block;
 	clear: both;
 	background-color: rgba(255, 7, 7, 0.54);
 	min-height: 80px;
-	z-index: 99999999;
+	z-index: 1018;
 	-webkit-transition: all 0.3s;
 	-moz-transition: all 0.3s;
 	-ms-transition: all 0.3s;
@@ -2740,16 +2740,16 @@ span.lms_service_icon_span {
 /*---------------------Our Top Experts Team end---------------------------*/
 
 /*---------------------Call to action start---------------------------*/
-.lms_cta_one{padding-top: 45px;padding-bottom: 45px;margin-top: 48px;color: #fefefe;background-color: rgba(95, 255, 84, 0.6);background-image: url(../../../images/cheetimagesone/bg/bg_2.png);}
+.lms_cta_one{padding-top: 45px;padding-bottom: 45px;margin-top: 48px;color: #fefefe;background-color: rgb(255, 84, 84);background-image: url(../../../images/cheetimagesone/bg/bg_2.png);}
 .lms_cta_text{
 font-size: 2.5em;
 }
 .lms_cta_one .lms_cta_btn{
-
+padding-top: 12px;
 }
 .lms_cta_one .lms_cta_btn a{
-	font-size: 2em;
-	padding: 9px 20px;
+	font-size: 1.6em;
+	padding: 5px 20px;
 	display: inline-block;
 	background: #018C06;
 	color: #fefefe;

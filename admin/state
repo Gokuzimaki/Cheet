@@ -154,19 +154,29 @@ course select
 qdatatype select -plain/media
 qentrytype select -mixed/obj/theory
 qdate input
+qtime input
 status select - saved /active
+
 --media quesitons--
 qmediacount input
 qimage input
+qmanswerscount input
+qmtheorytotalscore input
+qmanser input
+
 -- media objective entries--
 qmobjoptionscount input
+qmobjtotalscore input
 qmediaobjans select
 
 --plain question entries --
+
 --obj--
+objdetails textarea
+objtotalscore input
 objdatacount input
 question textarea
-option1 input
+option1 input qoptimg1 inputimage
 option2 input
 option3 input
 option4 input
@@ -175,8 +185,11 @@ option6 input
 answer select
 
 --theory--
+theorydetails input
+theorytotalscore input
 theorydatacount input
+theoryqscore
 theoryquestion textarea
-
+theoryqmodalanswer
 
 

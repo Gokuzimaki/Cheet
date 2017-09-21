@@ -2971,5 +2971,266 @@ if ($entryvariant=="blogtypesubscription") {
 	// $nonottype="none";// stops notification table update
 	// bring in the nrsection.php file
 	include('nrsection.php');
-}	
+}else if($entryvariant=="createqentries"){
+	$qgroupset=mysql_real_escape_string($_POST['qgroupset']);
+	$course=mysql_real_escape_string($_POST['course']);
+	$qdatatype=mysql_real_escape_string($_POST['qdatatype']);
+	$qentrytype=mysql_real_escape_string($_POST['qentrytype']);
+	$qdate=mysql_real_escape_string($_POST['qdate']);
+	$qtime=mysql_real_escape_string($_POST['qtime']);
+	
+
+	$status=mysql_real_escape_string($_POST['status']);
+	
+	$query="INSERT INTO questions(qgid,scid,qdate,duration,qetype,status)VALUES
+	('$qgroupset','$course','$qdate','$qtime','$qentrytype','$status')";
+
+	$qdata=briefquery($query,__LINE__,"mysqli",true);
+
+	$entryid=$qdata['resultdata'][0]['id'];
+	
+	$notid=$entryid;
+
+	// get groupset data counter element values
+	$qmediacount=mysql_real_escape_string($_POST['qmediacount']);
+	$qmanswerscount=mysql_real_escape_string($_POST['qmanswerscount']);
+	$qmobjoptionscount=mysql_real_escape_string($_POST['qmobjoptionscount']);
+	$objdatacount=mysql_real_escape_string($_POST['objdatacount']);
+	$theorydatacount=mysql_real_escape_string($_POST['theorydatacount']);
+
+	// for carrying obj data to be converted to json
+	$qobjdata=array();
+	$qobjdata['totalnumber']=0;
+	
+	// for carrying  theory data  to be cnverted to json for db storage
+	$qtheorydata=array();
+	$qtheorydata['totalnumber']=0;
+	
+	// proceed to check the nature of the current question entry and insert as needed
+	if($qdatatype=="media"){
+
+		// perform the question media data entry
+		for($i=1;$i<=$qmediacount;$i++){
+			$contentpic=isset($_FILES['qimage'.$i.'']['tmp_name'])?
+			$_FILES['qimage'.$i.'']['tmp_name']:"";
+		    if($contentpic!==""){
+		      	$image="qimage$i";
+				$imgpath[0]='../files/originals/';
+				$imgpath[1]='../files/medsizes/';
+				$imgpath[2]='../files/thumbnails/';
+				$imgsize[0]="default";
+				$imgsize[1]=",300";
+				$imgsize[2]=",85";
+				$acceptedsize="";
+				$imgouts=genericImageUpload($image,"varying",$imgpath,$imgsize,$acceptedsize);
+
+				// original image
+				$imagepath=substr($imgouts[0], 1,strlen($imgouts[0]));
+
+				// medsize
+				$imagepath2=substr($imgouts[1], 1,strlen($imgouts[1]));
+
+				// thumbnail
+				$imagepath3=substr($imgouts[2], 1,strlen($imgouts[2]));
+				
+				// get image size details
+				list($width,$height)=getimagesize($imgouts[0]);
+				$imagesize=$_FILES[''.$image.'']['size'];
+				$filesize=$imagesize/1024;
+				//echo $filefirstsize;
+				$filesize=round($filesize, 0, PHP_ROUND_HALF_UP);
+				if(strlen($filesize)>3){
+					$filesize=$filesize/1024;
+					$filesize=round($filesize,2); 
+					$filesize="".$filesize."MB";
+				}else{
+					$filesize="".$filesize."KB";
+				}
+				//$coverpicid=getNextId("media");
+				//maintype variants are original, medsize, thumb for respective size image.
+				$mediaquery="INSERT INTO media(ownerid,ownertype,maintype,mediatype,
+					location,medsize,thumbnail,filesize,width,height)VALUES
+					('$entryid','qentry','qimage','image','$imagepath','$imagepath2',
+						'$imagepath3','$filesize','$width','$height')";
+				$mediarun=mysqli_query($host_connli,$mediaquery)or die(mysqli_error($host_connli));
+		    }
+		}
+
+		
+		// check to see if the current entry is mixed or theory and ensure that the
+		// model answers if any are available
+		if(($qentrytype=="mixed"||$qentrytype=="theory"){
+			$theorytotalscore=mysql_real_escape_string($_POST['qmtheorytotalscore']);
+			// perform the model answers media data entry
+			for($i=1;$i<=$qmanswerscount;$i++){
+				$contentpic=isset($_FILES['qmanswer'.$i.'']['tmp_name'])?
+				$_FILES['qmanswer'.$i.'']['tmp_name']:"";
+			    if($contentpic!==""){
+			      	$image="qmanswer$i";
+					$imgpath[0]='../files/originals/';
+					$imgpath[1]='../files/medsizes/';
+					$imgpath[2]='../files/thumbnails/';
+					$imgsize[0]="default";
+					$imgsize[1]=",300";
+					$imgsize[2]=",85";
+					$acceptedsize="";
+					$imgouts=genericImageUpload($image,"varying",$imgpath,$imgsize,$acceptedsize);
+
+					// original image
+					$imagepath=substr($imgouts[0], 1,strlen($imgouts[0]));
+
+					// medsize
+					$imagepath2=substr($imgouts[1], 1,strlen($imgouts[1]));
+
+					// thumbnail
+					$imagepath3=substr($imgouts[2], 1,strlen($imgouts[2]));
+					
+					// get image size details
+					list($width,$height)=getimagesize($imgouts[0]);
+					$imagesize=$_FILES[''.$image.'']['size'];
+					$filesize=$imagesize/1024;
+					//echo $filefirstsize;
+					$filesize=round($filesize, 0, PHP_ROUND_HALF_UP);
+					if(strlen($filesize)>3){
+						$filesize=$filesize/1024;
+						$filesize=round($filesize,2); 
+						$filesize="".$filesize."MB";
+					}else{
+						$filesize="".$filesize."KB";
+					}
+					//$coverpicid=getNextId("media");
+					//maintype variants are original, medsize, thumb for respective size image.
+					$mediaquery="INSERT INTO media(ownerid,ownertype,maintype,mediatype,
+						location,medsize,thumbnail,filesize,width,height)VALUES
+						('$entryid','qentry','qmanswer','image','$imagepath','$imagepath2',
+							'$imagepath3','$filesize','$width','$height')";
+					$mediarun=mysqli_query($host_connli,$mediaquery)or die(mysqli_error($host_connli));
+			    }
+			}
+		}
+
+
+		// perform the objective data entry
+		if($qentrytype=="mixed"||$qentrytype=="obj"){
+			$objtotalscore=mysql_real_escape_string($_POST['qmobjtotalscore']);
+			// since this section is for media, only the oobj scores will be tallied into
+			// json
+			for ($i=1; $i <= $qmobjoptionscount ; $i++) { 
+				# code...
+				$qmediaobjans=mysql_real_escape_string($_POST['qmediaobjans'.$i.'']);	
+				$qobjdata[$i]=array(
+								"qdata"=>"",
+								"options"=>array(array(),"$qmediaobjans")
+								);
+			}
+			
+			
+		}
+
+
+	}else if($qdatatype=="plain"){
+		// perform obj data entry
+		if($qentrytype=="mixed"||$qentrytype=="obj"){
+			$objdetails=mysql_real_escape_string($_POST['objdetails']);
+			$objtotalscore=mysql_real_escape_string($_POST['objtotalscore']);
+			$objdatacount=mysql_real_escape_string($_POST['objdatacount']);
+
+			for ($i=1; $i < $objdatacount; $i++) { 
+				# code...  
+				$question=mysql_real_escape_string($_POST['question'.$i.'']);
+				$curoptdata=array();
+				//  there are only 6 options currently
+				for ($t=1; $t <= 6; $t++) { 
+					# code...
+					$tt=$t-1;
+
+					$curoption=mysql_real_escape_string($_POST['options'.$t.''.$i.'']);
+					$curoptdata[$tt]['option']=$curoption;
+					
+					// check if there are any attached files to the current option
+					$contentpic=isset($_FILES['qoptimg'.$t.''.$i.'']['tmp_name'])?
+					$_FILES['qoptimg'.$i.'']['tmp_name']:"";
+				    if($contentpic!==""){
+				      	$image="qoptimg$i";
+						$imgpath[0]='../files/originals/';
+						$imgpath[1]='../files/medsizes/';
+						$imgpath[2]='../files/thumbnails/';
+						$imgsize[0]="default";
+						$imgsize[1]=",300";
+						$imgsize[2]=",85";
+						$acceptedsize="";
+						$imgouts=genericImageUpload($image,"varying",$imgpath,$imgsize,$acceptedsize);
+
+						// original image
+						$imagepath=substr($imgouts[0], 1,strlen($imgouts[0]));
+
+						// medsize
+						$imagepath2=substr($imgouts[1], 1,strlen($imgouts[1]));
+
+						// thumbnail
+						$imagepath3=substr($imgouts[2], 1,strlen($imgouts[2]));
+						
+						// get image size details
+						list($width,$height)=getimagesize($imgouts[0]);
+						$imagesize=$_FILES[''.$image.'']['size'];
+						$filesize=$imagesize/1024;
+						//echo $filefirstsize;
+						$filesize=round($filesize, 0, PHP_ROUND_HALF_UP);
+						if(strlen($filesize)>3){
+							$filesize=$filesize/1024;
+							$filesize=round($filesize,2); 
+							$filesize="".$filesize."MB";
+						}else{
+							$filesize="".$filesize."KB";
+						}
+						//$coverpicid=getNextId("media");
+						//maintype variants are original, medsize, thumb for respective size image.
+						$mediaquery="INSERT INTO media(ownerid,ownertype,mainid,maintype,
+							mediatype,location,medsize,thumbnail,filesize,width,height)VALUES
+							('$entryid','qentry','$t','qoptimage','image','$imagepath','$imagepath2',
+								'$imagepath3','$filesize','$width','$height')";
+						$mediarun=mysqli_query($host_connli,$mediaquery)or die(mysqli_error($host_connli));
+				    }
+
+				}
+			}
+		}
+
+
+		// perform thoery data entry
+		if($qentrytype=="mixed"||$qentrytype=="theory"){
+			$theorytotalscore=mysql_real_escape_string($_POST['theorytotalscore']);
+			$theorydatacount=mysql_real_escape_string($_POST['theorydatacount']);
+			$theorydetails=mysql_real_escape_string($_POST['theorydetails']);
+			
+			for ($i=1; $i <= $theorydatacount ; $i++) { 
+				# code...
+
+				$theoryquestion=mysql_real_escape_string($_POST['theoryquestion'.$i.'']);	
+				$theoryqscore=mysql_real_escape_string($_POST['theoryqscore'.$i.'']);	
+				$theoryqmodalanswer=mysql_real_escape_string($_POST['theoryqmodalanswer'.$i.'']);	
+				$qobjdata[$i]=array(
+								"qdata"=>"$theoryquestion",
+								"score"=>$theoryqscore,
+								"modelanswer"=>"$theoryqmodelanswer");
+			}
+			
+			
+		}
+				
+	}
+
+	// prepare content for the notification redirect section (nrsection)
+	$action="Create";
+	$actiontype="question";
+	$actiondetails="New Question entry Created";
+	// the current notification data id for storage
+	$notid=$entryid;
+	$notrdtype="none";//stops redirection
+
+	$nonottype="none";// stops notification table update
+	// bring in the nrsection.php file
+	include('nrsection.php');
+}
+
 ?>

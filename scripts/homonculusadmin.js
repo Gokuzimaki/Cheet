@@ -216,10 +216,38 @@ $(document).on("blur","select[name=qdatatype]",function(){
   
 });
 
+// this section controls the display of the obj answers section in the question
+// entry form
+$(document).on("blur","select[name=qentrytype]",function(){
+  var cval=$(this).val();
+  var par=$(this).parent().parent().parent().parent();
+  console.log("current val",cval);
+  if(cval=="theory"){
+    // widen the question image upload section
+    par.find('.qmediadata .col-md-7._first').removeClass("col-md-7").addClass("col-md-12");
+    // hide the questions obj answer sheet section
+    par.find('.qmediadata .col-md-5._second').addClass("hidden");
+    // show the model answers section
+    par.find('.qmediadata ._modelanswers').removeClass("hidden");
+    
+  }else if(cval=="obj"){
+    par.find('.qmediadata .col-md-7._first').removeClass("hidden");
+    par.find('.qmediadata .col-md-12._first').removeClass("col-md-12").addClass("col-md-7");
+    par.find('.qmediadata .col-md-5._second').removeClass("hidden");
+    par.find('.qmediadata ._modelanswers').addClass("hidden");
+  }else{
+    par.find('.qmediadata .col-md-7._first').removeClass("hidden");
+    par.find('.qmediadata .col-md-12._first').removeClass("col-md-12").addClass("col-md-7");
+    par.find('.qmediadata .col-md-5._second').removeClass("hidden");
+    par.find('.qmediadata ._modelanswers').removeClass("hidden");
+  }
+
+
+});
 
 
 
-
+// this section comntrols the submission of admin data search area  
 $(document).on("click","input[data-type=submitcrt]",function(){
       // console.log(this);
       var formname='div[name='+this.name+']';
@@ -321,7 +349,7 @@ $(document).on("click","input[data-type=submitcrt]",function(){
 })
 
 
-
+// this section handles the blogsection data selction boxs
 $(document).on("click","input[name=viewblogpostsoptional]",function(){
   var theid=$('select[name=blogtypeid]').val();
   var secondid=$('select[name=blogcategoryid]').val();
@@ -330,7 +358,7 @@ $(document).on("click","input[name=viewblogpostsoptional]",function(){
     typeout="viewblogposts";
   }
   if(theid!==""){
-  var blogpostreq=new Request();
+    var blogpostreq=new Request();
     blogpostreq.generate('#contentdisplayhold,section.content',false);
     //enter the url
     blogpostreq.url('../snippets/display.php?displaytype=viewblogpostsoptional&blogtypeid='+theid+'&blogcategoryid='+secondid+'&extraval='+typeout+'');
@@ -362,105 +390,106 @@ $(document).on("click","input[name=viewsubscribers]",function(){
     
   }
 });
+
 $(document).on("click","input[name=viewqotd]",function(){
 
-var theid=$('select[name=qotdcat]').val();
-// var secondid=$('select[name=blogcategoryid]').val();
-if(theid!==""){
-var qotdcatreq=new Request();
-  qotdcatreq.generate('#contentdisplayhold,section.content',false);
-  //enter the url
-  qotdcatreq.url('../snippets/display.php?displaytype=viewqotd&qotdcat='+theid+'&extraval=admin');
-  //send request
-  qotdcatreq.opensend('GET');
-  //update dom when finished, takes four params targetElement,entryType,entryEffect,period
-  qotdcatreq.update('div#contentdisplayhold,section.content','html','fadeIn',1000);
-}else{
-  
-}
+  var theid=$('select[name=qotdcat]').val();
+  // var secondid=$('select[name=blogcategoryid]').val();
+  if(theid!==""){
+  var qotdcatreq=new Request();
+    qotdcatreq.generate('#contentdisplayhold,section.content',false);
+    //enter the url
+    qotdcatreq.url('../snippets/display.php?displaytype=viewqotd&qotdcat='+theid+'&extraval=admin');
+    //send request
+    qotdcatreq.opensend('GET');
+    //update dom when finished, takes four params targetElement,entryType,entryEffect,period
+    qotdcatreq.update('div#contentdisplayhold,section.content','html','fadeIn',1000);
+  }else{
+    
+  }
 });
 $(document).on("click","input[name=viewadverts]",function(){
-var theid=$('select[name=advertcat]').val();
-// var secondid=$('select[name=blogcategoryid]').val();
-if(theid!==""){
-var advertscatreq=new Request();
-  advertscatreq.generate('#contentdisplayhold,section.content',false);
-  //enter the url
-  advertscatreq.url('../snippets/display.php?displaytype=viewadverts&advertcat='+theid+'&extraval=admin');
-  //send request
-  advertscatreq.opensend('GET');
-  //update dom when finished, takes four params targetElement,entryType,entryEffect,period
-  advertscatreq.update('div#contentdisplayhold,section.content','html','fadeIn',1000);
-}else{
+  var theid=$('select[name=advertcat]').val();
+  // var secondid=$('select[name=blogcategoryid]').val();
+  if(theid!==""){
+  var advertscatreq=new Request();
+    advertscatreq.generate('#contentdisplayhold,section.content',false);
+    //enter the url
+    advertscatreq.url('../snippets/display.php?displaytype=viewadverts&advertcat='+theid+'&extraval=admin');
+    //send request
+    advertscatreq.opensend('GET');
+    //update dom when finished, takes four params targetElement,entryType,entryEffect,period
+    advertscatreq.update('div#contentdisplayhold,section.content','html','fadeIn',1000);
+  }else{
 
-}
+  }
 });
 
 $(document).on("click","input[name=viewadverts]",function(){
-var theid=$('select[name=advertcat]').val();
-// var secondid=$('select[name=blogcategoryid]').val();
-if(theid!==""){
-var advertscatreq=new Request();
-  advertscatreq.generate('#contentdisplayhold,section.content',false);
-  //enter the url
-  advertscatreq.url('../snippets/display.php?displaytype=viewadverts&advertcat='+theid+'&extraval=admin');
-  //send request
-  advertscatreq.opensend('GET');
-  //update dom when finished, takes four params targetElement,entryType,entryEffect,period
-  advertscatreq.update('div#contentdisplayhold,section.content','html','fadeIn',1000);
-}else{
+  var theid=$('select[name=advertcat]').val();
+  // var secondid=$('select[name=blogcategoryid]').val();
+  if(theid!==""){
+  var advertscatreq=new Request();
+    advertscatreq.generate('#contentdisplayhold,section.content',false);
+    //enter the url
+    advertscatreq.url('../snippets/display.php?displaytype=viewadverts&advertcat='+theid+'&extraval=admin');
+    //send request
+    advertscatreq.opensend('GET');
+    //update dom when finished, takes four params targetElement,entryType,entryEffect,period
+    advertscatreq.update('div#contentdisplayhold,section.content','html','fadeIn',1000);
+  }else{
 
-}
+  }
 });
 $(document).on("click","input[name=viewstores]",function(){
-var theid=$('select[name=storecat]').val();
-// var secondid=$('select[name=blogcategoryid]').val();
-if(theid!==""){
-var advertscatreq=new Request();
-  advertscatreq.generate('#contentdisplayhold,section.content',true);
-  //enter the url
-  advertscatreq.url('../snippets/display.php?displaytype=viewstores&storecat='+theid+'&extraval=admin');
-  //send request
-  advertscatreq.opensend('GET');
-  //update dom when finished, takes four params targetElement,entryType,entryEffect,period
-  advertscatreq.update('div#contentdisplayhold,section.content','html','fadeIn',1000);
-}else{
+  var theid=$('select[name=storecat]').val();
+  // var secondid=$('select[name=blogcategoryid]').val();
+  if(theid!==""){
+  var advertscatreq=new Request();
+    advertscatreq.generate('#contentdisplayhold,section.content',true);
+    //enter the url
+    advertscatreq.url('../snippets/display.php?displaytype=viewstores&storecat='+theid+'&extraval=admin');
+    //send request
+    advertscatreq.opensend('GET');
+    //update dom when finished, takes four params targetElement,entryType,entryEffect,period
+    advertscatreq.update('div#contentdisplayhold,section.content','html','fadeIn',1000);
+  }else{
 
-}
+  }
 });
 $(document).on("click","input[name=viewevent]",function(){
-var theid=$('select[name=eventcat]').val();
-// var secondid=$('select[name=blogcategoryid]').val();
-if(theid!==""){
-var eventcatreq=new Request();
-  eventcatreq.generate('#contentdisplayhold,section.content',false);
-  //enter the url
-  eventcatreq.url('../snippets/display.php?displaytype=viewevent&eventcat='+theid+'&extraval=admin');
-  //send request
-  eventcatreq.opensend('GET');
-  //update dom when finished, takes four params targetElement,entryType,entryEffect,period
-  eventcatreq.update('div#contentdisplayhold,section.content','html','fadeIn',1000);
+  var theid=$('select[name=eventcat]').val();
+  // var secondid=$('select[name=blogcategoryid]').val();
+  if(theid!==""){
+  var eventcatreq=new Request();
+    eventcatreq.generate('#contentdisplayhold,section.content',false);
+    //enter the url
+    eventcatreq.url('../snippets/display.php?displaytype=viewevent&eventcat='+theid+'&extraval=admin');
+    //send request
+    eventcatreq.opensend('GET');
+    //update dom when finished, takes four params targetElement,entryType,entryEffect,period
+    eventcatreq.update('div#contentdisplayhold,section.content','html','fadeIn',1000);
 
-}else{
-  
-}
+  }else{
+    
+  }
 });
 $(document).on("click","a[name=morecatposts]",function(){
-var catid=$(this).attr("data-catid");
-var nextid=$(this).attr("data-next");
-if(nextid>0){
-var blogcatpostreq=new Request();
-  blogcatpostreq.generate('div[name=waitinghold]',true);
-  //enter the url
-  blogcatpostreq.url('../snippets/display.php?displaytype=viewblogposts&blogtypeid='+theid+'&blogcategoryid='+secondid+'&extraval=admin');
-  //send request
-  blogcatpostreq.opensend('GET');
-  //update dom when finished, takes four params targetElement,entryType,entryEffect,period
-  blogcatpostreq.update('div#contentdisplayhold div:last,section.content div:last','insertAfter','fadeIn',1000);
-  
-}else{
-  
-}
+  var catid=$(this).attr("data-catid");
+  var nextid=$(this).attr("data-next");
+  if(nextid>0){
+  var blogcatpostreq=new Request();
+    blogcatpostreq.generate('div[name=waitinghold]',true);
+    //enter the url
+    blogcatpostreq.url('../snippets/display.php?displaytype=viewblogposts&blogtypeid='+theid+'&blogcategoryid='+secondid+'&extraval=admin');
+    //send request
+    blogcatpostreq.opensend('GET');
+    //update dom when finished, takes four params targetElement,entryType,entryEffect,period
+    blogcatpostreq.update('div#contentdisplayhold div:last,section.content div:last','insertAfter','fadeIn',1000);
+    
+  }else{
+    
+  }
 });
 $(document).on("click","a[name=removecomment]",function(){
   var cid=$(this).attr("data-cid");
@@ -517,12 +546,12 @@ $(document).on("click","td[name=trcontrolpoint] a",function(){
 });
 
 $(document).on("click","input[type=checkbox]",function(){
-var datastate=$(this).attr("data-state");
-if(datastate=="off"){
-$(this).attr("data-state","on");
-}else{
-$(this).attr("data-state","off");
-}
+  var datastate=$(this).attr("data-state");
+  if(datastate=="off"){
+    $(this).attr("data-state","on");
+  }else{
+    $(this).attr("data-state","off");
+  }
 });
 
 $(document).on("click","td[data-type=subtablelink] a",function(){
@@ -593,8 +622,8 @@ $(document).on("click","td[data-type=subtablelink] a",function(){
 });
 
 $(document).on("click",'#editimgsoptionlinks a',function(){
-var linkname=$(this).attr('name');
-var linkid=$(this).attr('data-id');
+  var linkname=$(this).attr('name');
+  var linkid=$(this).attr('data-id');
    var albumreq=new Request();
   var albumlinkreq=new Request();
 if(linkname=="deletepic"){
@@ -680,7 +709,7 @@ for(var i=0;i<galleryimgsrcsarray.length;i++){
 var prevpoint=Math.floor(posterpoint)-1;
 var nextpoint=Math.floor(posterpoint)+1;
 prevpoint<0?prevpoint=0:prevpoint=prevpoint;
-console.log(prevpoint,nextpoint);
+// console.log(prevpoint,nextpoint);
 nextpoint>=galleryimgsrcsarray.length?nextpoint=galleryimgsrcsarray.length-1:nextpoint=nextpoint;
 $('img[name=pointleft]').attr("data-point",""+prevpoint+"");
 $('img[name=pointright]').attr("data-point",""+nextpoint+"");
