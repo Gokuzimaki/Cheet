@@ -383,14 +383,22 @@
 					                <i class="fa fa-sticky-note-o"></i> <span>Question Entries</span> <i class="fa fa-angle-left pull-right"></i>
 					              </a>
 					              <ul class="treeview-menu">
-					                <li><a href="#homecorevalues" appdata-otype="sublink" 
+					                <li><a href="#questionentries" appdata-otype="sublink" 
 					                	appdata-name="_gdunit" 
-					                	appdata-datamap='{"vnt":["createqgroup","editqgroup"],
-					                	"mt":["qgroup","qgroup"],
-					                	"vt":"create","pr":"snippets/forms/appforms/qgroups.php",
+					                	appdata-datamap='{"vnt":["createqentries","editqentry"],
+					                	"mt":["q","qentries"],
+					                	"vt":"newqentries_crt","pr":"snippets/forms/appforms/qentries.php",
 					                	"preinit":[true,false],"ugi":true,"actionpath":["","snippets/basicsignup.php"]}' 
 					                	appdata-type="menulinkitem" appdata-fa='<i class="fa fa-sticky-note-o"></i>' 
-					                	appdata-pcrumb="Pages > Home Page "><i class="fa fa-file-image-o"></i> Home Core Values</a></li>
+					                	appdata-pcrumb="Question Entries > New "><i class="fa fa-file-image-o"></i> New</a></li>
+					                	<li><a href="#questionentries" appdata-otype="sublink" 
+					                	appdata-name="_gdunit" 
+					                	appdata-datamap='{"vnt":["createqentries","editqentry"],
+					                	"mt":["qgroup","qgroup"],
+					                	"vt":"editqentries_crt","pr":"snippets/forms/appforms/qentries.php",
+					                	"preinit":[true,false],"ugi":true,"actionpath":["","snippets/basicsignup.php"]}' 
+					                	appdata-type="menulinkitem" appdata-fa='<i class="fa fa-sticky-note-o"></i>' 
+					                	appdata-pcrumb="Question Entries > Edit "><i class="fa fa-file-gears"></i> Edit</a></li>
 					              </ul>
 					            </li>
 							</ul>
@@ -629,6 +637,9 @@
 	  									data-type="tinymce"
 	            						value="250px">';
 							
+		            		$jtest='{"totalnumber":1,"0":{"qdata":"<p>gdhdghf sfthdfghdvn &nbsp;ghsfghfhdfgjhsf &nbsp;rfghdfghfsghsfh shg</p>","options":[["uityuityu","rtyurtyuiyui","","","",""],"2"]}}';
+		            		$jsond=json_decode($jtest,true);
+
 		            	?>
 		            	<div class="row">
 		            		<div class="col-lg-12">
@@ -636,7 +647,8 @@
 				            </div>
 		            	</div>
 	        			<?php 
-	        				// var_dump($jsonenc);
+	        				var_dump($jsond);
+	        				
 	        				// var_dump($jd);
 	        				// echo $jd['widget'];
 	        				// var_dump($testfunc);
@@ -710,8 +722,23 @@
 													</div>
 				                            	</div>
 											</div>
-											<!-- Question data Type -->
+											<!-- Question Title-->
 											<div class="col-md-4">
+				                            	<div class="form-group">
+													<label>Title</label>
+													<div class="input-group">
+														<div class="input-group-addon">
+															<i class="fa fa-calendar"></i>
+														</div>
+						                      			<input type="text" 
+						                      			name="title" 
+						                      			placeholder="Provide a title, if any"
+						                      			class="form-control" />
+													</div>
+				                            	</div>
+											</div>
+											<!-- Question data Type -->
+											<div class="col-md-6">
 				                            	<div class="form-group">
 													<label>Question Data type</label>
 													<div class="input-group">
@@ -730,7 +757,7 @@
 				                            	</div>
 											</div>
 											<!-- Question Entry Type -->
-											<div class="col-md-3">
+											<div class="col-md-6">
 				                            	<div class="form-group">
 													<label>Question Entry type</label>
 													<div class="input-group">
@@ -751,7 +778,7 @@
 											</div>
 
 											<!-- Question Set date-->
-											<div class="col-md-3">
+											<div class="col-md-4">
 				                            	<div class="form-group">
 													<label>Select the Year/Date</label>
 													<div class="input-group select2-bootstrap-prepend
@@ -769,7 +796,7 @@
 											</div>
 
 											<!-- Question duration-->
-											<div class="col-md-3">
+											<div class="col-md-4">
 				                            	<div class="form-group">
 													<label>Specify exam duration</label>
 													<div class="input-group ">
@@ -786,7 +813,7 @@
 											</div>
 
 											<!-- Question Update Status -->
-											<div class="col-md-3">
+											<div class="col-md-4">
 				                            	<div class="form-group">
 													<label>Upload Status 
 														<small>Publish this or save for later</small>
@@ -1208,7 +1235,22 @@
 				                              									></textarea>	
 							                        					</div>
 								                        			</div>
-									                        		<div class="col-sm-6 ">
+									                        		
+															  		<!-- total theory score  -->
+																	<div class="col-sm-6 _modelanswers">
+																		<div class="form-group">
+															                <label>Total Theory score</label>
+															      			<div class="input-group">
+																	            <div class="input-group-addon">
+																	                <i class="fa fa-list"></i>
+																	            </div>
+																	            <input class="form-control" name="theorytotalscore"
+																	            type="number" min="1" placeholder="The total theory score"/>
+																	        </div>
+															  			</div>
+															  		</div>
+															  		<!-- Total theory score -->
+															  		<div class="col-sm-6 ">
 																		<div class="form-group">
 															                <label>Select Number of Theory questions to be uploaded <small>Max of 10 at a time</small></label>
 															      			<div class="input-group">
@@ -1229,19 +1271,6 @@
 																                    	<i class="fa fa-arrow-right"></i>
 																      				</a>
 																	            </div>
-																	        </div>
-															  			</div>
-															  		</div>
-															  		<!-- questions model answers section -->
-																	<div class="col-sm-6 _modelanswers">
-																		<div class="form-group">
-															                <label>Total Theory score</label>
-															      			<div class="input-group">
-																	            <div class="input-group-addon">
-																	                <i class="fa fa-list"></i>
-																	            </div>
-																	            <input class="form-control" name="theorytotalscore"
-																	            type="number" min="1" placeholder="The total theory score"/>
 																	        </div>
 															  			</div>
 															  		</div>
@@ -1319,13 +1348,19 @@
 				                            qdatatype-:-select<|>
 				                            qentrytype-:-select<|>
 				                            qdate-:-input<|>
+				                            qtime-:-input<|>
 				                            status-:-select<|>
+
+				                            qmtheorytotalscore-:-input-:-[group-|-qdatatype-|-select-|-media-|-qentrytype-|-select-|-mixed:*:theory]<|>
 				                            egroup|data-:-[qmediacount>|<
 						                    qimage-|-input|image]-:-groupfall[1]-:-[single-|-qdatatype-|-select-|-media-|-qimage]<|>
 						                    egroup|data-:-[qmanswerscount>|<
 						                    qmanswer-|-input|image]-:-groupfall[1]-:-[group-|-qdatatype-|-select-|-media-|-qentrytype-|-select-|-mixed:*:theory-|-qimage]<|>
+				                            qmobjtotalscore-:-input-:-[group-|-qdatatype-|-select-|-media-|-qentrytype-|-select-|-mixed:*:obj]<|>
 						                    egroup|data-:-[qmobjoptionscount>|<
 						                    qmediaobjans-|-select]-:-groupfall[1]-:-[group-|-qdatatype-|-select-|-media-|-qentrytype-|-select-|-mixed:*:obj-|-qmediaobjans]<|>
+						                    
+				                            objtotalscore-:-input-:-[group-|-qdatatype-|-select-|-plain-|-qentrytype-|-select-|-mixed:*:obj]<|>
 						                    egroup|data-:-[objdatacount>|<
 						                    question-|-textarea>|<
 						                    option1-|-input>|<
@@ -1335,18 +1370,24 @@
 						                    option5-|-input-|-(group-*-answer-*-select-*-5)>|<
 						                    option6-|-input-|-(group-*-answer-*-select-*-6)>|<
 						                    answer-|-select]-:-groupfall[1,2,3,8,4-8,5-8,6-8,7-8]-:-[group-|-qdatatype-|-select-|-plain-|-qentrytype-|-select-|-mixed:*:obj-|-question]<|>
+				                            theorytotalscore-:-input-:-[group-|-qdatatype-|-select-|-plain-|-qentrytype-|-select-|-mixed:*:theory]<|>
 						                    egroup|data-:-[theorydatacount>|<
 						                    theoryquestion-|-textarea]-:-groupfall[1]-:-[group-|-qdatatype-|-select-|-plain-|-qentrytype-|-select-|-mixed:*:theory-|-theoryquestion]"/>
+						                    
 						                    <input type="hidden" name="errormap" 
 						                    value="qgroupset-:-Please select a question group<|>
 						                    course-:-Please choose a course<|>
 						                    qdatatype-:-NA<|>
 						                    qdataentry-:-NA<|>
 						                    qdate-:-Please choose the date for this examination entry<|>
+						                    qtime-:-Please choose the duration of this examination entry<|>
 				                            status-:-NA<|>
+				                            qmtheorytotalscore-:-Please give the total score accrueable to the theory<|>
 							                egroup|data-:-[Please Choose the scanned question image]<|>
 							                egroup|data-:-[Please Choose the scanned model answer image]<|>
+						                    qmobjtotalscore-:-Please provide the total score of the objective data entries<|>
 						                    egroup|data-:-[Please provide the correct answer to objective questions]<|>
+						                    objtotalscore-:-Please provide the total score of the objective data entries<|>
 						                    egroup|data-:-[Please provide the question>|<
 						                    Please provide the option>|<
 						                    Please provide another option>|<
@@ -1355,6 +1396,7 @@
 						                    Please Provide Option 5>|<
 						                    Please Provide Option 6>|<
 						                   	Please Choose the correct answer]<|>
+						                   	theorytotalscore-:-Please give the total score accrueable to the theory questions<|>
 						                    egroup|data-:-[Please provide the Theory question. Check the Theory Tab]"/>
 							                <div class="col-md-12 clearboth">
 								                <div class="box-footer">

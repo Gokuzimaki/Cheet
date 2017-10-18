@@ -49,6 +49,7 @@
 			$run=mysqli_query($host_connli,$query)or die(mysqli_error($host_connli)." Line  ".__LINE__);
 			$numrows=mysqli_num_rows($run);
 		}
+		
 		// for overriding the default query
 		$queryoverride="";
 		if(isset($data['single']['queryoverride'])&&$data['single']['queryoverride']!==""){

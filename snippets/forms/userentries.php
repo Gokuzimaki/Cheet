@@ -41,6 +41,7 @@
 			$data['pcoutput']="adminoutput2";
 			$data['subpcoutput']="adminoutputtwo2";
 		}
+		
 		// this section handles the display of search data
 		if($viewtype=="userplain_crt"){
 			$viewdata="userplain";
@@ -57,7 +58,7 @@
 
 					$data['pcoutput']="adminoutput2";
 					$data['subpcoutput']="adminoutputtwo2";
-					
+
 				}		
 			}
 

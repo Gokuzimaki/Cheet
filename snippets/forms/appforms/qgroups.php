@@ -750,9 +750,9 @@
 			$cmap=$cdmap['arrayoutput'];
 			// var_dump($cmap);
 
-			//check to see if the current map has the 'overriden' index and see if
+			// check to see if the current map has the 'overriden' index and see if
 			// the index value is 'true' meaning that the current query to be used
-			// is not the defaule but one present in the initial datamap
+			// is not the default but one present in the initial datamap
 			if(isset($cmap['overriden'])&&$cmap['overriden']=="true"){
 				$rmd5=$cmap['rmd5'];
 				// get the current data overriding queries from active session and

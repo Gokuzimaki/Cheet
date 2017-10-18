@@ -135,11 +135,11 @@ $(document).on("change","select[name=blogtypeid]",function(){
 // this section controls the population of courses in the 'course'
 // selection box when creating questions for them from the question 
 // groups
-$(document).on("change","select[name=qgroupset]",function(){
+$(document).on("change","select[name*=qgroup]",function(){
   var theid=$(this).val();
   var parent=$(this).parent().parent().parent().parent();
   
-  var target=parent.find('select[name=course]');
+  var target=parent.find('select[name*=course]');
   var item_loader=target.parent().find('.loadermask');
   // console.log("target: ",target," loader: ",item_loader);
   item_loader.removeClass('hidden');
@@ -1562,6 +1562,12 @@ $(document).on("blur","select[name=grouptype]",function(){
     });
     $('[data-datepicker]').datetimepicker({
         format:"YYYY-MM-DD",
+        keepOpen:true
+        // showClose:true
+        // debug:true
+    });
+    $('[data-yearpicker]').datetimepicker({
+        format:"YYYY",
         keepOpen:true
         // showClose:true
         // debug:true

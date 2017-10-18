@@ -405,14 +405,14 @@ function imageResize($imagefile,$newwidth,$newheight,$imgextension,$watermarkval
 
     }else{
       if(is_array($imagefile)){
-      $gr = new gifresizer;    //New Instance Of GIFResizer 
-      $gr->temp_dir = "frames"; //Used for extracting GIF Animation Frames
-      $dimensionwork=getDimensions($newwidth,$newheight,$width,$height,$forceStretch,$option); 
-      $cwidth=$dimensionwork['optimalWidth'];
-      $cheight=$dimensionwork['optimalHeight'];
-      $gr->resize($originalimage,$imagefile2,$cheight,$cheight); //Resizing the animation into a new file. 
+        $gr = new gifresizer;    //New Instance Of GIFResizer 
+        $gr->temp_dir = "frames"; //Used for extracting GIF Animation Frames
+        $dimensionwork=getDimensions($newwidth,$newheight,$width,$height,$forceStretch,$option); 
+        $cwidth=$dimensionwork['optimalWidth'];
+        $cheight=$dimensionwork['optimalHeight'];
+        $gr->resize($originalimage,$imagefile2,$cheight,$cheight); //Resizing the animation into a new file. 
       }else{
-      $src = imagecreatefromgif($imagefile);
+        $src = imagecreatefromgif($imagefile);
         $tmp=imagecreatetruecolor($newwidth,$newheight);
         imagecopyresampled($tmp,$src,0,0,0,0,$newwidth,$newheight, $width,$height);
         imagegif($tmp,$imgpath);
@@ -1099,6 +1099,7 @@ function numberSizeConvert($val,$units=""){
   }
   return $result;
 }
+
 // for cleaning strings and making them suitable as filenames
 function clean($string) {
    $string = str_replace(' ', '-', $string); // Replaces all spaces with hyphens.

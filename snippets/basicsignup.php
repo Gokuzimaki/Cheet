@@ -2975,15 +2975,37 @@ if ($entryvariant=="blogtypesubscription") {
 	$qgroupset=mysql_real_escape_string($_POST['qgroupset']);
 	$course=mysql_real_escape_string($_POST['course']);
 	$qdatatype=mysql_real_escape_string($_POST['qdatatype']);
+	$title=mysql_real_escape_string($_POST['title']);
 	$qentrytype=mysql_real_escape_string($_POST['qentrytype']);
 	$qdate=mysql_real_escape_string($_POST['qdate']);
 	$qtime=mysql_real_escape_string($_POST['qtime']);
-	
+	// get the current question group data
+	$qgdata=getSingleQuestionGroup($qgroupset);
+	// get the default time for the current course
+	// check to see if the question group has courses attached
+	$td="";
+	if($outs['qscdata']['total']>0){
+		for ($i=0; $i <$outs['qscdata']['total']; $i++) { 
+			if($qgdata['qscdata'][$i]['qgid']==$course){
+				$td=$qgdata['qscdata'][$i]["duration"];
+			}
+
+		}
+	}
+
+
+
+	$qtime=$qtime=="00:00"?"01:00:00":$qtime.":00";
 
 	$status=mysql_real_escape_string($_POST['status']);
+	$objdetails=mysql_real_escape_string($_POST['objdetails']);
+	$theorydetails=mysql_real_escape_string($_POST['theorydetails']);
 	
-	$query="INSERT INTO questions(qgid,scid,qdate,duration,qetype,status)VALUES
-	('$qgroupset','$course','$qdate','$qtime','$qentrytype','$status')";
+	$query="INSERT INTO questions(title,qgid,scid,qdate,duration,qetype,qdatatype,objinfo,theoryinfo,status
+		,entrydate)
+	VALUES
+	('$title','$qgroupset','$course','$qdate','$qtime','$qentrytype','$qdatatype','$objdetails','$theorydetails',
+		'$status',CURRENT_TIMESTAMP)";
 
 	$qdata=briefquery($query,__LINE__,"mysqli",true);
 
@@ -3005,7 +3027,16 @@ if ($entryvariant=="blogtypesubscription") {
 	// for carrying  theory data  to be cnverted to json for db storage
 	$qtheorydata=array();
 	$qtheorydata['totalnumber']=0;
+
+	// for carrying the objective and theory information
+	$objdetails="";
+	$theorydetails="";
 	
+	// for storing the total theory score
+	$objtotalscore=0;
+
+	// for storing the total theory score
+	$theorytotalscore=0;
 	// proceed to check the nature of the current question entry and insert as needed
 	if($qdatatype=="media"){
 
@@ -3059,7 +3090,7 @@ if ($entryvariant=="blogtypesubscription") {
 		
 		// check to see if the current entry is mixed or theory and ensure that the
 		// model answers if any are available
-		if(($qentrytype=="mixed"||$qentrytype=="theory"){
+		if($qentrytype=="mixed"||$qentrytype=="theory"){
 			$theorytotalscore=mysql_real_escape_string($_POST['qmtheorytotalscore']);
 			// perform the model answers media data entry
 			for($i=1;$i<=$qmanswerscount;$i++){
@@ -3117,11 +3148,16 @@ if ($entryvariant=="blogtypesubscription") {
 			// json
 			for ($i=1; $i <= $qmobjoptionscount ; $i++) { 
 				# code...
-				$qmediaobjans=mysql_real_escape_string($_POST['qmediaobjans'.$i.'']);	
-				$qobjdata[$i]=array(
-								"qdata"=>"",
-								"options"=>array(array(),"$qmediaobjans")
-								);
+				$qmediaobjans=isset($_POST['qmediaobjans'.$i.''])?
+				mysql_real_escape_string($_POST['qmediaobjans'.$i.'']):"0";
+				if($qmediaobjans!==""){
+
+					$qobjdata[]=array(
+									"qdata"=>"",
+									"options"=>array(array(),"$qmediaobjans")
+									);
+					$qobjdata['totalnumber']+=1;
+				}
 			}
 			
 			
@@ -3134,24 +3170,29 @@ if ($entryvariant=="blogtypesubscription") {
 			$objdetails=mysql_real_escape_string($_POST['objdetails']);
 			$objtotalscore=mysql_real_escape_string($_POST['objtotalscore']);
 			$objdatacount=mysql_real_escape_string($_POST['objdatacount']);
-
-			for ($i=1; $i < $objdatacount; $i++) { 
+			// echo "$objdatacount<br>";
+			for ($i=1; $i <= $objdatacount; $i++) { 
 				# code...  
 				$question=mysql_real_escape_string($_POST['question'.$i.'']);
+				$answer=mysql_real_escape_string($_POST['answer'.$i.'']);
+				// echo "$question <br> $answer $objdatacount<br>";
 				$curoptdata=array();
+				
+
 				//  there are only 6 options currently
 				for ($t=1; $t <= 6; $t++) { 
 					# code...
 					$tt=$t-1;
 
-					$curoption=mysql_real_escape_string($_POST['options'.$t.''.$i.'']);
-					$curoptdata[$tt]['option']=$curoption;
-					
+					$curoption=mysql_real_escape_string($_POST['option'.$t.''.$i.'']);
+					$hasmedia="no";
+
 					// check if there are any attached files to the current option
-					$contentpic=isset($_FILES['qoptimg'.$t.''.$i.'']['tmp_name'])?
-					$_FILES['qoptimg'.$i.'']['tmp_name']:"";
+					$contentpic=isset($_FILES['qoptimg'.$i.''.$t.'']['tmp_name'])?
+					$_FILES['qoptimg'.$t.''.$i.'']['tmp_name']:"";
 				    if($contentpic!==""){
-				      	$image="qoptimg$i";
+				    	$hasmedia="yes";
+				      	$image="qoptimg$t$i";
 						$imgpath[0]='../files/originals/';
 						$imgpath[1]='../files/medsizes/';
 						$imgpath[2]='../files/thumbnails/';
@@ -3191,9 +3232,22 @@ if ($entryvariant=="blogtypesubscription") {
 								'$imagepath3','$filesize','$width','$height')";
 						$mediarun=mysqli_query($host_connli,$mediaquery)or die(mysqli_error($host_connli));
 				    }
+					$curoptdata[$tt]['media']=$hasmedia;
+					$curoptdata[$tt]=$curoption;
+					
 
 				}
+
+
+				
+				$qobjdata[]=array(
+								"qdata" => $question,
+								"options" => array($curoptdata,$answer)
+							);
+				$qobjdata['totalnumber']+=1;
 			}
+			// var_dump($qobjdata);
+
 		}
 
 
@@ -3208,17 +3262,33 @@ if ($entryvariant=="blogtypesubscription") {
 
 				$theoryquestion=mysql_real_escape_string($_POST['theoryquestion'.$i.'']);	
 				$theoryqscore=mysql_real_escape_string($_POST['theoryqscore'.$i.'']);	
-				$theoryqmodalanswer=mysql_real_escape_string($_POST['theoryqmodalanswer'.$i.'']);	
-				$qobjdata[$i]=array(
+				$theoryqmodelanswer=mysql_real_escape_string($_POST['theoryqmodelanswer'.$i.'']);	
+				
+				$qtheorydata[]=array(
 								"qdata"=>"$theoryquestion",
 								"score"=>$theoryqscore,
 								"modelanswer"=>"$theoryqmodelanswer");
+				$qtheorydata['totalnumber']+=1;
 			}
 			
 			
 		}
 				
 	}
+
+	// insert the extra question information
+	$qobjdata=json_encode($qobjdata);
+	// var_dump($qobjdata);
+	genericSingleUpdate("questions","totalobj",$qobjdata,"id",$entryid);
+
+	$qtheorydata=json_encode($qtheorydata);
+	genericSingleUpdate("questions","totaltheory",$qtheorydata,"id",$entryid);
+
+	genericSingleUpdate("questions","totalobjscore",$objtotalscore,"id",$entryid);
+	genericSingleUpdate("questions","totaltheoryscore",$theorytotalscore,"id",$entryid);
+
+	// for viewing variable values after submission
+	// echo "$objtotalscore $theorytotalscore";
 
 	// prepare content for the notification redirect section (nrsection)
 	$action="Create";
