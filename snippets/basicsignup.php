@@ -2984,6 +2984,7 @@ if ($entryvariant=="blogtypesubscription") {
 	// get the default time for the current course
 	// check to see if the question group has courses attached
 	$td="";
+	$outs=getSingleQuestionGroup($qgroupset);
 	if($outs['qscdata']['total']>0){
 		for ($i=0; $i <$outs['qscdata']['total']; $i++) { 
 			if($qgdata['qscdata'][$i]['qgid']==$course){
@@ -3019,6 +3020,10 @@ if ($entryvariant=="blogtypesubscription") {
 	$qmobjoptionscount=mysql_real_escape_string($_POST['qmobjoptionscount']);
 	$objdatacount=mysql_real_escape_string($_POST['objdatacount']);
 	$theorydatacount=mysql_real_escape_string($_POST['theorydatacount']);
+
+	// alphabet to number arr. Used when importing question content via excel
+	// worksheet 
+	$alp=array("A"=>1,"B"=>2,"C"=>3,"D"=>4,"E"=>5,"F"=>6);
 
 	// for carrying obj data to be converted to json
 	$qobjdata=array();
@@ -3083,7 +3088,8 @@ if ($entryvariant=="blogtypesubscription") {
 					location,medsize,thumbnail,filesize,width,height)VALUES
 					('$entryid','qentry','qimage','image','$imagepath','$imagepath2',
 						'$imagepath3','$filesize','$width','$height')";
-				$mediarun=mysqli_query($host_connli,$mediaquery)or die(mysqli_error($host_connli));
+				$mediarun=mysqli_query($host_connli,$mediaquery)or 
+				die(mysqli_error($host_connli));
 		    }
 		}
 
@@ -3092,6 +3098,11 @@ if ($entryvariant=="blogtypesubscription") {
 		// model answers if any are available
 		if($qentrytype=="mixed"||$qentrytype=="theory"){
 			$theorytotalscore=mysql_real_escape_string($_POST['qmtheorytotalscore']);
+			$qtheorydata[]=array(
+								"qdata"=>"",
+								"score"=>$theorytotalscore,
+								"modelanswer"=>"");
+			$qtheorydata['totalnumber']+=1;
 			// perform the model answers media data entry
 			for($i=1;$i<=$qmanswerscount;$i++){
 				$contentpic=isset($_FILES['qmanswer'.$i.'']['tmp_name'])?
@@ -3144,6 +3155,8 @@ if ($entryvariant=="blogtypesubscription") {
 		// perform the objective data entry
 		if($qentrytype=="mixed"||$qentrytype=="obj"){
 			$objtotalscore=mysql_real_escape_string($_POST['qmobjtotalscore']);
+			$worksheetfile=isset($_FILES['worksheetfile']['tmp_name'])&&
+			$_FILES['worksheetfile']['tmp_name']!==""?$_FILES['worksheetfile']:"";
 			// since this section is for media, only the oobj scores will be tallied into
 			// json
 			for ($i=1; $i <= $qmobjoptionscount ; $i++) { 
@@ -3166,88 +3179,258 @@ if ($entryvariant=="blogtypesubscription") {
 
 	}else if($qdatatype=="plain"){
 		// perform obj data entry
+		$curoptdata=array();
+		// perform obj data entry
 		if($qentrytype=="mixed"||$qentrytype=="obj"){
 			$objdetails=mysql_real_escape_string($_POST['objdetails']);
 			$objtotalscore=mysql_real_escape_string($_POST['objtotalscore']);
 			$objdatacount=mysql_real_escape_string($_POST['objdatacount']);
+			$worksheetfile=isset($_FILES['worksheetfileobj']['tmp_name'])&&
+			$_FILES['worksheetfileobj']['tmp_name']!==""?$_FILES['worksheetfileobj']:"";
 			// echo "$objdatacount<br>";
-			for ($i=1; $i <= $objdatacount; $i++) { 
-				# code...  
-				$question=mysql_real_escape_string($_POST['question'.$i.'']);
-				$answer=mysql_real_escape_string($_POST['answer'.$i.'']);
-				// echo "$question <br> $answer $objdatacount<br>";
-				$curoptdata=array();
-				
+			$curoptdata=array();
+			# code...
+			// perform normal data entry
+			if($worksheetfile==""){
+				for ($i=1; $i <= $objdatacount; $i++) { 
+					# code...  
+					$j=$i-1;
+					
+					$question=mysql_real_escape_string($_POST['question'.$i.'']);
+					$questiondelete=isset($_POST['questiondelete'.$i.''])?
+					mysql_real_escape_string($_POST['questiondelete'.$i.'']):"";
 
-				//  there are only 6 options currently
-				for ($t=1; $t <= 6; $t++) { 
-					# code...
-					$tt=$t-1;
-
-					$curoption=mysql_real_escape_string($_POST['option'.$t.''.$i.'']);
-					$hasmedia="no";
-
-					// check if there are any attached files to the current option
-					$contentpic=isset($_FILES['qoptimg'.$i.''.$t.'']['tmp_name'])?
-					$_FILES['qoptimg'.$t.''.$i.'']['tmp_name']:"";
-				    if($contentpic!==""){
-				    	$hasmedia="yes";
-				      	$image="qoptimg$t$i";
-						$imgpath[0]='../files/originals/';
-						$imgpath[1]='../files/medsizes/';
-						$imgpath[2]='../files/thumbnails/';
-						$imgsize[0]="default";
-						$imgsize[1]=",300";
-						$imgsize[2]=",85";
-						$acceptedsize="";
-						$imgouts=genericImageUpload($image,"varying",$imgpath,$imgsize,$acceptedsize);
-
-						// original image
-						$imagepath=substr($imgouts[0], 1,strlen($imgouts[0]));
-
-						// medsize
-						$imagepath2=substr($imgouts[1], 1,strlen($imgouts[1]));
-
-						// thumbnail
-						$imagepath3=substr($imgouts[2], 1,strlen($imgouts[2]));
-						
-						// get image size details
-						list($width,$height)=getimagesize($imgouts[0]);
-						$imagesize=$_FILES[''.$image.'']['size'];
-						$filesize=$imagesize/1024;
-						//echo $filefirstsize;
-						$filesize=round($filesize, 0, PHP_ROUND_HALF_UP);
-						if(strlen($filesize)>3){
-							$filesize=$filesize/1024;
-							$filesize=round($filesize,2); 
-							$filesize="".$filesize."MB";
-						}else{
-							$filesize="".$filesize."KB";
-						}
-						//$coverpicid=getNextId("media");
-						//maintype variants are original, medsize, thumb for respective size image.
-						$mediaquery="INSERT INTO media(ownerid,ownertype,mainid,maintype,
-							mediatype,location,medsize,thumbnail,filesize,width,height)VALUES
-							('$entryid','qentry','$t','qoptimage','image','$imagepath','$imagepath2',
-								'$imagepath3','$filesize','$width','$height')";
-						$mediarun=mysqli_query($host_connli,$mediaquery)or die(mysqli_error($host_connli));
-				    }
-					$curoptdata[$tt]['media']=$hasmedia;
-					$curoptdata[$tt]=$curoption;
+					$answer=mysql_real_escape_string($_POST['answer'.$i.'']);
+					// echo "$question <br> $answer $objdatacount<br>";
 					
 
+					//  there are only 6 options currently
+					for ($t=1; $t <= 6; $t++) { 
+						# code...
+						$tt=$t-1;
+
+						$curoption=mysql_real_escape_string($_POST['option'.$t.''.$i.'']);
+						$hasmedia="no";
+
+						// check if there are any attached files to the current option
+						$contentpic=isset($_FILES['qoptimg'.$t.''.$i.'']['tmp_name'])?
+						$_FILES['qoptimg'.$t.''.$i.'']['tmp_name']:"";
+
+						$deletepic=isset($_POST['qoptimgdelete'.$t.''.$i.''])?
+						$_POST['qoptimgdelete'.$t.''.$i.'']:0;
+						
+						$imgid=isset($_POST['qoptimgid'.$t.''.$i.''])?
+						$_POST['qoptimgid'.$t.''.$i.'']:0;
+						
+						if($delete==""){
+						    if($contentpic!==""&&$curoption!==""){
+						    	$hasmedia="yes";
+						      	$image="qoptimg$t$i";
+								$imgpath[0]='../files/originals/';
+								$imgpath[1]='../files/medsizes/';
+								$imgpath[2]='../files/thumbnails/';
+								$imgsize[0]="default";
+								$imgsize[1]=",300";
+								$imgsize[2]=",85";
+								$acceptedsize="";
+								$imgouts=genericImageUpload($image,"varying",$imgpath,$imgsize,$acceptedsize);
+
+								// original image
+								$imagepath=substr($imgouts[0], 1,strlen($imgouts[0]));
+
+								// medsize
+								$imagepath2=substr($imgouts[1], 1,strlen($imgouts[1]));
+
+								// thumbnail
+								$imagepath3=substr($imgouts[2], 1,strlen($imgouts[2]));
+								
+								// get image size details
+								list($width,$height)=getimagesize($imgouts[0]);
+								$imagesize=$_FILES[''.$image.'']['size'];
+								$filesize=$imagesize/1024;
+								//echo $filefirstsize;
+								$filesize=round($filesize, 0, PHP_ROUND_HALF_UP);
+								if(strlen($filesize)>3){
+									$filesize=$filesize/1024;
+									$filesize=round($filesize,2); 
+									$filesize="".$filesize."MB";
+								}else{
+									$filesize="".$filesize."KB";
+								}
+								if($imgid<1){
+									//$coverpicid=getNextId("media");
+									//maintype variants are original, medsize, thumb for respective size image.
+									$mediaquery="INSERT INTO media(ownerid,ownertype,mainid,maintype,
+										mediatype,location,medsize,thumbnail,filesize,width,height)VALUES
+										('$entryid','qentry','$t','qoptimage','image','$imagepath','$imagepath2',
+											'$imagepath3','$filesize','$width','$height')";
+									$mediarun=mysqli_query($host_connli,$mediaquery)or die(mysqli_error($host_connli));
+									$imgid=mysqli_insert_id($host_connli);
+									
+								}else{
+									$imgdata=getSingleMediaDataTwo($imgid);
+									$prevpic=".".$imgdata['location'];
+									$prevmed=".".$imgdata['medsize'];
+									$prevthumb=".".$imgdata['thumbnail'];
+
+									if(file_exists($prevpic)&&$prevpic!=="."){
+										unlink($prevpic);
+									}
+									if(file_exists($prevmed)&&$prevmed!=="."){
+										unlink($prevmed);
+									}
+									if(file_exists($prevthumb)&&$prevthumb!=="."){
+										unlink($prevthumb);
+									}
+									genericSingleUpdate("media","location",$imagepath,"id",$imgid);
+									genericSingleUpdate("media","medsize",$imagepath2,"id",$imgid);
+									genericSingleUpdate("media","thumbnail",$imagepath3,"id",$imgid);
+									genericSingleUpdate("media","filesize",$filesize,"id",$imgid);
+									genericSingleUpdate("media","width",$width,"id",$imgid);
+									genericSingleUpdate("media","height",$height,"id",$imgid);
+								}
+						    }
+						}else{
+							// delete the current image
+					    	if($imgid>0){
+					    		deleteMedia($imgid);
+					    		$imgid=0;
+					    	}
+
+						}
+
+						$curoptdata[$tt]['media']=$imgid;
+						$curoptdta[$tt]['value']=$curoption;
+						
+					}
+
+
+					if($question!==""){
+
+						$qobjdata[]=array(
+										"qdata" => $question,
+										"options" => array($curoptdata,$answer)
+									);
+						$qobjdata['totalnumber']+=1;
+					}
+				
+				}
+			}
+			
+
+			// check for the worksheet file that handles the obj section
+			if($worksheetfile!==""&&getExtension($worksheetfile['name'])=="xlsx"){
+				//  Include PHPExcel_IOFactory
+				include 'phpexcel/Classes/PHPExcel/IOFactory.php';
+				$outsfile=simpleUpload('worksheetfileobj','../files/');
+				$inputFileName=$outsfile['filelocation'];
+				// echo $inputFileName;
+				// $inputFileName = './sampleData/example1.xls';
+
+				//  Read your Excel workbook
+				try {
+				    $inputFileType = PHPExcel_IOFactory::identify($inputFileName);
+				    $objReader = PHPExcel_IOFactory::createReader($inputFileType);
+				    $objPHPExcel = $objReader->load($inputFileName);
+				} catch(Exception $e) {
+				    die('Error loading file "'.pathinfo($inputFileName,PATHINFO_BASENAME).'": '.$e->getMessage());
 				}
 
+				//  Get worksheet dimensions
+				$sheetCount = $objPHPExcel->getSheetCount();
+				// echo $sheetCount;
+				for ($sc=0; $sc < $sheetCount; $sc++) { 
+					# code...
+					$sheet = $objPHPExcel->getSheet($sc); 
+					// var_dump($sheet);
+					$highestRow = $sheet->getHighestDataRow(); 
+					$highestColumn = $sheet->getHighestDataColumn();
+					$rowData=array();
+					
+					// skipped row variable
+					// $skr=$sc==0?2:1;
+					//  Loop through each row of the worksheet in turn
+					for ($row = 2; $row <= $highestRow; $row++){ 
+					    //  Read a row of data into an array
+					    // row info A - numeric value from A-F 
+					    $rowData[] = $sheet->rangeToArray('A' . $row . ':' . $highestColumn . $row,
+					                                    NULL,
+					                                    TRUE,
+					                                    FALSE);
+					    //  Insert row data array into your database of choice here
+					}
+					// var_dump($rowData);
+					
+					// get  rows and insert them
+					for($t=0;$t<count($rowData);$t++){
 
-				
-				$qobjdata[]=array(
-								"qdata" => $question,
-								"options" => array($curoptdata,$answer)
-							);
-				$qobjdata['totalnumber']+=1;
+						// get column section
+						for($i=0;$i<count($rowData[$t]);$i++){
+							// question data 
+
+							//  COl A - question number (index:0)
+							// COL B - question entry (index:1)
+							// COL C-H - question Options corresponding to A-F (index:2-7)
+							// COL I - question alphabet answer A-F corresponding to 
+							// values 1-6 (index:8)
+							
+
+							$qn=isset($rowData[$t][$i][0])&&
+							$rowData[$t][$i][0]!==""?
+							mysql_real_escape_string($rowData[$t][$i][0]):"";
+							
+							$question=isset($rowData[$t][$i][1])&&
+							$rowData[$t][$i][1]!==""?
+							mysql_real_escape_string($rowData[$t][$i][1]):"";
+
+							$answer=isset($rowData[$t][$i][8])&&
+							$rowData[$t][$i][8]!==""?
+							mysql_real_escape_string($rowData[$t][$i][8]):"";
+
+							$answer=isset($alp["".strtoupper($answer).""])?
+							$alp["".strtoupper($answer).""]:"";
+							// echo $answer;
+							//  there are only 6 options currently
+							for ($j=2; $j <= 7; $j++) { 
+								# code...
+								$jt=$j-2;
+								$curoption=isset($rowData[$t][$i][$j])&&
+								$rowData[$t][$i][$j]!==""?
+								mysql_real_escape_string($rowData[$t][$i][$j]):"";
+
+								$hasmedia="no";
+
+								// check if there are any attached files to the current option
+								$contentpic=isset($_FILES['qoptimg'.$i.''.$j.'']['tmp_name'])?
+								$_FILES['qoptimg'.$j.''.$i.'']['tmp_name']:"";
+								$curoptdata[$jt]['value']=$curoption;
+								$curoptdata[$jt]['media']=0;
+								
+							}
+
+
+							if($question!==""){
+
+								$qobjdata[]=array(
+												"qdata" => $question,
+												"options" => array($curoptdata,$answer)
+											);
+								$qobjdata['totalnumber']+=1;
+							}
+							// end column loop
+						}
+						// end row loop
+
+						// delete the uploaded worksheetfile
+						if(file_exists($inputFileName)){
+							unlink($inputFileName);
+						}
+					}			
+				}
 			}
 			// var_dump($qobjdata);
-
+			
+  
 		}
 
 
@@ -3264,11 +3447,15 @@ if ($entryvariant=="blogtypesubscription") {
 				$theoryqscore=mysql_real_escape_string($_POST['theoryqscore'.$i.'']);	
 				$theoryqmodelanswer=mysql_real_escape_string($_POST['theoryqmodelanswer'.$i.'']);	
 				
-				$qtheorydata[]=array(
-								"qdata"=>"$theoryquestion",
-								"score"=>$theoryqscore,
-								"modelanswer"=>"$theoryqmodelanswer");
-				$qtheorydata['totalnumber']+=1;
+				// echo $theoryquestion;
+				if($theoryquestion!==""){
+
+					$qtheorydata[]=array(
+									"qdata"=>"$theoryquestion",
+									"score"=>$theoryqscore,
+									"modelanswer"=>"$theoryqmodelanswer");
+					$qtheorydata['totalnumber']+=1;
+				}
 			}
 			
 			
@@ -3296,9 +3483,9 @@ if ($entryvariant=="blogtypesubscription") {
 	$actiondetails="New Question entry Created";
 	// the current notification data id for storage
 	$notid=$entryid;
-	$notrdtype="none";//stops redirection
+	// $notrdtype="none";//stops redirection
 
-	$nonottype="none";// stops notification table update
+	// $nonottype="none";// stops notification table update
 	// bring in the nrsection.php file
 	include('nrsection.php');
 }

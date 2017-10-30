@@ -1771,7 +1771,12 @@ filter:alpha(opacity=100)}body[data-name="admin"] a {    display: inline;
     opacity: 0.7;
 }
 .nopadding{
-    padding:0px;
+    padding:0px; 
+}
+
+.nopadding-right {
+    padding: 0px; 
+    padding-right: 5px;
 }
 .bs-igicon{
     padding: 9px 12px;

@@ -3058,7 +3058,7 @@ function submitCustom(formname, stype="") {
                             preinit = 'if(' + fieldname + '.val()!==""&&formstatus==true&&pointmonitor==false){' + 'var checkout=getExtension(' + fieldname + '.val());' + 'if(' + fetblock + '' + fecblock + '){' + ' window.alert(' +feerrset+ ');console.log("Preview");' + ' $(' + fieldname + ').addClass(\'error-class\').focus();' + ' formstatus= false;' + ' pointmonitor=true;' + '}' + '}';
                         }
                         // console.log("suberrgroupdata: ",suberrgroupdata[x]);
-                        var errmsgout = suberrgroupdata[x].replace(/[\n\r]+/g, "").replace(/\s{2,}/g, ' ');
+                        var errmsgout = typeof(suberrgroupdata[x])!=="undefined"?suberrgroupdata[x].replace(/[\n\r]+/g, "").replace(/\s{2,}/g, ' '):"";
                         finalgroup[x] = [];
                         // store the key as a value with the field name as the value
                         finalgroup['' + fieldname + ''] = x;

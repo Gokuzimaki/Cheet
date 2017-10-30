@@ -245,7 +245,7 @@
 				// get the cover image for the question group if any is available
 				$mediaquery="SELECT * FROM media WHERE ownerid=$picid AND ownertype='qgroup' 
 				AND maintype='coverphoto'";
-				$mediarun=briefquery($mediaquery,__LINE__,"mysqli");;
+				$mediarun=briefquery($mediaquery,__LINE__,"mysqli");
 				// echo $mediaquery;
 
 				if($mediarun['numrows']>0){
@@ -912,7 +912,7 @@
 					$selectionscripts.='$("form[name='.$formtruetype.'] select[name=qgroupset]").val("'.$qgid.'");';
 					$selectionscripts.='$("form[name='.$formtruetype.'] select[name=course]").val("'.$scid.'");';
 					$selectionscripts.='$("form[name='.$formtruetype.'] select[name=qentrytype]").val("'.$qetype.'");';
-					$selectionscripts.='$("form[name='.$formtruetype.'] select[name=qdatatype]").val("'.$qdaratype.'");';
+					$selectionscripts.='$("form[name='.$formtruetype.'] select[name=qdatatype]").val("'.$qdatatype.'");';
 					$selectionscripts.='$("form[name='.$formtruetype.'] select[name=status]").val("'.$status.'");';
 
 				}
@@ -923,11 +923,11 @@
 
 				if($row['profpicdata']['id']>0){
 
-					$coverphoto='<a href="'.$host_addr.''.$row['location'].'" 
+					$coverphoto='<a href="'.$row['profpicdata']['location'].'" 
 									data-lightbox="cat'.$id.'" 
-									data-src="'.$host_addr.''.$row['location'].'">
-									<img src="'.$host_addr.''.$row['medsize'].'" 
-									title="'.$title.'"/>
+									data-src="'.$row['profpicdata']['location'].'">
+									<img src="'.$row['profpicdata']['medsize'].'" 
+									title="'.$qgdata['title'].'"/>
 								</a>';
 				}else{
 					$coverphoto='<i class="fa fa-file-image-o td-pag-fa"></i>';
@@ -935,11 +935,12 @@
 
 				// get the current course list
 				$select="";
+				$curcourse="";
 				if($qgdata['qscdata']['total']>0){
 					for ($i=1; $i <=$qgdata['qscdata']['total']; $i++) { 
 						$n=$i-1;
 						$cdata=$qgdata['qscdata'][$n];
-						
+						$curcourse=$cdata['id']==$scid?$cdata['title']:$curcourse;
 						$select.='<option value="'.$cdata['id'].'"
 						>'.$cdata['title'].'</option>';
 					}
@@ -947,30 +948,62 @@
 
 				$row['courselist']=$select;
 
-				// parse the obj data
+				// parse the obj json data
 
-				$row['pdobj']=json_decode($totalobj);
-				$row['pdtheory']=json_decode($totaltheory);
+				$row['pdobj']=json_decode($totalobj,true);
+				$row['pdtheory']=json_decode($totaltheory,true);
 
 				// create the selection script values for the obj and theory data sections
+				// and perform media data retrieval for the options
 				$pdobj=$row['pdobj'];
 				$pdtheory=$row['pdtheory'];
-				if($qdaTatype=="media"){
+				$row['qmediadata']['numrows']=0;
+				$row['qmanswerdata']['numrows']=0;
+				if($qdatatype=="media"){
 					if($pdobj['totalnumber']>0){
 						for ($i=0; $i < $pdobj['totalnumber']; $i++) { 
 							# code...
 							$j=$i+1;
 							$cobj=$pdobj[$i]["options"];
+
+							// add the selection script data
 							if($cobj[1]!==""){
 								$selectionscripts.='$("form[name='.$formtruetype.'] select[name=qmediaobjans'.$j.']").val("'.$cobj[1].'");';
 							}
 						}
 					}
-				}else if($qdaTatype=="plain"){
+					
+					// check the media table for uploaded past questions images
+					$mediaquery="SELECT * FROM media WHERE ownerid=$id AND 
+					ownertype='qentry' AND maintype='qimage'";
+					$mediarun=briefquery($mediaquery,__LINE__,"mysqli");
+					$row['qmediadata']=$mediarun;
 
+					// check the media table for uploaded model answer images
+					$mediaquery="SELECT * FROM media WHERE ownerid=$id AND 
+					ownertype='qentry' AND maintype='qmanswer'";
+					$mediarun=briefquery($mediaquery,__LINE__,"mysqli");
+					$row['qmanswerdata']=$mediarun;
+
+
+				}else if($qdatatype=="plain"){
+					if($pdobj['totalnumber']>0){
+						for ($i=0; $i < $pdobj['totalnumber']; $i++) { 
+							# code...
+							$j=$i+1;
+							$cobj=$pdobj[$i]["options"];
+							
+							// search for attached media on the options
+							
+							// add the selection script data
+							if($cobj[1]!==""){
+								$selectionscripts.='$("form[name='.$formtruetype.'] select[name=answer'.$j.']").val("'.$cobj[1].'");';
+							}
+						}
+					}
 				}
 
-
+				// check and perform sata operaions if the question entry type 
 
 				// create the table data display
 				if(isset($tdataoutput)){
@@ -983,6 +1016,7 @@
 				$tddataoutput=isset($tdataoutput)&&$tdataoutput!==""?$tdataoutput:'
 		    		<td class="tdimg">'.$coverphoto.'</td>
 		    		<td>'.$qgdata['title'].'</td>
+		    		<td>'.$curcourse.'</td>
 		    		<td>'.$year.'</td>
 		    		<td>'.$qdatatype.'</td>
 		    		<td>'.$qetype.'</td>
@@ -1124,14 +1158,14 @@
 		// the 'pagpath' variable defines the current file name/path for the form file 
 		// handling the data display for the current function if its within a path,
 		// this path must be in the '$ROOT/snippets/forms' folder
-		$pagpath="appforms/qgroups.php"; 
+		$pagpath="appforms/qentries.php"; 
 		if(isset($data['pagpath'])&&$data['pagpath']!==""){
 			$pagpath=$data['pagpath'];	
 		}
 
 		// the 'pagtype' variable defines the title for the current functions 
 		// pagination
-		$pagtype="qgroup";
+		$pagtype="qentries";
 		if(isset($data['pagtype'])&&$data['pagtype']!==""){
 			$pagtype=$data['pagtype'];	
 		}
@@ -1156,7 +1190,7 @@
 		// Instances for its use involve situations
 		// where only the data function has to pull only a subset of a larger
 		// set of values by default.
-		$viewerdata="WHERE type='main'";
+		$viewerdata="";
 		if(isset($data['viewerdata'])&&$data['viewerdata']!==""){
 			$viewerdata=$data['viewerdata'];
 		}
@@ -1170,12 +1204,12 @@
 		}
 
 		
-		$outputtype="generalpages|qgroup|".$viewer;
+		$outputtype="generalpages|qentries|".$viewer;
 		$queryoverride="";
 		$queryextra="";
 		$ordercontent="order by id desc";
 		$qcat=$viewer=="admin"?"WHERE":"AND";
-		$qcat="AND";
+		// $qcat="AND";
 		
 
 		// query order 
@@ -1200,8 +1234,8 @@
 
 
 		/*** MAIN DATA FUNCTION QUERY SECTION***/
-		$query="SELECT * FROM qgroup $viewerdata $queryextra $ordercontent ".$limit."";
-		$rowmonitor['chiefquery']="SELECT * FROM qgroup $viewerdata $queryextra 
+		$query="SELECT * FROM questions $viewerdata $queryextra $ordercontent ".$limit."";
+		$rowmonitor['chiefquery']="SELECT * FROM questions $viewerdata $queryextra 
 		$ordercontent";
 		/*** END MAIN DATA FUNCTION QUERY SECTION***/
 		
@@ -1318,7 +1352,7 @@
 
 				$data['row']=$row;
 
-				$outvartwo=getSingleQuestionGroup($row['id'],$singletype,$data);
+				$outvartwo=getSingleQuestionEntry($row['id'],$singletype,$data);
 
 				$datamapout=$outvartwo['datamapout'];
 
@@ -1329,30 +1363,9 @@
 				$selectiondata.='<option value="'.$outvartwo['id'].'">
 				'.$outvartwo['title'].'</option>';
 
-				// generate result dataset for the current functions output
-				// but in this instance manipulate its content based on the 
-				// the presence and corresponding value of a $data array index
-				// 'grouptypedata'. This index is only present when a search is carried
-				// out in the search section of the handler file for this function
-				if(isset($data['grouptypedata'])&&$data['grouptypedata']!==""){
-
-					// only add new data if they satisfy the condition
-					// of having sub groups
-					if($data['grouptypedata']=="hassubgroup"&&
-						$outvartwo['grouptype']=="hassubgroup"){
-						// echo " grouptypedata here";
-						$adminoutput.=$outvartwo['adminoutput'];
-						$row['resultdataset'][]=$outvartwo;
-						// reduce the total number of rows as needed
-						$numrows--;
-					}
-
-				}else{
-					// this section means that everything should be done as needed
-					$adminoutput.=$outvartwo['adminoutput'];
-					$row['resultdataset'][]=$outvartwo;
-					
-				}
+				// this section means that everything should be done as needed
+				$adminoutput.=$outvartwo['adminoutput'];
+				$row['resultdataset'][]=$outvartwo;
 			}
 		}
 
@@ -1360,7 +1373,7 @@
 		$row['cqtdata']=$query;
 
 
-		/* PREPARE UTPUT CONTENT DATA SECTION*/
+		/* PREPARE OUTPUT CONTENT DATA SECTION*/
 		$outs=paginatejavascript($numrows);
 
 		$row['selectiondata']=$selectiondata;
@@ -1374,10 +1387,11 @@
 		$top='<table id="resultcontenttable" cellspacing="0">
 				<thead><tr>
 				<th>CoverPhoto</th>
-				<th>Title</th>
-				<th>Acronym</th>
-				<th>SubGroups</th>
-				<th>Courses</th>
+				<th>QGroup</th>
+				<th>Course</th>
+				<th>Year</th>
+				<th>Data Type</th>
+				<th>Entry Type</th>
 				<th>Status</th>
 				<th>View/Edit</th>
 				</tr></thead>

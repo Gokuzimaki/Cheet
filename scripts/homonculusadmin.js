@@ -221,7 +221,7 @@ $(document).on("blur","select[name=qdatatype]",function(){
 $(document).on("blur","select[name=qentrytype]",function(){
   var cval=$(this).val();
   var par=$(this).parent().parent().parent().parent();
-  console.log("current val",cval);
+  //   console.log("current val",cval);
   if(cval=="theory"){
     // widen the question image upload section
     par.find('.qmediadata .col-md-7._first').removeClass("col-md-7").addClass("col-md-12");
@@ -325,7 +325,7 @@ $(document).on("click","input[data-type=submitcrt]",function(){
           },
           error: function(error) {
               if (typeof (error) == "object") {
-                  console.log(error.responseText);
+                  console.log("Error: ", error.responseText);
               }else{
                   console.log("Error: ",error);
               }

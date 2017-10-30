@@ -386,7 +386,7 @@
 					                <li><a href="#questionentries" appdata-otype="sublink" 
 					                	appdata-name="_gdunit" 
 					                	appdata-datamap='{"vnt":["createqentries","editqentry"],
-					                	"mt":["q","qentries"],
+					                	"mt":["qentries","qentries"],
 					                	"vt":"newqentries_crt","pr":"snippets/forms/appforms/qentries.php",
 					                	"preinit":[true,false],"ugi":true,"actionpath":["","snippets/basicsignup.php"]}' 
 					                	appdata-type="menulinkitem" appdata-fa='<i class="fa fa-sticky-note-o"></i>' 
@@ -394,11 +394,11 @@
 					                	<li><a href="#questionentries" appdata-otype="sublink" 
 					                	appdata-name="_gdunit" 
 					                	appdata-datamap='{"vnt":["createqentries","editqentry"],
-					                	"mt":["qgroup","qgroup"],
+					                	"mt":["qentries","qentries"],
 					                	"vt":"editqentries_crt","pr":"snippets/forms/appforms/qentries.php",
 					                	"preinit":[true,false],"ugi":true,"actionpath":["","snippets/basicsignup.php"]}' 
 					                	appdata-type="menulinkitem" appdata-fa='<i class="fa fa-sticky-note-o"></i>' 
-					                	appdata-pcrumb="Question Entries > Edit "><i class="fa fa-file-gears"></i> Edit</a></li>
+					                	appdata-pcrumb="Question Entries > Edit "><i class="fa fa-gears"></i> Edit</a></li>
 					              </ul>
 					            </li>
 							</ul>
@@ -637,7 +637,7 @@
 	  									data-type="tinymce"
 	            						value="250px">';
 							
-		            		$jtest='{"totalnumber":1,"0":{"qdata":"<p>gdhdghf sfthdfghdvn &nbsp;ghsfghfhdfgjhsf &nbsp;rfghdfghfsghsfh shg</p>","options":[["uityuityu","rtyurtyuiyui","","","",""],"2"]}}';
+		            		$jtest='{"totalnumber":3,"0":{"qdata":"fvbasjdhbjasdchas asjcvhjasdahsjdv asjdhajscvvjasd vajdh","options":[[{"value":"jhdfsdjkfgsgh","media":0},{"value":"jsdfvjhsdfgsjkdf","media":0},{"value":"sjdfksdfkjsfgf","media":0},{"value":"sdfgsskgsfg","media":0},{"value":"","media":0},{"value":"","media":0}],1]},"1":{"qdata":"bxgahsdgcjhagsdas asjdchasbjdbajshdvbasdc asjdchbasdcjhasjdc asdasd","options":[[{"value":"HAJADFKQ","media":0},{"value":"sjdfdkfjdfkj","media":0},{"value":"kdsjfkdfjkdj vn","media":0},{"value":"kjffkdjfkdjdf","media":0},{"value":"","media":0},{"value":"","media":0}],3]},"2":{"qdata":"kasdhfjkdfkdsfjksdfj dkvjkdjfvkdfv dfkvjdkjvkd fjasdkfjkadfjdk kdfvjkadvjv","options":[[{"value":"kjdkf dkfjdkf dkjkdfv kjfkdjf","media":0},{"value":"dfjdfjdkjdfv kvkdfv kjds","media":0},{"value":"kldfdfjkdfdfk jjkwewlfll","media":0},{"value":"KSDKNKVNSKNC","media":0},{"value":"","media":0},{"value":"","media":0}],4]}}';
 		            		$jsond=json_decode($jtest,true);
 
 		            	?>
@@ -647,7 +647,7 @@
 				            </div>
 		            	</div>
 	        			<?php 
-	        				var_dump($jsond);
+	        				// var_dump($jsond[0]['options']);
 	        				
 	        				// var_dump($jd);
 	        				// echo $jd['widget'];
@@ -663,6 +663,9 @@
 		            </div><!-- /.box-footer-->
 	          </div><!-- /.box -->
 	          <!-- Stats Box end -->
+	        <?php
+          		if($uid==1){
+          	?>
 	          <!-- form test box start -->
 				<div class="box">
 					<div class="box-body clearboth">
@@ -931,7 +934,7 @@
 											  			</div>
 											  		</div>
 											  		<!-- Questions image entries section -->
-													<div class="col-md-12 qmanswers-field-hold float-none _modelanswers">
+													<div class="col-md-12 qmanswers-field-hold float-none clearboth _modelanswers">
 														<div class="col-sm-6 _xs-margin multi_content_hold" 
 															data-type="triggerprogenitor" 
 															data-cid="1" data-name="qmanswers">
@@ -1483,6 +1486,9 @@
 
 				</div>
 	          <!-- form test box end -->
+	        <?php
+          		}
+          	?>
 	        </section><!-- /.content -->
 	      </div><!-- /.content-wrapper -->
 

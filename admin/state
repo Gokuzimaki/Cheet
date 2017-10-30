@@ -151,6 +151,7 @@ status
 
 qgroupset select
 course select
+title input
 qdatatype select -plain/media
 qentrytype select -mixed/obj/theory
 qdate input
@@ -189,7 +190,80 @@ theorydetails input
 theorytotalscore input
 theorydatacount input
 theoryqscore
-theoryquestion textarea
-theoryqmodalanswer
+theoryquestion textarea dfjhfj
+theoryqmodelanswer
 
 
+{"totalnumber":1,"0":
+{"qdata":"<p>gdhdghf sfthdfghdvn &nbsp;ghsfghfhdfgjhsf &nbsp;rfghdfghfsghsfh shg</p>","options":[["uityuityu","rtyurtyuiyui","","","",""],"2"]}}
+
+{"totalnumber":1,"0":{"qdata":"","options":[[],"2"]}}
+--accordion data
+<div class="box">
+
+	<div class="box-body">
+
+	    <div class="box-group" id="generaldataaccordion">
+
+			<div class="panel box overflowhidden box-primary ">
+				<div class="box-header with-border">
+			        <h4 class="box-title">
+			          <a data-toggle="collapse" data-parent="#generaldataaccordion" href="#tb1">
+			            <i class="fa fa-sliders"></i> Tab title one
+			          </a>
+			        </h4>
+			    </div>
+			    <div id="tb1" class="panel-collapse collapse">
+
+			    </div>
+
+			</div>
+			
+
+		</div>
+
+	</div>
+</div>
+			<div class="panel box overflowhidden box-primary ">
+
+            </div>
+
+            <div class="contentpreview _image">
+				<div class="contentpreviewoptions">
+    				<a href="##options" class="option">
+    					<i class="fa fa-gear fa-spin" title="Edit"></i>
+    				</a>
+    			</div>
+            	<a href="" data-title="">
+            		<img src="">
+            	</a>
+            </div>
+
+<!-- Edit pervious data entries section -->
+<div class="col-md-12">
+	<div class="box-group" id="generaldataaccordion">
+		<div class="panel box overflowhidden box-primary ">
+			<div class="box-header with-border">
+		        <h4 class="box-title">
+		          <a data-toggle="collapse" data-parent="#generaldataaccordion" href="#tb1">
+		            <i class="fa fa-sliders"></i> Edit Previous data entries <?php 
+		            echo $row['numrowvalue'];?>
+		          </a>
+		        </h4>
+		    </div>
+		    <div id="tb1" class="panel-collapse collapse">
+		    	<?php
+		    		for ($i=0; $i < $row['numrowvalue']; $i++) { 
+		    			# code...
+		    			$j=$i+1;
+		    			// current data
+		    			$cqtdata=$row['rowdata'][$i];	
+		    	?>
+		    	<!-- Previous Entry Here-->
+		    	<?php
+		    		}
+		    	?>
+		    </div>
+		</div>
+	</div>
+</div>
